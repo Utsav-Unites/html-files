@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Festival Website</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @keyframes fade {
+            0% { opacity: 0; }
+            100% { opacity: 1; }
+        }
+        .hero {
+            background: url('hero-image.jpg') no-repeat center center/cover;
+            height: 100vh;
+            position: fixed;
+            width: 100%;
+            z-index: -1;
+            animation: fade 2s ease-in-out;
+        }
+        .glass {
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(15px);
+            border-radius: 15px;
+            padding: 30px;
+        }
+        .about-glass {
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            padding: 30px;
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 20px;
+            align-items: start;
+            text-align: left;
+        }
+        .about-text {
+            columns: 2;
+            column-gap: 40px;
+            text-align: justify;
+        }
+        .about-images {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 1024px) {
+            .hero {
+                height: 80vh;
+            }
+            .glass {
+                padding: 20px;
+            }
+            .about-glass {
+                grid-template-columns: 1fr;
+            }
+            .about-text {
+                columns: 1;
+            }
+        }
+    </style>
+</head>
+<body class="bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 text-white font-sans">
+    
+    <!-- Hero Section -->
+    <section class="relative w-full h-screen flex items-center justify-center text-center">
+        <div class="hero"></div>
+        <div class="z-10 p-8 glass shadow-lg max-w-2xl">
+            <h1 class="text-7xl font-extrabold drop-shadow-lg">Festival Name</h1>
+            <p class="text-2xl mt-4 font-light">Experience the Magic of Music & Arts</p>
+            <button class="mt-6 px-8 py-4 bg-blue-500 text-white font-semibold rounded-lg shadow-md hover:bg-blue-600 transition transform hover:scale-105">Get Tickets</button>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="py-20 bg-gradient-to-r from-purple-800 via-pink-600 to-red-500 text-gray-300">
+        <div class="container mx-auto px-6 lg:px-20">
+            <h2 class="text-5xl font-bold text-center mb-8 text-white">About The Festival</h2>
+            <div class="about-glass shadow-lg p-8">
+                <div class="about-text">
+                    <p class="text-lg leading-relaxed">Immerse yourself in a world of art, music, and creativity. Our festival brings together top artists, musicians, and cultural icons to create an unforgettable experience.</p>
+                    <p class="text-lg leading-relaxed mt-4">Enjoy live performances, workshops, food trucks, and a vibrant community atmosphere. There's something for everyone!</p>
+                    
+                </div>
+               
+            </div>
+        </div>
+    </section>
+
+    <!-- Map Section -->
+    <section class="py-20 bg-gradient-to-r from-blue-900 via-cyan-600 to-green-500">
+        <div class="container mx-auto px-6 lg:px-20 text-center">
+            <h2 class="text-5xl font-bold mb-6 text-white">Find Us Here</h2>
+            <div class="w-full h-96 overflow-hidden rounded-lg shadow-lg">
+                <iframe class="w-full h-full" src="https://www.google.com/maps/embed?..." allowfullscreen=""></iframe>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-10 bg-black text-white text-center text-lg font-light">
+        <p>© 2025 Festival Name. All Rights Reserved.</p>
+    </footer>
+</body>
+</html>

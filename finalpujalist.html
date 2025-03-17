@@ -1,0 +1,1566 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Puja List - Discover all upcoming Puja events in a simple table format.">
+  <title>Puja Lists</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+  <style>
+    /* General Styles */
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: #f8f9fa;
+      color: #333;
+      margin: 0;
+      padding: 0;
+      scroll-behavior: smooth;
+    }
+
+    /* Parallax Header */
+    header {
+      background: url('https://assets.onecompiler.app/4362nvr75/436bvmy94/WhatsApp%20Image%202025-01-17%20at%2020.43.12_e66aa031.jpg') no-repeat center center fixed;
+      background-size: cover;
+      color: rgb(255, 255, 255);
+      text-align: center;
+      padding: 100px 20px;
+      font-size: 1.8rem;
+      position: relative;
+    }
+
+    header::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.5);
+      z-index: 1;
+    }
+
+    header h1, header p {
+      position: relative;
+      z-index: 2;
+    }
+
+    main {
+      max-width: 1600px;
+      margin: 20px auto;
+      padding: 20px;
+      background: rgba(255, 255, 255, 0.8); /* Changed to transparent white */
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      border-radius: 10px;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      color: #0f4c75;
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    /* Tabs */
+    .tabs {
+      display: flex;
+      justify-content: center;
+      margin: 20px 0;
+    }
+
+    .tabs button {
+      background: #3282b8;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      margin: 0 5px;
+      font-size: 1rem;
+      cursor: pointer;
+      border-radius: 5px;
+    }
+
+    .tabs button.active {
+      background: #0f4c75;
+    }
+
+    .content {
+      display: none;
+    }
+
+    .content.active {
+      display: block;
+    }
+
+    /* Table */
+    .table-wrapper {
+      overflow-x: auto;
+      margin: 20px 0;
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      background: rgba(255, 255, 255, 0.8); /* Changed to transparent white */
+      border-radius: 10px;
+      overflow: hidden;
+      font-family: 'Poppins', sans-serif;
+      text-align: left;
+      border: none; /* Remove borders */
+    }
+
+    /* Sticky Header */
+    thead th {
+      position: sticky;
+      top: 0;
+      background: linear-gradient(90deg, #4caf50, #009688);
+      color: white;
+      padding: 15px;
+      font-size: 1rem;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    /* Striped Rows */
+    tbody tr:nth-child(even) {
+      background-color: rgba(249, 249, 249, 0.8); /* Changed to transparent white */
+    }
+
+    tbody tr:nth-child(odd) {
+      background-color: rgba(255, 255, 255, 0.8); /* Changed to transparent white */
+    }
+
+    /* Hover Effects */
+    tbody tr {
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    tbody tr:hover {
+      transform: scale(1.02);
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    tbody td {
+      padding: 12px 15px;
+      font-size: 0.95rem;
+      color: #333;
+      border: none; /* Remove borders */
+    }
+
+    /* Prevent underline in the "Years" column */
+    tbody td:not(:last-child) {
+      cursor: default;
+    }
+
+    /* Specific Link Styling for "Details" Column */
+    tbody td a {
+      text-decoration: none;
+      color: #00796b;
+      font-weight: 600;
+      transition: color 0.3s ease;
+    }
+
+    /* Hover effects for links in the "Details" column */
+    tbody td a:hover {
+      color: #004d40;
+      text-decoration: underline;
+    }
+
+    /* Tooltips */
+    tbody td a[title] {
+      position: relative;
+    }
+
+    tbody td a[title]:hover::after {
+      content: attr(title);
+      position: absolute;
+      bottom: 125%;
+      left: 50%;
+      transform: translateX(-50%);
+      background: #333;
+      color: white;
+      padding: 5px 10px;
+      border-radius: 5px;
+      white-space: nowrap;
+      font-size: 0.8rem;
+      z-index: 10;
+      opacity: 1;
+      transition: opacity 0.2s ease-in-out;
+    }
+
+    /* Responsive Styling */
+    @media (max-width: 768px) {
+      body {
+        font-size: 1rem;
+      }
+
+      h1 {
+        font-size: 2rem;
+      }
+
+      .tabs button {
+        padding: 8px 15px;
+        font-size: 0.9rem;
+      }
+
+      thead th {
+        font-size: 0.85rem;
+      }
+
+      tbody td {
+        font-size: 0.85rem;
+        padding: 10px 12px;
+      }
+
+      table {
+        font-size: 0.85rem;
+      }
+
+      .table-wrapper {
+        margin: 10px 0;
+        padding: 10px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      header {
+        padding: 80px 15px;
+      }
+
+      header h1 {
+        font-size: 1.8rem;
+      }
+
+      .tabs button {
+        padding: 6px 12px;
+        font-size: 0.8rem;
+      }
+
+      .table-wrapper {
+        padding: 5px;
+      }
+
+      table {
+        font-size: 0.8rem;
+      }
+
+      tbody td {
+        padding: 8px 10px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <button onclick="goBack()" style="background: #3282b8;z-index:10; color: white; border: none; padding: 10px 20px; border-radius: 5px; font-size: 1rem; cursor: pointer; position: absolute; top: 20px; left: 20px;">
+        Back
+      </button>
+      <h1>Puja Committee <span>List</span></h1>
+    <p>The number of community pujas in Chandannagar, Bhadreswar, and other areas crosses 190.</p>
+  </header>
+
+  <main>
+    <div class="tabs">
+      <button class="active" data-tab="chandannagar">Chandannagar</button>
+      <button data-tab="bhadreswar">Bhadreswar</button>
+      <button data-tab="others">Others</button>
+    </div>
+
+    <div class="content active" id="chandannagar">
+      <h3>List of Jagadhatri Puja Committees</h3>
+      <p><strong>Total:</strong> 132 Puja Committees | <strong>Jubilees:</strong> 6 | <strong>Pre-Jubilee:</strong> 8</p>
+      <div class="table-wrapper">
+        <table>
+          <thead>
+            <tr>
+              <th>SL. NO.</th>
+              <th>Puja Committee Name</th>
+              <th>Years</th>
+              <th>Celebrating (2024)</th>
+              <th>Details</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>1</td>
+              <td>Adi Mahadanga</td>
+              <td>47</td>
+              <td>--</td>
+              <td><a href="#" title="Click to view">View</a></td>
+            </tr>
+            <tr>
+              <td>2</td>
+              <td>Agragati Ha-Du-Du Club</td>
+              <td>43</td>
+              <td>--</td>
+              <td><a href="#" title="Click to view">View</a></td>
+            </tr>
+            <tr>
+              <td>3</td>
+              <td>Apanjan</td>
+              <td>14</td>
+              <td>--</td>
+              <td><a href="#" title="Click to view">View</a></td>
+            </tr>
+            <tr>
+              <td>4</td>
+              <td>Ashwatthatala Suksanatantala</td>
+              <td>8</td>
+              <td>--</td>
+              <td><a href="#"title="Click to view">View</a></td>
+            </tr>
+            <tr>
+              <td>5</td>
+              <td>Aurobinda Sangha, Barasat</td>
+              <td>58</td>
+              <td>--</td>
+              <td><a href="#"title="Click to view">View</a></td>
+            </tr>
+            <tr>
+              <td>6</td>
+              <td>Bagbazar</td>
+              <td>191</td>
+              <td>--</td>
+              <td><a href="#"title="Click to view">View</a></td>
+            </tr>
+            <tr>
+              <td>7</td>
+              <td>Bagbazar Babupukurdhar</td>
+              <td>51</td>
+              <td>--</td>
+              <td><a href="#"title="Click to view">View</a></td>
+            </tr>
+            <tr>
+              <td>8</td>
+              <td>Bagbazar Chowmatha</td>
+              <td>76</td>
+              <td>--</td>
+              <td><a href="#"title="Click to view">View</a></td>
+            </tr>
+            <tr>
+              <td>9</td>
+              <td>Bagbazar Talpukurdhar</td>
+              <td>42</td>
+              <td>--</td>
+              <td><a href="#"title="Click to view">View</a></td>
+            </tr>
+            <tr>
+              <td>10</td>
+              <td>Baidyapota</td>
+              <td>55</td>
+              <td>--</td>
+              <td><a href="#"title="Click to view">View</a></td>
+            </tr>
+            <tr>
+              <td>11</td>
+              <td>Balak Samity, Garerdhar</td>
+              <td>34</td>
+              <td>--</td>
+              <td><a href="#"title="Click to view">View</a></td>
+            </tr>
+            <tr>
+              <td>12</td>
+              <td>Balak Sangha, Mahadanga</td>
+              <td>46</td>
+              <td>--</td>
+              <td><a href="#"title="Click to view">View</a></td>
+            </tr>
+            <tr>
+              <td>13</td>
+              <td>Balok Samproday (Gunj Niyogibagan)</td>
+              <td>36</td>
+              <td>--</td>
+              <td><a href="#"title="Click to view">View</a></td>
+            </tr>
+            <tr>
+              <td>14</td>
+              <td>Barabazar</td>
+              <td>63</td>
+              <td>--</td>
+              <td><a href="#"title="Click to view">View</a></td>
+            </tr>
+            <tr>
+              <td>15</td>
+              <td>Barasat Banerjeepara</td>
+              <td>60</td>
+              <td>--</td>
+              <td><a href="#"title="Click to view">View</a></td>
+            </tr>
+            <tr>
+              <td>16</td>
+              <td>Barasat Banerjeepara Madhyanchal</td>
+              <td>24</td>
+              <td>--</td>
+              <td><a href="#"title="Click to view">View</a></td>
+            </tr>
+            <tr>
+              <td>17</td>
+              <td>Barasat Chakrabarty Para</td>
+              <td>23</td>
+              <td>--</td>
+              <td><a href="#"title="Click to view">View</a></td>
+            </tr>
+            <tr>
+              <td>18</td>
+              <td>Barasat Dakshin</td>
+              <td>57</td>
+              <td>--</td>
+              <td><a href="#"title="Click to view">View</a></td>
+            </tr>
+            <tr>
+              <td>19</td>
+              <td>Barasat Gate</td>
+              <td>79</td>
+              <td>--</td>
+              <td><a href="#"title="Click to view">View</a></td>
+            </tr>
+            <tr>
+              <td>20</td>
+              <td>Beshohata</td>
+              <td>76</td>
+              <td>--</td>
+              <td><a href="#"title="Click to view">View</a></td>
+            </tr>
+            <tr>
+              <td>21</td>
+              <td>Bhagar More Chowmatha</td>
+              <td>30</td>
+              <td>--</td>
+              <td><a href="#"title="Click to view">View</a></td>
+            </tr>
+            <tr>
+              <td>22</td>
+              <td>Bibirhat Charaktala</td>
+              <td>58</td>
+              <td>--</td>
+              <td><a href="#"title="Click to view">View</a></td>
+            </tr>
+            <tr>
+              <td>23</td>
+              <td>Bibirhat Charaktala Tematha</td>
+              <td>41</td>
+              <td>--</td>
+              <td><a href="#"title="Click to view">View</a></td>
+            </tr>
+            <tr>
+              <td>24</td>
+              <td>Bidyalankar</td>
+              <td>69</td>
+              <td>--</td>
+              <td><a href="#"title="Click to view">View</a></td>
+            </tr>
+            <tr>
+              <td>25</td>
+              <td>Bindubasinipara</td>
+              <td>53</td>
+              <td>--</td>
+              <td><a href="#"title="Click to view">View</a></td>
+            </tr>
+            <tr>
+              <td>26</td>
+              <td>Binoy Badol Dinesh Sangha</td>
+              <td>39</td>
+              <td>--</td>
+              <td><a href="#"title="Click to view">View</a></td>
+            </tr>
+            <tr>
+              <td>27</td>
+              <td>Boraichanditala</td>
+              <td>54</td>
+              <td>--</td>
+              <td><a href="#"title="Click to view">View</a></td>
+            </tr>
+            <tr>
+              <td>28</td>
+              <td>Boro</td>
+              <td>58</td>
+              <td>--</td>
+              <td><a href="#"title="Click to view">View</a></td>
+            </tr>
+            <tr>
+              <td>29</td>
+              <td>Boro Dighirdhar</td>
+              <td>73</td>
+              <td>--</td>
+              <td><a href="#"title="Click to view">View</a></td>
+            </tr>
+            <tr>
+              <td>30</td>
+              <td>Boro Jadu Ghosh Lane</td>
+              <td>21</td>
+              <td>--</td>
+              <td><a href="#"title="Click to view">View</a></td>
+            </tr>
+            <tr>
+              <td>31</td>
+              <td>Boro Kalitala</td>
+              <td>56</td>
+              <td>--</td>
+              <td><a href="#"title="Click to view">View</a></td>
+            </tr>
+            <tr>
+              <td>32</td>
+              <td>Boro Kalitala Bylane</td>
+              <td>55</td>
+              <td>--</td>
+              <td><a href="#"title="Click to view">View</a></td>
+            </tr>
+            <tr>
+              <td>33</td>
+              <td>Boro Mitrabagan</td>
+              <td>44</td>
+              <td>--</td>
+              <td><a href="#"title="Click to view">View</a></td>
+            </tr>
+            <tr>
+              <td>34</td>
+              <td>Boro Panchanantala</td>
+              <td>52</td>
+              <td>--</td>
+              <td><a href="#"title="Click to view">View</a></td>
+            </tr>
+            <tr>
+              <td>35</td>
+              <td>Boro Taldanga</td>
+              <td>56</td>
+              <td>--</td>
+              <td><a href="#"title="Click to view">View</a></td>
+            </tr>
+            <tr>
+              <td>36</td>
+              <td>Chandni Benepukur</td>
+              <td>18</td>
+              <td>--</td>
+              <td><a href="#"title="Click to view">View</a></td>
+            </tr>
+            <tr>
+              <td>37</td>
+              <td>Chandni Benepukur</td>
+              <td>56</td>
+              <td>--</td>
+              <td><a href="#"title="Click to view">View</a></td>
+            </tr>
+            <tr>
+              <td>38</td>
+              <td>Circusmath</td>
+              <td>55</td>
+              <td>--</td>
+              <td><a href="#"title="Click to view">View</a></td>
+            </tr>
+            <tr>
+              <td>39</td>
+              <td>Dashabhujatala</td>
+              <td>47</td>
+              <td>--</td>
+              <td><a href="#"title="Click to view">View</a></td>
+            </tr>
+            <tr>
+              <td>40</td>
+              <td>Dharapara</td>
+              <td>53</td>
+              <td>--</td>
+              <td><a href="#"title="Click to view">View</a></td>
+            </tr>
+            <tr>
+              <td>41</td>
+              <td>Dharapara Mandirtala (Madhyanchal)</td>
+              <td>53</td>
+              <td>--</td>
+              <td><a href="#"title="Click to view">View</a></td>
+            </tr>
+            <tr>
+              <td>42</td>
+              <td>Dinemardanga Amtala</td>
+              <td>46</td>
+              <td>--</td>
+              <td><a href="#"title="Click to view">View</a></td>
+            </tr>
+            <tr>
+              <td>43</td>
+              <td>Dinemardanga Panchapandab</td>
+              <td>50</td>
+              <td>--</td>
+              <td><a href="#"title="Click to view">View</a></td>
+            </tr>
+            <tr>
+              <td>44</td>
+              <td>Dinemardanga Pratik Sangha</td>
+              <td>49</td>
+              <td>--</td>
+              <td><a href="#"title="Click to view">View</a></td>
+            </tr>
+            <tr>
+              <td>45</td>
+              <td>Dinemardanga Shibmandir</td>
+              <td>48</td>
+              <td>--</td>
+              <td><a href="#"title="Click to view">View</a></td>
+            </tr>
+            <tr>
+              <td>46</td>
+              <td>Dinemardanga Talpukurdhar</td>
+              <td>49</td>
+              <td>--</td>
+              <td><a href="#"title="Click to view">View</a></td>
+            </tr>
+            <tr>
+              <td>47</td>
+              <td>Duplexpatty</td>
+              <td>63</td>
+              <td>--</td>
+              <td><a href="#"title="Click to view">View</a></td>
+            </tr>
+            <tr>
+              <td>48</td>
+              <td>Duplexpatty Kultala</td>
+              <td>55</td>
+              <td>--</td>
+              <td><a href="#"title="Click to view">View</a></td>
+            </tr>
+            <tr>
+              <td>49</td>
+              <td>Fatakgora</td>
+              <td>73</td>
+              <td>--</td>
+              <td><a href="#"title="Click to view">View</a></td>
+            </tr>
+            <tr>
+              <td>50</td>
+              <td>Ghorapukurdhar</td>
+              <td>46</td>
+              <td>--</td>
+              <td><a href="#"title="Click to view">View</a></td>
+            </tr>
+            <tr>
+              <td>51</td>
+              <td>Gondalpara A. C. Chatterjee Lane</td>
+              <td>83</td>
+              <td>--</td>
+              <td><a href="#"title="Click to view">View</a></td>
+            </tr>
+            <tr>
+              <td>52</td>
+              <td>Gondalpara Ambika Athletic Club</td>
+              <td>56</td>
+              <td>--</td>
+              <td><a href="#"title="Click to view">View</a></td>
+            </tr>
+            <tr>
+              <td>53</td>
+              <td>Gondalpara Binodtala</td>
+              <td>42</td>
+              <td>--</td>
+              <td><a href="#"title="Click to view">View</a></td>
+            </tr>
+            <tr>
+              <td>54</td>
+              <td>Gondalpara Charmandirtala</td>
+              <td>82</td>
+              <td>--</td>
+              <td><a href="#"title="Click to view">View</a></td>
+            </tr>
+            <tr>
+              <td>55</td>
+              <td>Gondalpara Kabadi Club</td>
+              <td>47</td>
+              <td>--</td>
+              <td><a href="#"title="Click to view">View</a></td>
+            </tr>
+            <tr>
+              <td>56</td>
+              <td>Gondalpara Kacharighat</td>
+              <td>45</td>
+              <td>--</td>
+              <td><a href="#"title="Click to view">View</a></td>
+            </tr>
+            <tr>
+              <td>57</td>
+              <td>Gondalpara Mansatala</td>
+              <td>84</td>
+              <td>--</td>
+              <td><a href="#"title="Click to view">View</a></td>
+            </tr>
+            <tr>
+              <td>58</td>
+              <td>Gondalpara Moran road</td>
+              <td>67</td>
+              <td>--</td>
+              <td><a href="#"title="Click to view">View</a></td>
+            </tr>
+            <tr>
+              <td>59</td>
+              <td>Gondalpara Notun Telighat</td>
+              <td>58</td>
+              <td>--</td>
+              <td><a href="#"title="Click to view">View</a></td>
+            </tr>
+            <tr>
+              <td>60</td>
+              <td>Gondalpara Radhanath Sikder Road (Kadamtala)</td>
+              <td>58</td>
+              <td>--</td>
+              <td><a href="#"title="Click to view">View</a></td>
+            </tr>
+            <tr>
+              <td>61</td>
+              <td>Gondalpara Satghata</td>
+              <td>59</td>
+              <td>--</td>
+              <td><a href="#"title="Click to view">View</a></td>
+            </tr>
+            <tr>
+              <td>62</td>
+              <td>Gopalbag</td>
+              <td>63</td>
+              <td>--</td>
+              <td><a href="#"title="Click to view">View</a></td>
+            </tr>
+            <tr>
+              <td>63</td>
+              <td>Goswamighat</td>
+              <td>72</td>
+              <td>--</td>
+              <td><a href="#"title="Click to view">View</a></td>
+            </tr>
+            <tr>
+              <td>64</td>
+              <td>Gunj Sitalatala</td>
+              <td>51</td>
+              <td>--</td>
+              <td><a href="#"title="Click to view">View</a></td>
+            </tr>
+            <tr>
+              <td>65</td>
+              <td>Halderpara (Adi)</td>
+              <td>not known</td>
+              <td>--</td>
+              <td><a href="#"title="Click to view">View</a></td>
+            </tr>
+            <tr>
+              <td>66</td>
+              <td>Halderpara Sasthitala	</td>
+              <td>50</td>
+              <td>--</td>
+              <td><a href="#"title="Click to view">View</a></td>
+            </tr>
+            <tr>
+              <td>67</td>
+              <td>Harerpukurdhar</td>
+              <td>44</td>
+              <td>--</td>
+              <td><a href="#"title="Click to view">View</a></td>
+            </tr>
+            <tr>
+              <td>68</td>
+              <td>Haridradanga</td>
+              <td>60</td>
+              <td>--</td>
+              <td><a href="#"title="Click to view">View</a></td>
+            </tr>
+            <tr>
+              <td>69</td>
+              <td>Haridradanga Garerdhar (Battala)</td>
+              <td>60</td>
+              <td>--</td>
+              <td><a href="#"title="Click to view">View</a></td>
+            </tr>
+            <tr>
+              <td>70</td>
+              <td>Hatkhola Bhubaneshwaritala</td>
+              <td>72</td>
+              <td>--</td>
+              <td><a href="#"title="Click to view">View</a></td>
+            </tr>
+            <tr>
+              <td>71</td>
+              <td>Hatkhola Daibakpara</td>
+              <td>53</td>
+              <td>--</td>
+              <td><a href="#"title="Click to view">View</a></td>
+            </tr>
+            <tr>
+              <td>72</td>
+              <td>Hatkhola Mansatala</td>
+              <td>64</td>
+              <td>--</td>
+              <td><a href="#"title="Click to view">View</a></td>
+            </tr>
+            <tr>
+              <td>73</td>
+              <td>Hatkhola Nonatola</td>
+              <td>46</td>
+              <td>--</td>
+              <td><a href="#"title="Click to view">View</a></td>
+            </tr>
+            <tr>
+              <td>74</td>
+              <td>Helapukur</td>
+              <td>56</td>
+              <td>--</td>
+              <td><a href="#"title="Click to view">View</a></td>
+            </tr>
+            <tr>
+              <td>75</td>
+              <td>Jagannathbati</td>
+              <td>27</td>
+              <td>--</td>
+              <td><a href="#"title="Click to view">View</a></td>
+            </tr>
+            <tr>
+              <td>76</td>
+              <td>Jompukurdhar</td>
+              <td>50</td>
+              <td>--</td>
+              <td><a href="#"title="Click to view">View</a></td>
+            </tr>
+            <tr>
+              <td>77</td>
+              <td>Kabaripara</td>
+              <td>48</td>
+              <td>--</td>
+              <td><a href="#"title="Click to view">View</a></td>
+            </tr>
+            <tr>
+              <td>78</td>
+              <td>Kalupukur</td>
+              <td>49</td>
+              <td>--</td>
+              <td><a href="#"title="Click to view">View</a></td>
+            </tr>
+            <tr>
+              <td>79</td>
+              <td>Kalupukur Garerdhar</td>
+              <td>37</td>
+              <td>--</td>
+              <td><a href="#"title="Click to view">View</a></td>
+            </tr>
+            <tr>
+              <td>80</td>
+              <td>Kanailal Pally</td>
+              <td>52</td>
+              <td>--</td>
+              <td><a href="#"title="Click to view">View</a></td>
+            </tr>
+            <tr>
+              <td>81</td>
+              <td>Kantapukur</td>
+              <td>57</td>
+              <td>--</td>
+              <td><a href="#"title="Click to view">View</a></td>
+            </tr>
+            <tr>
+              <td>82</td>
+              <td>Kantapukur Chowmatha</td>
+              <td>47</td>
+              <td>--</td>
+              <td><a href="#"title="Click to view">View</a></td>
+            </tr>
+            <tr>
+              <td>83</td>
+              <td>Kapalipara Sahebbagan	</td>
+              <td>60</td>
+              <td>--</td>
+              <td><a href="#"title="Click to view">View</a></td>
+            </tr>
+            <tr>
+              <td>84</td>
+              <td>Khalisani</td>
+              <td>77</td>
+              <td>--</td>
+              <td><a href="#"title="Click to view">View</a></td>
+            </tr>
+            <tr>
+              <td>85</td>
+              <td>Khalisani Garerdhar Tematha</td>
+              <td>62</td>
+              <td>--</td>
+              <td><a href="#"title="Click to view">View</a></td>
+            </tr>
+            <tr>
+              <td>86</td>
+              <td>Kundughat</td>
+              <td>54</td>
+              <td>--</td>
+              <td><a href="#"title="Click to view">View</a></td>
+            </tr>
+            <tr>
+              <td>87</td>
+              <td>Kundughat Dalan</td>
+              <td>46</td>
+              <td>--</td>
+              <td><a href="#"title="Click to view">View</a></td>
+            </tr>
+            <tr>
+              <td>88</td>
+              <td>Kundughat Uttar Purbanchal</td>
+              <td>49</td>
+              <td>--</td>
+              <td><a href="#"title="Click to view">View</a></td>
+            </tr>
+            <tr>
+              <td>89</td>
+              <td>Kuthir Math (North)</td>
+              <td>31</td>
+              <td>--</td>
+              <td><a href="#"title="Click to view">View</a></td>
+            </tr>
+            <tr>
+              <td>90</td>
+              <td>Lalbagan</td>
+              <td>71</td>
+              <td>--</td>
+              <td><a href="#"title="Click to view">View</a></td>
+            </tr>
+            <tr>
+              <td>91</td>
+              <td>Lalbagan Padripara</td>
+              <td>58</td>
+              <td>--</td>
+              <td><a href="#"title="Click to view">View</a></td>
+            </tr>
+            <tr>
+              <td>92</td>
+              <td>Laxmigunj Bazar</td>
+              <td>93</td>
+              <td>--</td>
+              <td><a href="#"title="Click to view">View</a></td>
+            </tr>
+            <tr>
+              <td>93</td>
+              <td>Laxmigunj Chaulpotti</td>
+              <td>not known</td>
+              <td>--</td>
+              <td><a href="#"title="Click to view">View</a></td>
+            </tr>
+            <tr>
+              <td>94</td>
+              <td>Laxmigunj Chowmatha</td>
+              <td>123</td>
+              <td>--</td>
+              <td><a href="#"title="Click to view">View</a></td>
+            </tr>
+            <tr>
+              <td>95</td>
+              <td>Laxmigunj Kaporepotti</td>
+              <td>260</td>
+              <td>--</td>
+              <td><a href="#"title="Click to view">View</a></td>
+            </tr>
+            <tr>
+              <td>96</td>
+              <td>Lichutala</td>
+              <td>86</td>
+              <td>--</td>
+              <td><a href="#"title="Click to view">View</a></td>
+            </tr>
+            <tr>
+              <td>97</td>
+              <td>Madhyanchal</td>
+              <td>55</td>
+              <td>--</td>
+              <td><a href="#"title="Click to view">View</a></td>
+            </tr>
+            <tr>
+              <td>98</td>
+              <td>Mohila Samity</td>
+              <td>54</td>
+              <td>--</td>
+              <td><a href="#"title="Click to view">View</a></td>
+            </tr>
+            <tr>
+              <td>99</td>
+              <td>Mollahazi Bagan</td>
+              <td>21</td>
+              <td>--</td>
+              <td><a href="#"title="Click to view">View</a></td>
+            </tr>
+            <tr>
+              <td>100</td>
+              <td>Narua</td>
+              <td>73</td>
+              <td>--</td>
+              <td><a href="#"title="Click to view">View</a></td>
+            </tr>
+            <tr>
+              <td>101</td>
+              <td>Narua Boropukurdhar</td>
+              <td>28</td>
+              <td>--</td>
+              <td><a href="#"title="Click to view">View</a></td>
+            </tr>
+            <tr>
+              <td>102</td>
+              <td>Narua Sarkarpara</td>
+              <td>53</td>
+              <td>--</td>
+              <td><a href="#"title="Click to view">View</a></td>
+            </tr>
+            <tr>
+              <td>103</td>
+              <td>Narua Shyamkhristan Bagan</td>
+              <td>40</td>
+              <td>--</td>
+              <td><a href="#"title="Click to view">View</a></td>
+            </tr>
+            <tr>
+              <td>104</td>
+              <td>Natunpara</td>
+              <td>51</td>
+              <td>--</td>
+              <td><a href="#"title="Click to view">View</a></td>
+            </tr>
+            <tr>
+              <td>105</td>
+              <td>Neogibagan</td>
+              <td>37</td>
+              <td>--</td>
+              <td><a href="#"title="Click to view">View</a></td>
+            </tr>
+            <tr>
+              <td>106</td>
+              <td>Padripara</td>
+              <td>42</td>
+              <td>--</td>
+              <td><a href="#"title="Click to view">View</a></td>
+            </tr>
+            <tr>
+              <td>107</td>
+              <td>Padripara Farmadighi</td>
+              <td>43</td>
+              <td>--</td>
+              <td><a href="#"title="Click to view">View</a></td>
+            </tr>
+            <tr>
+              <td>108</td>
+              <td>Padripara Kalitala</td>
+              <td>46</td>
+              <td>--</td>
+              <td><a href="#"title="Click to view">View</a></td>
+            </tr>
+            <tr>
+              <td>109</td>
+              <td>Palpara</td>
+              <td>82</td>
+              <td>--</td>
+              <td><a href="palparaweb.html"title="Click to view">View</a></td>
+            </tr>
+            <tr>
+              <td>110</td>
+              <td>Pilkhana Kuthir Ghat</td>
+              <td>38</td>
+              <td>--</td>
+              <td><a href="#"title="Click to view">View</a></td>
+            </tr>
+            <tr>
+              <td>111</td>
+              <td>Rathersarak Sambala Shibtala</td>
+              <td>55</td>
+              <td>--</td>
+              <td><a href="#"title="Click to view">View</a></td>
+            </tr>
+            <tr>
+              <td>112</td>
+              <td>Sabinara</td>
+              <td>53</td>
+              <td>--</td>
+              <td><a href="#"title="Click to view">View</a></td>
+            </tr>
+            <tr>
+              <td>113</td>
+              <td>Sarishapara</td>
+              <td>55</td>
+              <td>--</td>
+              <td><a href="#"title="Click to view">View</a></td>
+            </tr>
+            <tr>
+              <td>114</td>
+              <td>Sauli</td>
+              <td>32</td>
+              <td>--</td>
+              <td><a href="#"title="Click to view">View</a></td>
+            </tr>
+            <tr>
+              <td>115</td>
+              <td>Silbagan</td>
+              <td>39</td>
+              <td>--</td>
+              <td><a href="#"title="Click to view">View</a></td>
+            </tr>
+            <tr>
+              <td>116</td>
+              <td>Sitalatala Bauripara</td>
+              <td>43</td>
+              <td>--</td>
+              <td><a href="#"title="Click to view">View</a></td>
+            </tr>
+            <tr>
+              <td>117</td>
+              <td>Sramikpally Laldighir Dhar</td>
+              <td>54</td>
+              <td>--</td>
+              <td><a href="#"title="Click to view">View</a></td>
+            </tr>
+            <tr>
+              <td>118</td>
+              <td>Subhas Jagaran Sangha, Tematha</td>
+              <td>64</td>
+              <td>--</td>
+              <td><a href="#"title="Click to view">View</a></td>
+            </tr>
+            <tr>
+              <td>119</td>
+              <td>Subhas Sangha, Mahadanga</td>
+              <td>34</td>
+              <td>--</td>
+              <td><a href="#"title="Click to view">View</a></td>
+            </tr>
+            <tr>
+              <td>120</td>
+              <td>Suksanatantala, Bishalakkhitala</td>
+              <td>54</td>
+              <td>--</td>
+              <td><a href="#"title="Click to view">View</a></td>
+            </tr>
+            <tr>
+              <td>121</td>
+              <td>Surerpukur</td>
+              <td>37</td>
+              <td>--</td>
+              <td><a href="#"title="Click to view">View</a></td>
+            </tr>
+            <tr>
+              <td>122</td>
+              <td>Surerpukur Garerdhar</td>
+              <td>50</td>
+              <td>--</td>
+              <td><a href="#"title="Click to view">View</a></td>
+            </tr>
+            <tr>
+              <td>123</td>
+              <td>Surighat</td>
+              <td>47</td>
+              <td>--</td>
+              <td><a href="#"title="Click to view">View</a></td>
+            </tr>
+            <tr>
+              <td>124</td>
+              <td>Talpukurdhar Sishu Udyan</td>
+              <td>17</td>
+              <td>--</td>
+              <td><a href="#"title="Click to view">View</a></td>
+            </tr>
+            <tr>
+              <td>125</td>
+              <td>Tantirbagan</td>
+              <td>55</td>
+              <td>--</td>
+              <td><a href="#"title="Click to view">View</a></td>
+            </tr>
+            <tr>
+              <td>126</td>
+              <td>Tantirbagar Charthakurtola</td>
+              <td>51</td>
+              <td>--</td>
+              <td><a href="#"title="Click to view">View</a></td>
+            </tr>
+            <tr>
+              <td>127</td>
+              <td>Tarun Sangha, Dharapara Bye Lane</td>
+              <td>37</td>
+              <td>--</td>
+              <td><a href="#"title="Click to view">View</a></td>
+            </tr>
+            <tr>
+              <td>128</td>
+              <td>Tematha</td>
+              <td>81</td>
+              <td>--</td>
+              <td><a href="#"title="Click to view">View</a></td>
+            </tr>
+            <tr>
+              <td>129</td>
+              <td>Urdibazar</td>
+              <td>63</td>
+              <td>--</td>
+              <td><a href="#"title="Click to view">View</a></td>
+            </tr>
+            <tr>
+              <td>130</td>
+              <td>Urdibazar Chunagoli</td>
+              <td>21</td>
+              <td>--</td>
+              <td><a href="#"title="Click to view">View</a></td>
+            </tr>
+            <tr>
+              <td>131</td>
+              <td>Uttaranchal</td>
+              <td>59</td>
+              <td>--</td>
+              <td><a href="#"title="Click to view">View</a></td>
+            </tr>
+            <tr>
+              <td>132</td>
+              <td>Yuba Sampraday, Boro Champatala</td>
+              <td>63</td>
+              <td>--</td>
+              <td><a href="#"title="Click to view">View</a></td>
+            </tr>
+            <!-- Add more rows as needed -->
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="content" id="bhadreswar">
+      <h3>Bhadreswar Puja Committees</h3>
+      <p>Content for Bhadreswar goes here.</p>
+      <p><strong>Total:</strong> 45 Puja Committees | <strong>Jubilees:</strong> 2 | <strong>Pre-Jubilee:</strong> 8</p>
+      <table>
+        <thead>
+          <tr>
+            <th>SL. NO.</th>
+            <th>Puja Committee Name</th>
+            <th>Years</th>
+            <th>Celebrating (2024)</th>
+            <th>Details</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>1</td>
+            <td>Adi Palpara</td>
+            <td>40</td>
+            <td>--</td>
+            <td><a href="#" title="Click to view">View</a></td>
+          </tr>
+          <tr>
+            <td>2</td>
+            <td>Angus</td>
+            <td>59</td>
+            <td>--</td>
+            <td><a href="#" title="Click to view">View</a></td>
+          </tr>
+          <tr>
+            <td>3</td>
+            <td>Bethpukurdhar</td>
+            <td>13</td>
+            <td>--</td>
+            <td><a href="#" title="Click to view">View</a></td>
+          </tr>
+          <tr>
+            <td>4</td>
+            <td>Bhadreshwar Station Road Byabsayi Samity</td>
+            <td>69</td>
+            <td>--</td>
+            <td><a href="#" title="Click to view">View</a></td>
+          </tr>
+          <tr>
+            <td>5</td>
+            <td>Bhadreswar 15 Pally</td>
+            <td>51</td>
+            <td>--</td>
+            <td><a href="#" title="Click to view">View</a></td>
+          </tr>
+          <tr>
+            <td>6</td>
+            <td>Bhadreswar Gunj</td>
+            <td>217</td>
+            <td>--</td>
+            <td><a href="#" title="Click to view">View</a></td>
+          </tr>
+          <tr>
+            <td>7</td>
+            <td>Bhadreswar Jagadhatri Sporting Club</td>
+            <td>53</td>
+            <td>--</td>
+            <td><a href="#" title="Click to view">View</a></td>
+          </tr>
+          <tr>
+            <td>8</td>
+            <td>Bhadreswar Krisnapatty Sastitala Dakhinachal</td>
+            <td>48</td>
+            <td>--</td>
+            <td><a href="#" title="Click to view">View</a></td>
+          </tr>
+          <tr>
+            <td>9</td>
+            <td>Bhadreswar Nimtala</td>
+            <td>59</td>
+            <td>--</td>
+            <td><a href="#" title="Click to view">View</a></td>
+          </tr>
+          <tr>
+            <td>10</td>
+            <td>Bhadreswar Station Road Chowmatha</td>
+            <td>54</td>
+            <td>--</td>
+            <td><a href="#" title="Click to view">View</a></td>
+          </tr>
+          <tr>
+            <td>11</td>
+            <td>Bhadreswar Station Road Haritokitala</td>
+            <td>49</td>
+            <td>--</td>
+            <td><a href="#" title="Click to view">View</a></td>
+          </tr>
+          <tr>
+            <td>12</td>
+            <td>Bhadreswar Yuvak Samity</td>
+            <td>49</td>
+            <td>--</td>
+            <td><a href="#" title="Click to view">View</a></td>
+          </tr>
+          <tr>
+            <td>13</td>
+            <td>Bibeknagar Amratala Bhadreswar Station Road</td>
+            <td>48</td>
+            <td>--</td>
+            <td><a href="#" title="Click to view">View</a></td>
+          </tr>
+          <tr>
+            <td>14</td>
+            <td>Bowbazar Sitalatala</td>
+            <td>49</td>
+            <td>--</td>
+            <td><a href="#" title="Click to view">View</a></td>
+          </tr>
+          <tr>
+            <td>15</td>
+            <td>Brahminpara Jagarani Samity</td>
+            <td>41</td>
+            <td>--</td>
+            <td><a href="#" title="Click to view">View</a></td>
+          </tr>
+          <tr>
+            <td>16</td>
+            <td>Chaldatala</td>
+            <td>59</td>
+            <td>--</td>
+            <td><a href="#" title="Click to view">View</a></td>
+          </tr>
+          <tr>
+            <td>17</td>
+            <td>Gourhati</td>
+            <td>12</td>
+            <td>--</td>
+            <td><a href="#" title="Click to view">View</a></td>
+          </tr>
+          <tr>
+            <td>18</td>
+            <td>Gourhati, Tetultala</td>
+            <td>233</td>
+            <td>--</td>
+            <td><a href="#" title="Click to view">View</a></td>
+          </tr>
+          <tr>
+            <td>19</td>
+            <td>Joy Bharat Sangha (Chandrababur Bazar)</td>
+            <td>69</td>
+            <td>--</td>
+            <td><a href="#" title="Click to view">View</a></td>
+          </tr>
+          <tr>
+            <td>20</td>
+            <td>Khalisani Bowbazar</td>
+            <td>58</td>
+            <td>--</td>
+            <td><a href="#" title="Click to view">View</a></td>
+          </tr>
+          <tr>
+            <td>21</td>
+            <td>Khalisani Kalpukurdhar</td>
+            <td>59</td>
+            <td>--</td>
+            <td><a href="#" title="Click to view">View</a></td>
+          </tr>
+          <tr>
+            <td>22</td>
+            <td>Kheyali Sangha</td>
+            <td>53</td>
+            <td>--</td>
+            <td><a href="#" title="Click to view">View</a></td>
+          </tr>
+          <tr>
+            <td>23</td>
+            <td>Kishore Samity (Palbagan)</td>
+            <td>45</td>
+            <td>--</td>
+            <td><a href="#" title="Click to view">View</a></td>
+          </tr>
+          <tr>
+            <td>24</td>
+            <td>Koyedbeltala Balok Sangha</td>
+            <td>58</td>
+            <td>--</td>
+            <td><a href="#" title="Click to view">View</a></td>
+          </tr>
+          <tr>
+            <td>25</td>
+            <td>Krishnapatty</td>
+            <td>53</td>
+            <td>--</td>
+            <td><a href="#" title="Click to view">View</a></td>
+          </tr>
+          <tr>
+            <td>26</td>
+            <td>Maniknagar</td>
+            <td>46</td>
+            <td>--</td>
+            <td><a href="#" title="Click to view">View</a></td>
+          </tr>
+          <tr>
+            <td>27</td>
+            <td>Mankundu</td>
+            <td>59</td>
+            <td>--</td>
+            <td><a href="#" title="Click to view">View</a></td>
+          </tr>
+          <tr>
+            <td>28</td>
+            <td>Mankundu Goldighirdhar</td>
+            <td>33</td>
+            <td>--</td>
+            <td><a href="#" title="Click to view">View</a></td>
+          </tr>
+          <tr>
+            <td>29</td>
+            <td>Mankundu Tentultala</td>
+            <td>45</td>
+            <td>--</td>
+            <td><a href="#" title="Click to view">View</a></td>
+          </tr>
+          <tr>
+            <td>30</td>
+            <td>Naba Sangha, Library Road</td>
+            <td>31</td>
+            <td>--</td>
+            <td><a href="#" title="Click to view">View</a></td>
+          </tr>
+          <tr>
+            <td>31</td>
+            <td>Nabagram Puroshree</td>
+            <td>26</td>
+            <td>--</td>
+            <td><a href="#" title="Click to view">View</a></td>
+          </tr>
+          <tr>
+            <td>32</td>
+            <td>Nimtala Sporting Club</td>
+            <td>50</td>
+            <td>--</td>
+            <td><a href="#" title="Click to view">View</a></td>
+          </tr>
+          <tr>
+            <td>33</td>
+            <td>Pradip Sangha Library Road</td>
+            <td>46</td>
+            <td>--</td>
+            <td><a href="#" title="Click to view">View</a></td>
+          </tr>
+          <tr>
+            <td>34</td>
+            <td>Puroshree</td>
+            <td>13</td>
+            <td>--</td>
+            <td><a href="#" title="Click to view">View</a></td>
+          </tr>
+          <tr>
+            <td>35</td>
+            <td>Subhaspally</td>
+            <td>57</td>
+            <td>--</td>
+            <td><a href="#" title="Click to view">View</a></td>
+          </tr>
+          <tr>
+            <td>36</td>
+            <td>Swetpur</td>
+            <td>30</td>
+            <td>--</td>
+            <td><a href="#" title="Click to view">View</a></td>
+          </tr>
+          <tr>
+            <td>37</td>
+            <td>Tantipara Sabuj Sangha</td>
+            <td>37</td>
+            <td>--</td>
+            <td><a href="#" title="Click to view">View</a></td>
+          </tr>
+          <tr>
+            <td>38</td>
+            <td>Telinipara Annapurna Barowari</td>
+            <td>72</td>
+            <td>--</td>
+            <td><a href="#" title="Click to view">View</a></td>
+          </tr>
+          <tr>
+            <td>39</td>
+            <td>Telinipara Baburbazar</td>
+            <td>52</td>
+            <td>--</td>
+            <td><a href="#" title="Click to view">View</a></td>
+          </tr>
+          <tr>
+            <td>40</td>
+            <td>Telinipara Kalitala</td>
+            <td>71</td>
+            <td>--</td>
+            <td><a href="#" title="Click to view">View</a></td>
+          </tr>
+          <tr>
+            <td>41</td>
+            <td>Telinipara Kultala</td>
+            <td>60</td>
+            <td>--</td>
+            <td><a href="#" title="Click to view">View</a></td>
+          </tr>
+          <tr>
+            <td>42</td>
+            <td>Telinipara Neheru Bidyapith</td>
+            <td>58</td>
+            <td>--</td>
+            <td><a href="#" title="Click to view">View</a></td>
+          </tr>
+          <tr>
+            <td>43</td>
+            <td>Telinipara Rajabazar</td>
+            <td>72</td>
+            <td>--</td>
+            <td><a href="#" title="Click to view">View</a></td>
+          </tr>
+          <tr>
+            <td>44</td>
+            <td>Youth Corner, Library Road</td>
+            <td>53</td>
+            <td>--</td>
+            <td><a href="#" title="Click to view">View</a></td>
+          </tr>
+          <tr>
+            <td>45</td>
+            <td>Yuva Chetana JPC Park Maidan Gov Colony</td>
+            <td>37</td>
+            <td>--</td>
+            <td><a href="#" title="Click to view">View</a></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <script>
+        function goBack() {
+          // Change the URL to the desired directory page
+          window.location.href = "test2.html"; // Replace with the actual directory page URL
+        }
+        // Tab Functionality
+        document.querySelectorAll('.tabs button').forEach(button => {
+          button.addEventListener('click', () => {
+            document.querySelectorAll('.tabs button').forEach(btn => btn.classList.remove('active'));
+            button.classList.add('active');
+      
+            const tab = button.getAttribute('data-tab');
+            document.querySelectorAll('.content').forEach(content => content.classList.remove('active'));
+            document.getElementById(tab).classList.add('active');
+          });
+        });
+      </script>
+</body>
+</html>

@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Utsav Unites Clone</title>
+    <link rel="icon" href=""C:\Users\Saurashis\Downloads\Main Logo.jpg"">
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+    <style>
+        /* Reset Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+
+        /* Body */
+        body {
+            background-color: #000000; /* Dark background */
+            color: #ffc310;
+            text-align: center;
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* Container */
+        .container {
+            background: #000000; /* Slightly lighter dark card */
+            border-radius: 10px;
+            box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.5);
+            padding: 30px;
+            width: 90%;
+            max-width: 500px;
+            animation: fadeIn 1s ease-in-out;
+        }
+
+        /* Logo */
+        .logo img {
+            width: 100px;
+            margin-bottom: 15px;
+            transition: transform 0.3s ease;
+        }
+
+        .logo img:hover {
+            transform: scale(1.1);
+        }
+
+        /* Heading and Subtext */
+        h1 {
+            font-size: 2rem;
+            margin-bottom: 10px;
+        }
+
+        p {
+            font-size: 1rem;
+            margin-bottom: 20px;
+            color: #aaaaaa;
+        }
+
+        /* Social Icons */
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .social-links a {
+            font-size: 1.5rem;
+            color: #ffffff;
+            transition: color 0.3s ease, transform 0.3s ease;
+        }
+
+        .social-links a:hover {
+            color: #f97316; /* Accent color */
+            transform: scale(1.2);
+        }
+
+        /* Buttons/Links */
+        .links {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .button {
+            display: inline-block;
+            text-decoration: none;
+            color: #ffffff;
+            background: #0a0359; /* Button color */
+            padding: 12px 20px;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: bold;
+            transition: background 0.3s ease, transform 0.2s ease;
+        }
+
+        .button:hover {
+            background: #f97316;
+            transform: translateY(-5px);
+            box-shadow: 0px 4px 10px rgba(249, 115, 22, 0.5);
+        }
+
+        /* Footer */
+        .footer {
+            margin-top: 20px;
+            font-size: 0.9rem;
+            color: #ffffff;
+        }
+
+        /* Keyframe Animations */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 1.5rem;
+            }
+
+            .button {
+                font-size: 0.9rem;
+                padding: 10px 15px;
+            }
+
+            .social-links a {
+                font-size: 1.3rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Logo Section -->
+        <div class="logo">
+            <img src="/img/logo.jpg" alt="Logo"> <!-- Replace with your logo -->
+        </div>
+
+        <!-- Title and Description -->
+        <h1>Utsav Unites</h1>
+        <p>The Best #1 Jagadhatri Portal of Chandannagar</p>
+        <p>Social Media Presence, --k+ Family ❤</p>
+
+        <!-- Social Media Links -->
+        <div class="social-links">
+            <a href="#" target="_blank"><i class="fab fa-facebook"></i></a>
+            <a href="#" target="_blank"><i class="fab fa-twitter"></i></a>
+            <a href="#" target="_blank"><i class="fab fa-youtube"></i></a>
+            <a href="#" target="_blank"><i class="fab fa-instagram"></i></a>
+            <a href="#" target="_blank"><i class="fab fa-pinterest"></i></a>
+        </div>
+
+        <!-- Buttons/Links -->
+        <div class="links">
+            <a href="test2.html" class="button">🌐 Our Website</a>
+            <a href="galleryoption.html" class="button">📅 Puja 2024</a>
+            <a href="random.html" class="button">📝 Puja Committee List</a>
+            <a href="#" class="button">🖥 360° Virtual Tours</a>
+            <a href="#" class="button">📱 Our App</a>
+            <a href="#" class="button">📘 Facebook Community</a>
+            <a href="https://youtube.com" class="button">🎉 Join eUtsav</a>
+        </div>
+
+        <!-- Footer -->
+        <div class="footer">
+            © 2024 Utsav Unites | Built with ❤
+        </div>
+    </div>
+
+    <script>
+        // Smooth Placeholder Alert
+        // document.querySelectorAll('.button').forEach(button => {
+        //     button.addEventListener('click', (e) => {
+        //         e.preventDefault();
+        //         alert('This is a placeholder link. Replace it with your actual URL.');
+        //     });
+        // });
+    </script>
+</body>
+</html>

@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Next-Level Website</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Bubblegum+Sans&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Bubblegum Sans', cursive;
+        }
+
+        @keyframes slide {
+            0% { opacity: 0; transform: scale(1.1); }
+            100% { opacity: 1; transform: scale(1); }
+        }
+        .slide-in {
+            animation: slide 2s ease-in-out;
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    
+    <!-- Hero Section -->
+<section class="relative w-full h-screen flex items-center justify-center bg-black overflow-hidden">
+    <div class="absolute w-full h-full">
+        <!-- Two images stacked for crossfade effect -->
+        <img id="hero-img-1" 
+             src="https://assets.onecompiler.app/4362nvr75/436bvmy94/WhatsApp%20Image%202025-01-17%20at%2020.43.12_e66aa031.jpg" 
+             alt="Hero Image" 
+             class="absolute w-full h-full object-cover transition-opacity duration-1000 ease-in-out opacity-100">
+        
+        <img id="hero-img-2" 
+             src="https://assets.onecompiler.app/4362nvr75/436am4ert/jaghadhatri%20puja%206.png" 
+             alt="Hero Image" 
+             class="absolute w-full h-full object-cover transition-opacity duration-1000 ease-in-out opacity-0">
+    </div>
+
+    <div class="relative z-10 text-center text-white px-6 drop-shadow-xl bg-black bg-opacity-30 rounded-lg p-6 max-w-lg mx-auto">
+        <h1 class="text-4xl sm:text-5xl font-extrabold">Welcome to Palpara Sarbojoni</h1>
+        <p class="mt-4 text-base sm:text-lg font-semibold">Bringing communities together through cultural celebrations.</p>
+    </div>
+</section>
+
+<script>
+    const heroImages = [
+        "https://assets.onecompiler.app/4362nvr75/436am4ert/jaghadhatri%20puja%206.png",
+        "https://assets.onecompiler.app/4362nvr75/4377z58ue/WhatsApp%20Image%202025-01-26%20at%2021.25.53_4c2b419b.jpg",
+        "https://assets.onecompiler.app/4362nvr75/4377z58ue/lig1.jpg",
+        "https://assets.onecompiler.app/4362nvr75/439fm45cr/pal.jpg",
+        "https://assets.onecompiler.app/4362nvr75/436bvmy94/WhatsApp%20Image%202025-01-17%20at%2020.43.12_e66aa031.jpg"
+    ];
+
+    let index = 0;
+    let activeImage = 1;
+
+    function changeHeroImage() {
+        const img1 = document.getElementById("hero-img-1");
+        const img2 = document.getElementById("hero-img-2");
+
+        const nextImage = heroImages[index];
+
+        if (activeImage === 1) {
+            img2.src = nextImage;
+            img2.classList.add("opacity-100");
+            img2.classList.remove("opacity-0");
+            img1.classList.add("opacity-0");
+            img1.classList.remove("opacity-100");
+            activeImage = 2;
+        } else {
+            img1.src = nextImage;
+            img1.classList.add("opacity-100");
+            img1.classList.remove("opacity-0");
+            img2.classList.add("opacity-0");
+            img2.classList.remove("opacity-100");
+            activeImage = 1;
+        }
+
+        index = (index + 1) % heroImages.length;
+    }
+
+    setInterval(changeHeroImage, 5000);
+</script>
+
+
+    <!-- About Section -->
+<section class="py-16 px-6 bg-gradient-to-r from-indigo-500 to-purple-600 text-white shadow-lg rounded-3xl w-full mx-auto mt-10 flex flex-col items-center gap-10">
+    <!-- Responsive Image -->
+    <img src="https://assets.onecompiler.app/4362nvr75/439fm45cr/pal.jpg" 
+         alt="About Image" 
+         class="w-full sm:w-3/4 md:w-2/3 lg:w-1/3 rounded-3xl shadow-md">
+
+    <!-- Grid Layout for Content -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10 max-w-6xl">
+        
+        <!-- History Section -->
+        <div class="text-center sm:text-left px-4">
+            <h2 class="text-2xl sm:text-3xl font-bold">History of Palpara</h2>
+            <p class="mt-3 text-sm sm:text-base leading-relaxed">
+                In the year 1944, Matri Puja was being performed in a few places in Chandernagore and Bhadreshar, with the efforts of some energetic youth of our locality and with the sincere co-operation of some prominent people of our locality, the worship of Mata Jagadhatri was started in the front yard of Harihar Seth Mahashay’s House.  From then on, a journey that has spanned 82 years,  has passed through the hands of several generations.
+            </p>
+        </div>
+
+        <!-- Present Overview -->
+        <div class="text-center sm:text-left px-4">
+            <h2 class="text-2xl sm:text-3xl font-bold">Present Overview</h2>
+            <p class="mt-3 text-sm sm:text-base leading-relaxed">
+               The core rituals of the Pujanushthan have remained intact over the years. Initially, the puja was conducted with simplicity, adhering to age-old customs and traditions. However, with time, societal changes and modern influences have brought about a transformation in various aspects of the festival. Today, while the rituals continue to be performed as per tradition, the festival has expanded in scope and grandeur, incorporating new elements such as cultural programs and social initiatives.
+
+
+            </p>
+        </div>
+
+        <!-- Community Involvement -->
+        <div class="text-center sm:text-left px-4">
+            <h2 class="text-2xl sm:text-3xl font-bold">Community Involvement</h2>
+            <p class="mt-3 text-sm sm:text-base leading-relaxed">
+                One of the defining aspects of this puja is the unwavering support and enthusiasm of the local residents. The festival thrives on the active participation of the people, who consider it an integral part of their lives. Their dedication extends beyond the few days of worship, as they contribute their time and resources throughout the year to make the celebration a grand success.
+            </p>
+        </div>
+
+        <!-- Role of Youth -->
+        <div class="text-center sm:text-left px-4">
+            <h2 class="text-2xl sm:text-3xl font-bold">Role of Youth</h2>
+            <p class="mt-3 text-sm sm:text-base leading-relaxed">
+               The youth of our locality play a significant role in the organization and execution of the festival. Their responsibilities range from fundraising and event planning to handling cultural performances and ensuring the smooth conduct of rituals. The younger generation, while embracing modernity, remains deeply rooted in tradition, ensuring that the puja progresses without losing its essence. Their involvement has been instrumental in keeping the festival vibrant and well-organized.
+            </p>
+        </div>
+
+        <!-- Women's Contribution -->
+        <div class="text-center sm:text-left px-4">
+            <h2 class="text-2xl sm:text-3xl font-bold">Women's Contribution</h2>
+            <p class="mt-3 text-sm sm:text-base leading-relaxed">
+               Women have always played a pivotal role in this celebration, actively participating in both religious observances and festival management. Their valuable insights and dedicated involvement have been essential in ensuring the smooth execution of the puja. Beyond upholding spiritual traditions, they also take on leadership roles in various organizational aspects, making their contributions indispensable to the success of the festival.
+            </p>
+        </div>
+
+    </div>
+</section>
+
+     <!-- Achievement Section -->
+    <section class="py-20 px-6 bg-gradient-to-r from-gray-800 to-gray-900 text-center text-white">
+        <h2 class="text-4xl font-bold">Our Achievements</h2>
+        <p class="mt-4 text-lg">We take pride in our milestones and contributions to the industry.</p>
+        <div class="mt-10 flex flex-wrap justify-center gap-8">
+            <div class="bg-gray-700 p-8 rounded-lg shadow-xl w-full sm:w-64 transform hover:scale-105 transition">
+                <h3 class="text-3xl font-bold text-yellow-400">10K+</h3>
+                <p class="text-gray-300">Happy Users</p>
+            </div>
+            <div class="bg-gray-700 p-8 rounded-lg shadow-xl w-full sm:w-64 transform hover:scale-105 transition">
+                <h3 class="text-3xl font-bold text-green-400">500+</h3>
+                <p class="text-gray-300">Successful Projects</p>
+            </div>
+            <div class="bg-gray-700 p-8 rounded-lg shadow-xl w-full sm:w-64 transform hover:scale-105 transition">
+                <h3 class="text-3xl font-bold text-blue-400">200+</h3>
+                <p class="text-gray-300">Industry Awards</p>
+            </div>
+            <div class="bg-gray-700 p-8 rounded-lg shadow-xl w-full sm:w-64 transform hover:scale-105 transition">
+                <h3 class="text-3xl font-bold text-red-400">99%</h3>
+                <p class="text-gray-300">Customer Satisfaction</p>
+            </div>
+        </div>
+    </section>
+    <!-- News Section -->
+    <section class="py-20 px-6 bg-gradient-to-r from-blue-500 to-purple-600 text-center text-white">
+        <h2 class="text-4xl font-bold">Latest News</h2>
+        <p class="mt-4 text-lg">Stay updated with our latest insights and announcements.</p>
+        <div class="mt-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div class="bg-white p-6 rounded-lg shadow-lg transform hover:scale-105 transition text-gray-900 relative overflow-hidden">
+                <img src="https://assets.onecompiler.app/4362nvr75/4377z58ue/lig1.jpg" alt="News Image" class="rounded-lg">
+                <div class="absolute top-4 left-4 bg-red-500 text-white text-sm px-3 py-1 rounded-full">Breaking</div>
+                <h3 class="text-xl font-semibold mt-4">Exciting New Features Launched</h3>
+                <p class="text-gray-600 mt-2">We are thrilled to introduce our latest features designed to enhance your experience.</p>
+                <a href="#" class="text-blue-600 font-semibold mt-4 inline-block">Read More</a>
+            </div>
+            <div class="bg-white p-6 rounded-lg shadow-lg transform hover:scale-105 transition text-gray-900 relative overflow-hidden">
+                <img src="https://assets.onecompiler.app/4362nvr75/439fm45cr/pal.jpg" alt="News Image" class="rounded-lg">
+                <div class="absolute top-4 left-4 bg-green-500 text-white text-sm px-3 py-1 rounded-full">Event</div>
+                <h3 class="text-xl font-semibold mt-4">Upcoming Tech Conference</h3>
+                <p class="text-gray-600 mt-2">Join us at the next tech conference where we’ll be showcasing our innovations.</p>
+                <a href="#" class="text-blue-600 font-semibold mt-4 inline-block">Read More</a>
+            </div>
+            <div class="bg-white p-6 rounded-lg shadow-lg transform hover:scale-105 transition text-gray-900 relative overflow-hidden">
+                <img src="https://assets.onecompiler.app/4362nvr75/436tmeedu/jaghadhatri%20puja%204.png" alt="News Image" class="rounded-lg">
+                <div class="absolute top-4 left-4 bg-blue-500 text-white text-sm px-3 py-1 rounded-full">Success</div>
+                <h3 class="text-xl font-semibold mt-4">Celebrating Our Success</h3>
+                <p class="text-gray-600 mt-2">We are proud to announce our latest achievements in the industry.</p>
+                <a href="#" class="text-blue-600 font-semibold mt-4 inline-block">Read More</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Find Us Section -->
+    <section class="py-20 px-6 bg-gray-200 text-center">
+        <h2 class="text-4xl font-bold text-gray-900">Find Us</h2>
+        <p class="mt-4 text-lg text-gray-700">Our community center is open to all.</p>
+        <div class="mt-10 w-full h-96 rounded-lg overflow-hidden shadow-lg">
+            <iframe class="w-full h-full"
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3151.8354345093745!2d144.95373531531852!3d-37.81720997975171!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6ad65d5df1f2d7b1%3A0x5045675218ce6e0!2sMelbourne%2C%20Australia!5e0!3m2!1sen!2sus!4v1634417116722!5m2!1sen!2us"
+                    allowfullscreen=""
+                    loading="lazy"></iframe>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-6 sm:py-8 bg-gray-900 text-white text-center mt-10">
+        <p class="text-sm sm:text-lg">&copy; 2025 Next-Level Website. All rights reserved.</p>
+    </footer>
+
+</body>
+</html>

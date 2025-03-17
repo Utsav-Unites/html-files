@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Learn about the history and significance of Jagadhatri Puja, a festival of strength and devotion.">
+  <title>Jagadhatri Puja</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <style>
+    html {
+      scroll-behavior: smooth;
+    }
+
+    .fade-in {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 1s ease-out, transform 1s ease-out;
+    }
+
+    .fade-in.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Fade in transition for background image */
+    .background-animate {
+      position: relative;
+      background-size: cover;
+      background-position: center;
+      transition: opacity 1s ease-in-out;
+      opacity: 1;
+    }
+
+    /* Skip to content link styles */
+    a.skip-link {
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      padding: 10px 20px;
+      background-color: rgba(255, 255, 0, 0.8);
+      color: black;
+      font-weight: bold;
+      text-transform: uppercase;
+      border-radius: 5px;
+      z-index: 1000;
+      transition: background-color 0.3s ease-in-out;
+    }
+
+    a.skip-link:focus {
+      outline: none;
+      background-color: rgba(255, 255, 0, 1);
+    }
+
+    /* Dropdown menu styles */
+    .dropdown {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      display: inline-block;
+    }
+
+    .dropdown-content {
+      display: none;
+      position: absolute;
+      background-color: #333;
+      min-width: 110px;
+      box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+      z-index: 1;
+    }
+    .dropdown-content a {
+     color: white;
+      padding: 12px 16px;
+      text-decoration: none;
+      display: block;
+      font-weight: bold;  /* Added this line to make text bold */
+    }
+
+    .dropdown-content a:hover {
+       background-color: #575757;
+    }
+    .dropdown:hover .dropdown-content {
+      display: block;
+    }
+
+    .dropdown button {
+      background-color: rgb(248 248 4 / 80%);
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      cursor: pointer;
+      border-radius: 5px;
+      font-size: 16px;
+    }
+
+    .dropdown button:hover {
+      background-color: #2980b9;
+    }
+  </style>
+</head>
+<body class="bg-gray-900 text-white font-sans">
+  <a href="#main-content" class="skip-link">Skip to content</a>
+
+  <header id="header" class="text-center p-20 bg-cover bg-center min-h-screen flex flex-col justify-center items-center shadow-lg background-animate" style="background-image: url('https://assets.onecompiler.app/4362nvr75/436bvmy94/WhatsApp%20Image%202025-01-17%20at%2020.43.12_e66aa031.jpg');">
+    <h1 class="text-6xl font-bold shadow-black drop-shadow-md fade-in">Jagadhatri Puja</h1>
+    <p class="text-xl mt-4 fade-in">A Celebration of Strength and Devotion</p>
+    <a href="#about" class="mt-6 px-6 py-3 bg-yellow-500 text-black font-bold rounded-full uppercase shadow-lg hover:bg-white hover:text-yellow-500 transition-all duration-300">Learn More</a>
+  </header>
+
+  <!-- Language Dropdown -->
+  <div class="dropdown">
+    <button>Language</button>
+    <div class="dropdown-content">
+      <a href="#" id="lang-en">English</a>
+      <a href="#" id="lang-bn">বাংলা</a>
+      <a href="#" id="lang-hi">हिन्दी</a>
+    </div>
+  </div>
+
+  <main id="main-content" class="grid grid-cols-1 md:grid-cols-2 gap-10 p-10">
+    <section id="about" class="text-center py-20 bg-black bg-opacity-80 border-b-4 border-yellow-500 fade-in" role="region" aria-labelledby="about-heading">
+      <h2 id="about-heading" class="text-4xl font-bold text-yellow-500 uppercase">About Jagadhatri Puja</h2>
+      <p id="about-text" class="max-w-3xl mx-auto text-lg mt-4 leading-relaxed text-gray-300 italic">Jagadhatri Puja, an esteemed festival in certain regions, extends across five joyous days, commencing from Sasthi and culminating on Dashami. The main observance traditionally takes place on the seventh day of the festivities. Much akin to the grandeur of Kolkata's revered Durga Puja and Barasat's revered Kali Puja, Chandannagar stands out for its opulent celebrations and cultural exuberance during the Jagadhatri Puja. The city comes alive with vibrant decorations, illuminations, and fervent devotional activities, attracting both locals and visitors alike, creating an atmosphere of religious significance and communal harmony.
+
+      In Chandannagar, Jagadhatri puja is celebrated as the annual festival of its own, surpassing the grandeur of Durga Puja. Acclaimed for its show of lights, during the four days of the Puja the entire town decks up beautifully as food stalls dot its streets and people throng to the pandals. On the last day of Dashami, all the effigies are paraded throughout the town in a night-long procession as the town showcases its skillful craftsmanship of lights and boasts its age-old tradition. The entire town celebrates for five days as monotonous every day routine comes to a halt. As birds turn to their nests when darkness kisses the ground, similarly the town beckons to all who have grown up in its nooks and crannies and migrated to different parts of the country or outside. During these four days as people return to their hometown to celebrate with their loved ones, the entire town state lights up in the warmth and glow of shared joy.</p>
+    </section>
+
+    <section id="history" class="text-center py-20 bg-black bg-opacity-80 border-b-4 border-yellow-500 fade-in" role="region" aria-labelledby="history-heading">
+      <h2 id="history-heading" class="text-4xl font-bold text-yellow-500 uppercase">History</h2>
+      <p id="history-text" class="max-w-3xl mx-auto text-lg mt-4 leading-relaxed text-gray-300 italic">The Jagadhatri Puja dates back to the 18th century...</p>
+    </section>
+  </main>
+
+  <footer role="contentinfo" class="text-center py-10 bg-black bg-opacity-80 border-t-4 border-yellow-500">
+    <p class="text-gray-400">&copy; 2025 Jagadhatri Puja. All rights reserved.</p>
+  </footer>
+
+  <script>
+    // Store the text in different languages
+    const texts = {
+      en: {
+        about: "Jagadhatri Puja, an esteemed festival in certain regions, extends across five joyous days, commencing from Sasthi and culminating on Dashami. The main observance traditionally takes place on the seventh day of the festivities. Much akin to the grandeur of Kolkata's revered Durga Puja and Barasat's revered Kali Puja, Chandannagar stands out for its opulent celebrations and cultural exuberance during the Jagadhatri Puja. The city comes alive with vibrant decorations, illuminations, and fervent devotional activities, attracting both locals and visitors alike, creating an atmosphere of religious significance and communal harmony.In Chandannagar, Jagadhatri puja is celebrated as the annual festival of its own, surpassing the grandeur of Durga Puja. Acclaimed for its show of lights, during the four days of the Puja the entire town decks up beautifully as food stalls dot its streets and people throng to the pandals. On the last day of Dashami, all the effigies are paraded throughout the town in a night-long procession as the town showcases its skillful craftsmanship of lights and boasts its age-old tradition. The entire town celebrates for five days as monotonous every day routine comes to a halt. As birds turn to their nests when darkness kisses the ground, similarly the town beckons to all who have grown up in its nooks and crannies and migrated to different parts of the country or outside. During these four days as people return to their hometown to celebrate with their loved ones, the entire town state lights up in the warmth and glow of shared joy.",
+        history: "The Jagadhatri Puja dates back to the 18th century..."
+      },
+      bn: {
+        about: "যগদাত্রী পূজা, একটি মর্যাদাপূর্ণ উৎসব যা নির্দিষ্ট অঞ্চলে উদযাপিত হয়, এটি পাঁচটি আনন্দদায়ক দিনে প্রসারিত হয়...",
+        history: "যগদাত্রী পূজা ১৮শ শতকের প্রথম দিকে শুরু হয়..."
+      },
+      hi: {
+        about: "जगदात्री पूजा, एक प्रतिष्ठित उत्सव जो कुछ क्षेत्रों में मनाया जाता है, यह पाँच खुशीपूर्ण दिनों तक फैला होता है...",
+        history: "जगदात्री पूजा 18वीं सदी से जुड़ी हुई है..."
+      }
+    };
+
+    // Array of background images
+    const backgroundImages = [
+      "https://assets.onecompiler.app/4362nvr75/436bvmy94/WhatsApp%20Image%202025-01-17%20at%2020.43.12_e66aa031.jpg",
+      "https://assets.onecompiler.app/4362nvr75/4377z58ue/WhatsApp%20Image%202025-01-26%20at%2021.25.53_4c2b419b.jpg", // Replace with an actual URL
+      "https://assets.onecompiler.app/4362nvr75/4377z58ue/lig1.jpg"  // Replace with an actual URL
+    ];
+
+    let currentImageIndex = 0;
+    const header = document.getElementById("header");
+
+    // Function to change the background image
+    function changeBackgroundImage() {
+      header.style.opacity = 0;
+
+      setTimeout(() => {
+        currentImageIndex = (currentImageIndex + 1) % backgroundImages.length;
+        header.style.backgroundImage = `url(${backgroundImages[currentImageIndex]})`;
+        header.style.opacity = 1;
+      }, 1000);  // Time for the fade-out effect
+    }
+
+    // Change background image every 10 seconds
+    setInterval(changeBackgroundImage, 10000);  // 10 seconds interval for background change
+
+    // Function to change the language
+    function changeLanguage(language) {
+      document.getElementById("about-text").textContent = texts[language].about;
+      document.getElementById("history-text").textContent = texts[language].history;
+    }
+
+    // Event listeners for language dropdown
+    document.getElementById("lang-en").addEventListener("click", (e) => {
+      e.preventDefault();
+      changeLanguage("en");
+    });
+    document.getElementById("lang-bn").addEventListener("click", (e) => {
+      e.preventDefault();
+      changeLanguage("bn");
+    });
+    document.getElementById("lang-hi").addEventListener("click", (e) => {
+      e.preventDefault();
+      changeLanguage("hi");
+    });
+
+    document.addEventListener("DOMContentLoaded", () => {
+      document.querySelectorAll(".fade-in").forEach(element => {
+        element.classList.add("visible");
+      });
+    });
+  </script>
+</body>
+</html>

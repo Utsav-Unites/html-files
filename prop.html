@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Utsav Unites - Your ultimate portal for news, events, cultural celebration, and live content.">
+  <title>Utsav Unites</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+  <style>
+    /* General Styles */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: #f8f9fa;
+      color: #333;
+      scroll-behavior: smooth;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    /* Header */
+    header {
+      background: linear-gradient(90deg, #0f4c75, #3282b8);
+      color: white;
+      padding: 15px 0;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    .navbar {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 20px;
+    }
+
+    .logo {
+      font-size: 1.8rem;
+      font-weight: 600;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 20px;
+    }
+
+    .nav-links li {
+      list-style: none;
+    }
+
+    .nav-links li a {
+      color: white;
+      padding: 8px 15px;
+      font-weight: 500;
+      border-radius: 5px;
+      transition: 0.3s;
+    }
+
+    .nav-links li a:hover {
+      background: white;
+      color: #3282b8;
+    }
+
+    /* Hero Section */
+    .hero {
+      background: url('https://via.placeholder.com/1200x600') no-repeat center center/cover;
+      color: white;
+      text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.7);
+      padding: 100px 20px;
+      text-align: center;
+    }
+
+    .hero h1 {
+      font-size: 3.5rem;
+      margin-bottom: 20px;
+    }
+
+    .hero p {
+      font-size: 1.2rem;
+      margin-bottom: 30px;
+    }
+
+    .hero .btn {
+      background: #3282b8;
+      color: white;
+      padding: 10px 25px;
+      border-radius: 5px;
+      font-size: 1.2rem;
+      font-weight: 500;
+      transition: 0.3s;
+    }
+
+    .hero .btn:hover {
+      background: white;
+      color: #3282b8;
+    }
+
+    /* Countdown Styles */
+    .countdown {
+      font-size: 2rem;
+      font-weight: 600;
+      color: #ff5722;
+      margin-top: 30px;
+    }
+
+    /* Section Styles */
+    section {
+      max-width: 1200px;
+      margin: 50px auto;
+      padding: 0 20px;
+      text-align: center;
+    }
+
+    section h2 {
+      font-size: 2.5rem;
+      color: #0f4c75;
+      margin-bottom: 30px;
+    }
+
+    /* Gallery Section */
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 20px;
+    }
+
+    .gallery img {
+      border-radius: 10px;
+      transition: transform 0.3s ease;
+    }
+
+    .gallery img:hover {
+      transform: scale(1.05);
+    }
+
+    /* Videos Section */
+    .video-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      justify-content: center;
+    }
+
+    .video-container iframe {
+      width: 300px;
+      height: 200px;
+      border-radius: 10px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    /* Live Stream */
+    .live-stream {
+      background: #0f4c75;
+      color: white;
+      padding: 30px 20px;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    }
+
+    .live-stream iframe {
+      width: 100%;
+      height: 300px;
+      border-radius: 10px;
+    }
+
+    /* Footer */
+    footer {
+      background: #0f4c75;
+      color: white;
+      text-align: center;
+      padding: 15px 20px;
+      font-size: 0.9rem;
+    }
+
+    footer a {
+      color: #3282b8;
+      text-decoration: none;
+    }
+
+    footer a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <header>
+    <nav class="navbar">
+      <div class="logo">Utsav Unites</div>
+      <ul class="nav-links">
+        <li><a href="#home">Home</a></li>
+        <li><a href="#gallery">Gallery</a></li>
+        <li><a href="#videos">Videos</a></li>
+        <li><a href="#live-stream">Live Stream</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero" id="home">
+    <h1>Welcome to Utsav Unites!</h1>
+    <p>Experience the Spirit of Jagadhatri, Anytime, Anywhere.</p>
+    <a href="#gallery" class="btn">Explore Now</a>
+    
+      <img src="https://via.placeholder.com/1200x600" alt="Jagadhatri Festival Image" class="hero-image">
+    <div class="countdown" id="countdown"></div> <!-- Countdown Timer -->
+  </section>
+
+  <!-- JavaScript for Countdown -->
+  <script>
+    // Set the target date for the countdown (e.g., New Year's Eve)
+    const targetDate = new Date("October 26, 2025 00:00:00").getTime();
+
+    // Update the countdown every second
+    const countdownInterval = setInterval(function() {
+      const now = new Date().getTime();
+      const distance = targetDate - now;
+
+      // Time calculations for days, hours, minutes, and seconds
+      const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+      // Display the countdown
+      document.getElementById("countdown").innerHTML = days + "d " + hours + "h "
+      + minutes + "m " + seconds + "s ";
+
+      // If the countdown is finished, display a message
+      if (distance < 0) {
+        clearInterval(countdownInterval);
+        document.getElementById("countdown").innerHTML = "EXPIRED";
+      }
+    }, 1000);
+  </script>
+
+  <!-- Gallery Section -->
+  <section id="gallery">
+    <h2>Picture Gallery</h2>
+    <div class="gallery">
+      <img src="https://via.placeholder.com/300" alt="Gallery Image 1">
+      <img src="https://via.placeholder.com/300" alt="Gallery Image 2">
+      <img src="https://via.placeholder.com/300" alt="Gallery Image 3">
+      <img src="https://via.placeholder.com/300" alt="Gallery Image 4">
+      <img src="https://via.placeholder.com/300" alt="Gallery Image 5">
+      <img src="https://via.placeholder.com/300" alt="Gallery Image 6">
+    </div>
+  </section>
+  
+
+  <!-- Videos Section -->
+  <section id="videos">
+    <h2>Videos</h2>
+    <div class="video-container">
+      <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" title="Video 1" frameborder="0" allowfullscreen></iframe>
+      <iframe src="https://www.youtube.com/embed/tgbNymZ7vqY" title="Video 2" frameborder="0" allowfullscreen></iframe>
+      <iframe src="https://www.youtube.com/embed/kJQP7kiw5Fk" title="Video 3" frameborder="0" allowfullscreen></iframe>
+    </div>
+  </section>
+  
+
+  <!-- Live Stream Section -->
+  <section id="live-stream">
+    <h2>Live Stream</h2>
+    <div class="live-stream">
+      <iframe src="https://player.twitch.tv/?channel=examplechannel&parent=localhost" 
+              title="Live Stream" frameborder="0" allowfullscreen>
+      </iframe>
+      <p>Watch our live stream for the latest updates and events happening right now!</p>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2025 Utsav Unites. All rights reserved. | <a href="#home">Back to Top</a></p>
+  </footer>
+  
+</body>
+</html>

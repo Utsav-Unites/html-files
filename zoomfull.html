@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Photo Gallery</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f9f9f9;
+        }
+        header {
+            background: url('/img/mankucover.jpg') no-repeat center center/cover;
+            color: white;
+            text-align: center;
+            padding: 169px 0;
+            position: relative;
+        }
+        header h1 {
+            font-size: 48px;
+            margin: 0;
+        }
+        header p {
+            font-size: 18px;
+            margin: 10px 0 0;
+        }
+        nav {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+        }
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-size: 16px;
+            margin: 0 10px;
+        }
+        .gallery-title {
+            text-align: center;
+            margin: 30px 0;
+        }
+        .gallery-title h2 {
+            font-size: 36px;
+            margin: 0;
+        }
+        .gallery-title span {
+            color: #f7c302;
+        }
+        .gallery {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 20px;
+            padding: 20px;
+        }
+        .gallery img {
+            width: 200px;
+            height: 300px;
+            object-fit: cover;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+        .gallery img:hover {
+            transform: scale(1.05);
+        }
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 10px 0;
+            margin-top: 20px;
+        }
+        footer a {
+            color: #f7c302;
+            text-decoration: none;
+        }
+        /* Fullscreen container */
+        #fullscreen-container {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.9);
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            overflow: hidden;
+        }
+        #fullscreen-container img {
+            max-width: 90%;
+            max-height: 90%;
+            border-radius: 8px;
+            cursor: zoom-in;
+            transform-origin: center;
+            transition: transform 0.3s ease;
+        }
+        #fullscreen-container img.zoomed {
+            cursor: move;
+            transform: scale(2); /* Zoom level */
+        }
+        #fullscreen-container .close-btn {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            font-size: 30px;
+            color: white;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="justtest.html">Home</a>
+            <a href="testcover.html">Return to front page</a>
+        </nav>
+        <h1>Photo Gallery</h1>
+        <p>Home > Gallery</p>
+    </header>
+
+    <div class="gallery-title">
+        <h2>View Jagadhatri Puja <span>Photo Gallery</span></h2>
+    </div>
+    <div class="gallery">
+        <!-- Image Gallery -->
+        <img src="/img/palpara.jpg" alt="Gallery Image 1" onclick="openFullscreen(this)">
+        <img src="/img/tematha.jpg" alt="Gallery Image 2" onclick="openFullscreen(this)">
+        <img src="/img/borothana.jpg" alt="Gallery Image 3" onclick="openFullscreen(this)">
+        <img src="/img/originalborobaz.jpg" alt="Gallery Image 4" onclick="openFullscreen(this)">
+        <img src="/img/WhatsApp Image 2024-12-15 at 00.03.29_f0e8c5b7.jpg" alt="Gallery Image 5" onclick="openFullscreen(this)">
+        <img src="/img/charmon.jpg" alt="Gallery Image 6" onclick="openFullscreen(this)">
+        <img src="/img/fotok.jpg" alt="Gallery Image 7" onclick="openFullscreen(this)">
+        <img src="/img/borobaz.jpg" alt="Gallery Image 8" onclick="openFullscreen(this)">
+        <img src="/img/besoface.jpg" alt="Gallery Image 9" onclick="openFullscreen(this)">
+        <img src="/img/kholi.jpg" alt="Gallery Image 10" onclick="openFullscreen(this)">
+        <img src="/img/ponchanon.jpg" alt="Gallery Image 11" onclick="openFullscreen(this)">
+        <img src="/img/amader.jpg" alt="Gallery Image 12" onclick="openFullscreen(this)">
+        <img src="/img/moddha.jpg" alt="Gallery Image 13" onclick="openFullscreen(this)">
+        <img src="/img/circusdeco.jpg" alt="Gallery Image 14" onclick="openFullscreen(this)">
+        <img src="/img/circuscover.jpg" alt="Gallery Image 15" onclick="openFullscreen(this)">
+        <img src="/img/circusthakur.jpg" alt="Gallery Image 16" onclick="openFullscreen(this)">
+        <img src="/img/circuspandal.jpg" alt="Gallery Image 17" onclick="openFullscreen(this)">
+        <img src="/img/doibokhalf.jpg" alt="Gallery Image 18" onclick="openFullscreen(this)">
+        <img src="/img/fatoklightroad.jpg" alt="Gallery Image 19" onclick="openFullscreen(this)">
+        <img src="/img/rothermodel.jpg" alt="Gallery Image 20" onclick="openFullscreen(this)">
+        <img src="" alt="Gallery Image 20" onclick="openFullscreen(this)">
+        <img src="" alt="Gallery Image 20" onclick="openFullscreen(this)">
+        <img src="" alt="Gallery Image 20" onclick="openFullscreen(this)">
+        <img src="" alt="Gallery Image 20" onclick="openFullscreen(this)">
+        <img src="" alt="Gallery Image 20" onclick="openFullscreen(this)">
+        <img src="" alt="Gallery Image 20" onclick="openFullscreen(this)">
+        <img src="" alt="Gallery Image 20" onclick="openFullscreen(this)">
+        <img src="" alt="Gallery Image 20" onclick="openFullscreen(this)">
+        <img src="" alt="Gallery Image 20" onclick="openFullscreen(this)">
+        <img src="" alt="Gallery Image 20" onclick="openFullscreen(this)">
+        <img src="" alt="Gallery Image 20" onclick="openFullscreen(this)">
+        <img src="" alt="Gallery Image 20" onclick="openFullscreen(this)">
+        <img src="" alt="Gallery Image 20" onclick="openFullscreen(this)">
+        <img src="" alt="Gallery Image 20" onclick="openFullscreen(this)">
+        <img src="" alt="Gallery Image 20" onclick="openFullscreen(this)">
+        <img src="" alt="Gallery Image 20" onclick="openFullscreen(this)">
+        <img src="" alt="Gallery Image 20" onclick="openFullscreen(this)">
+        <img src="" alt="Gallery Image 20" onclick="openFullscreen(this)">
+        <img src="" alt="Gallery Image 20" onclick="openFullscreen(this)">
+        <img src="" alt="Gallery Image 20" onclick="openFullscreen(this)">
+        <img src="" alt="Gallery Image 20" onclick="openFullscreen(this)">
+        <img src="" alt="Gallery Image 20" onclick="openFullscreen(this)">
+        <img src="" alt="Gallery Image 20" onclick="openFullscreen(this)">
+        <img src="" alt="Gallery Image 20" onclick="openFullscreen(this)">
+        <img src="" alt="Gallery Image 20" onclick="openFullscreen(this)">
+    </div>
+
+    <!-- Fullscreen Container -->
+    <div id="fullscreen-container">
+        <span class="close-btn" onclick="closeFullscreen()">&times;</span>
+        <img id="fullscreen-img" src="" alt="Fullscreen Image">
+    </div>
+
+    <footer>
+        <p>&copy; 2024 Jagadhatri Puja | Designed by <a href="#">Utsav Unite's Members</a></p>
+    </footer>
+
+    <script>
+        const fullscreenContainer = document.getElementById('fullscreen-container');
+        const fullscreenImg = document.getElementById('fullscreen-img');
+
+        // Open image in fullscreen
+        function openFullscreen(imgElement) {
+            fullscreenImg.src = imgElement.src; // Set the source of the fullscreen image
+            fullscreenContainer.style.display = 'flex'; // Show the fullscreen container
+        }
+
+        // Close fullscreen
+        function closeFullscreen() {
+            fullscreenContainer.style.display = 'none';
+            fullscreenImg.classList.remove('zoomed'); // Reset zoom
+        }
+
+        // Enable zoom on image click
+        fullscreenImg.addEventListener('click', function () {
+            if (fullscreenImg.classList.contains('zoomed')) {
+                fullscreenImg.classList.remove('zoomed'); // Reset zoom
+                fullscreenImg.style.transform = 'scale(1)';
+            } else {
+                fullscreenImg.classList.add('zoomed'); // Zoom in
+                fullscreenImg.style.transform = 'scale(2)'; // Adjust the scale as needed
+            }
+        });
+
+        // Mouse move to navigate zoomed image
+        fullscreenImg.addEventListener('mousemove', function (e) {
+            if (fullscreenImg.classList.contains('zoomed')) {
+                const rect = fullscreenImg.getBoundingClientRect();
+                const x = ((e.clientX - rect.left) / rect.width) * 100;
+                const y = ((e.clientY - rect.top) / rect.height) * 100;
+                fullscreenImg.style.transformOrigin = `${x}% ${y}%`;
+            }
+        });
+
+        // Optional: Close fullscreen on clicking outside the image
+        fullscreenContainer.addEventListener('click', (e) => {
+            if (e.target.id === 'fullscreen-container') {
+                closeFullscreen();
+            }
+        });
+    </script>
+</body>
+</html>

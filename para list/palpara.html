@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hero Section with About</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            background: #f4f4f4;
+            color: #333;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        header {
+            background: #333;
+            color: white;
+            padding: 1.5rem;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        header h1 {
+            font-size: 2rem;
+            font-weight: 700;
+        }
+
+        /* Hero Section Styles */
+        #hero {
+    position: relative;
+    height: 100vh;
+    background-size: contain; /* Ensures the image doesn't zoom */
+    background-position: center;
+    background-attachment: fixed; /* Ensures the background stays fixed when scrolling */
+    transition: background 1s ease-in-out;
+    border: 5px solid #333;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+
+        #hero h2 {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 3rem;
+            color: white;
+            text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.7);
+        }
+
+        #hero p {
+            position: absolute;
+            top: 60%;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 1.25rem;
+            color: white;
+            max-width: 600px;
+            text-align: center;
+        }
+
+        /* About Section Styles */
+        #about {
+            background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://assets.onecompiler.app/4362nvr75/436tmeedu/pic1.jpg');
+            background-size: cover;
+            background-position: center;
+            padding: 60px 20px;
+            text-align: center;
+            color: #fff;
+            position: relative;
+            border: 5px solid #333;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        #about h2 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            color: #fff;
+        }
+
+        #about p {
+            font-size: 1.25rem;
+            max-width: 800px;
+            margin: 0 auto;
+            margin-bottom: 40px;
+            line-height: 1.6;
+            color: #fff;
+        }
+
+        #about img {
+            width: 150px;
+            border-radius: 50%;
+            margin-bottom: 20px;
+            border: 4px solid #fff;
+        }
+
+        /* News Section Styles */
+        #news-events h2 {
+            font-size: 2.5rem;
+            margin-bottom: 30px;
+            color: #333;
+        }
+
+        .news-item {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            text-align: left;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .news-item h3 {
+            font-size: 1.75rem;
+            color: #333;
+            margin-bottom: 10px;
+        }
+
+        .news-item p {
+            font-size: 1.125rem;
+            color: #555;
+        }
+
+        .news-item a {
+            margin-top: 10px;
+            display: inline-block;
+            color: #0066cc;
+            text-decoration: none;
+        }
+
+        footer {
+            background: #333;
+            color: white;
+            text-align: center;
+            padding: 1.5rem;
+            position: relative;
+            margin-top: 2rem;
+        }
+
+        footer p {
+            font-size: 1rem;
+        }
+
+        /* Media Queries for responsiveness */
+        @media (max-width: 1200px) {
+            header h1 {
+                font-size: 1.8rem;
+            }
+
+            #hero h2 {
+                font-size: 2.5rem;
+            }
+
+            #hero p {
+                font-size: 1rem;
+            }
+
+            #about h2 {
+                font-size: 2.2rem;
+            }
+
+            #about p {
+                font-size: 1.1rem;
+            }
+
+            #about img {
+                width: 130px;
+            }
+        }
+
+        @media (max-width: 992px) {
+            header h1 {
+                font-size: 1.5rem;
+            }
+
+            #hero h2 {
+                font-size: 2rem;
+            }
+
+            #hero p {
+                font-size: 0.9rem;
+            }
+
+            #about h2 {
+                font-size: 2rem;
+            }
+
+            #about p {
+                font-size: 1rem;
+            }
+
+            #about img {
+                width: 120px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 1.2rem;
+            }
+
+            #hero h2 {
+                font-size: 1.8rem;
+            }
+
+            #hero p {
+                font-size: 0.85rem;
+            }
+
+            #about h2 {
+                font-size: 1.8rem;
+            }
+
+            #about p {
+                font-size: 1rem;
+                max-width: 90%;
+            }
+
+            #about img {
+                width: 110px;
+            }
+        }
+
+        @media (max-width: 576px) {
+            header h1 {
+                font-size: 1rem;
+            }
+
+            #hero h2 {
+                font-size: 1.5rem;
+            }
+
+            #hero p {
+                font-size: 0.8rem;
+            }
+
+            #about h2 {
+                font-size: 1.5rem;
+            }
+
+            #about p {
+                font-size: 0.9rem;
+            }
+
+            #about img {
+                width: 100px;
+            }
+
+            .news-item h3 {
+                font-size: 1.5rem;
+            }
+
+            .news-item p {
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <h1>জগদ্ধাত্রী আমাদের ঐতিহ্য ও অহংকার</h1>
+    </header>
+
+    <!-- Hero Section -->
+    <div id="hero">
+        <h2>Discover the Future</h2>
+        <p>Innovative ideas and stunning designs that shape tomorrow.</p>
+    </div>
+
+    <!-- About Section -->
+    <section id="about">
+        <h2>About Palpara Sarbojonin</h2>
+        <img src="https://assets.onecompiler.app/4362nvr75/4377z58ue/lig1.jpg" alt="Profile Picture">
+        <p>Palpara Sarbajanin, the commitment to tradition and community shines through in every aspect of the Jagadhatri Puja celebration. Each year, the focus is on creating a divine ambiance that honors the grace and strength of Goddess Jagadhatri while fostering a sense of unity and joy among our residents and visitors.
+
+        The pandal, a masterpiece of creativity and devotion, stands as a testament to the unwavering faith and dedication of Palpara Sarbajanin. Adorned with intricate decorations and illuminated by the soft glow of lights, it serves as a sacred space where devotees gather to offer their prayers and seek the blessings of the Divine Mother.
+
+        Moreover, Palpara Sarbajanin takes great pride in social initiatives aimed at making a positive impact on the lives of community members. Whether it's through charitable endeavors or eco-friendly initiatives, there is a commitment to serving the greater good and spreading joy and compassion to all.
+
+        As you navigate through this webpage, immerse yourself in the spirit of Jagadhatri Puja and experience the warmth and hospitality that define our celebration. Explore photo galleries, learn about our history and traditions, and stay updated on the latest news and events happening with Palpara.</p>
+    </section>
+
+    <!-- News and Events Section -->
+    <section id="news-events" style="padding: 60px 20px; background: #f9f9f9; text-align: center;">
+        <h2>News and Events</h2>
+        <div class="news-item">
+            <h3>Upcoming Jagadhatri Puja 2025</h3>
+            <p>Join us in celebrating the divine power of Goddess Jagadhatri. The event will feature cultural programs, rituals, and a grand procession. Don't miss this auspicious occasion!</p>
+            <a href="#" style="text-decoration: none; color: #333; font-weight: bold;">Read more</a>
+        </div>
+        <div class="news-item" style="margin-top: 30px;">
+            <h3>Community Charity Drive</h3>
+            <p>We are organizing a charity drive to support local families in need. All donations will be used for food and clothing distribution. Your contribution can make a difference!</p>
+            <a href="#" style="text-decoration: none; color: #333; font-weight: bold;">Read more</a>
+        </div>
+        <div class="news-item" style="margin-top: 30px;">
+            <h3>Eco-Friendly Initiatives at Palpara</h3>
+            <p>Palpara Sarbajanin is committed to reducing its carbon footprint by implementing sustainable practices during the puja celebration, including the use of eco-friendly materials and energy-efficient lighting.</p>
+            <a href="#" style="text-decoration: none; color: #333; font-weight: bold;">Read more</a>
+        </div>
+    </section>
+
+    <!-- Google Map Section -->
+    <section id="google-map" style="padding: 60px 20px; background: #f9f9f9;">
+        <h2 style="text-align: center; margin-bottom: 30px;">Find Us in Chandannagar</h2>
+        <div id="map" style="height: 400px; width: 100%;"></div>
+    </section>
+
+    <footer>
+        <p>&copy; 2025 Dynamic Hero Section. All rights reserved.</p>
+    </footer>
+
+    <script>
+        const hero = document.getElementById('hero');
+        const heroText = document.querySelector('#hero h2');
+        const heroDescription = document.querySelector('#hero p');
+
+        const sections = [
+            {
+                bg: 'https://assets.onecompiler.app/4362nvr75/439fm45cr/jaghadhatri%20puja%201.png',
+                title: 'PALPARA',
+                description: 'Innovative ideas and stunning designs that shape tomorrow.',
+            },
+            {
+                bg: 'https://assets.onecompiler.app/4362nvr75/436tmeedu/jaghadhatri%20puja%204.png',
+                title: 'Explore New Horizon',
+                description: 'Unveil the potential of creativity and new technologies.',
+            },
+            {
+                bg: 'https://assets.onecompiler.app/4362nvr75/4377z58ue/lig1.jpg',
+                title: 'Shape Your Vision',
+                description: 'Bring your dreams to life with cutting-edge solutions.',
+            }
+        ];
+
+        let currentSection = 0;
+
+        // Function to change the hero section
+        function changeHeroSection() {
+            currentSection = (currentSection + 1) % sections.length;
+
+            const section = sections[currentSection];
+
+            // Update the background image, title, and description
+            hero.style.backgroundImage = `url(${section.bg})`;
+            heroText.textContent = section.title;
+            heroDescription.textContent = section.description;
+        }
+
+        // Change the hero section every 5 seconds
+        setInterval(changeHeroSection, 5000);
+
+        // Initial call to set the first hero section
+        changeHeroSection();
+    </script>
+
+    <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_GOOGLE_MAPS_API_KEY&callback=initMap" async defer></script>
+
+    <script>
+        function initMap() {
+            // Chandannagar's Coordinates
+            const chandannagar = { lat: 22.8730, lng: 88.3658 };
+
+            // Map Options
+            const mapOptions = {
+                zoom: 14,
+                center: chandannagar,
+                mapTypeId: 'roadmap'
+            };
+
+            // Create the map
+            const map = new google.maps.Map(document.getElementById("map"), mapOptions);
+
+            // Add a Marker
+            const marker = new google.maps.Marker({
+                position: chandannagar,
+                map: map,
+                title: "Chandannagar"
+            });
+        }
+    </script>
+
+</body>
+
+</html>

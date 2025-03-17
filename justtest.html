@@ -1,0 +1,566 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Utsav Unites - Digital Magazine</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Bubblegum Sans:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Bubblegum Sans', sans-serif;
+        }
+        .hero {
+            position: relative;
+            overflow: hidden;
+            height: 500px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+        .hero img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            position: absolute;
+            top: 0;
+            left: 0;
+            opacity: 0;
+            transition: opacity 1.5s ease-in-out;
+        }
+        .hero img.active {
+            opacity: 1;
+        }
+        .hero-content {
+            position: absolute;
+            z-index: 10;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            border-radius: 10px;
+        }
+        .hero-title {
+            font-size: 3rem;
+            font-weight: bold;
+        }
+        .explore-btn {
+            margin-top: 10px;
+            padding: 10px 20px;
+            background: #4F46E5;
+            color: white;
+            font-size: 1rem;
+            border-radius: 8px;
+            transition: background 0.3s ease-in-out;
+        }
+        .explore-btn:hover {
+            background: #4338CA;
+        }
+        .menu-toggle {
+            border: 3px solid;
+            border-image-source: linear-gradient(45deg, red, blue, green, yellow, red);
+            border-image-slice: 1;
+            padding: 5px;
+            transition: border 0.5s ease-in-out;
+            position: absolute;
+            right: 20px;
+            top: 20px;
+        }
+        .menu-toggle:hover {
+            border-image-source: linear-gradient(45deg, yellow, green, blue, red, yellow);
+        }
+        .social-card {
+            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+        }
+        .social-card:hover {
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+        .social-logo {
+            width: 50px;
+            height: 50px;
+            margin: auto;
+        }
+                .puja-gallery img {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: transform 0.3s ease-in-out;
+        }
+        .puja-gallery img {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+            border: 5px solid #4F46E5;
+            box-shadow: 0 5px 15px rgba(79, 70, 229, 0.5);
+            padding: 5px;
+        }
+        .puja-gallery img:hover {
+            transform: scale(1.2);
+            box-shadow: 0 10px 20px rgba(79, 70, 229, 0.7);
+        }
+        .fullscreen {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            justify-content: center;
+            align-items: center;
+        }
+        .fullscreen img {
+            max-width: 90%;
+            max-height: 90%;
+            border-radius: 10px;
+            border: 5px solid white;
+        }
+        .puja-details {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 20px;
+            padding: 20px;
+        }
+        .puja-card {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            text-align: center;
+            max-width: 300px;
+        }
+        .puja-card img {
+            width: 40px;
+            height: 40px;
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+
+<header class="bg-white shadow-md sticky top-0 z-50">
+    <div class="container mx-auto px-6 py-4 flex justify-between items-center relative">
+        <h1 class="text-2xl md:text-3xl font-bold text-indigo-600">Utsav Unites</h1>
+        <button id="menu-toggle" class="md:hidden text-indigo-600 focus:outline-none menu-toggle">
+            &#9776;
+        </button>
+        <nav>
+            <ul id="menu" class="hidden md:flex space-x-4 md:space-x-6 text-sm md:text-base">
+                <li><a href="#" class="hover:text-indigo-600">Home</a></li>
+                <li><a href="zoomfull.html" class="hover:text-indigo-600">Gallery</a></li>
+                <li><a href="#" class="hover:text-indigo-600">Video</a></li>
+                <li><a href="finalpujalist.html" class="hover:text-indigo-600">Pujalist</a></li>
+            </ul>
+        </nav>
+    </div>
+    <ul id="mobile-menu" class="hidden md:hidden bg-white shadow-md p-4 space-y-2">
+        <li><a href="#" class="block hover:text-indigo-600">Home</a></li>
+        <li><a href="zoomfull.html" class="block hover:text-indigo-600">Gallery</a></li>
+        <li><a href="#" class="block hover:text-indigo-600">Video</a></li>
+        <li><a href="finalpujalist.html" class="block hover:text-indigo-600">Puja List</a></li>
+    </ul>
+</header>
+
+<section class="hero">
+    <div class="hero-content">
+        <h2 class="hero-title">Celebrating Culture & Unity</h2>
+        <p class="text-base md:text-lg mb-4">Discover stories, traditions, and voices from around the world.</p>
+        <button class="explore-btn">Explore</button>
+    </div>
+    <img src="https://assets.onecompiler.app/4362nvr75/436am4ert/jaghadhatri%20puja%206.png" class="active" alt="Festival Image">
+    <img src="https://assets.onecompiler.app/4362nvr75/436bvmy94/WhatsApp%20Image%202025-01-17%20at%2020.43.12_e66aa031.jpg" alt="Culture Image">
+    <img src="https://assets.onecompiler.app/4362nvr75/4377z58ue/WhatsApp%20Image%202025-01-26%20at%2021.25.53_4c2b419b.jpg" alt="Tradition Image">
+</section>
+
+<script>
+    let currentIndex = 0;
+    const images = document.querySelectorAll('.hero img');
+    
+    function changeImage() {
+        images[currentIndex].classList.remove('active');
+        currentIndex = (currentIndex + 1) % images.length;
+        images[currentIndex].classList.add('active');
+    }
+    
+    setInterval(changeImage, 4000);
+
+    document.getElementById('menu-toggle').addEventListener('click', function() {
+        document.getElementById('mobile-menu').classList.toggle('hidden');
+    });
+</script>
+<section class="relative mt-10 py-20 text-gray-900 overflow-hidden">
+    <div class="container mx-auto px-6 lg:px-20 text-center relative z-10">
+        <!-- Title -->
+        <h2 class="text-5xl font-extrabold tracking-wide uppercase">
+            <span class="bg-clip-text text-transparent bg-yellow-400">Utsav Unites</span>
+        </h2>
+        <p class="text-lg mt-4 italic tracking-widest opacity-80">"Where Culture Meets Celebration!"</p>
+
+        <!-- Content Box -->
+        <div class="mt-8 bg-white bg-opacity-80 backdrop-blur-md rounded-3xl p-8 max-w-3xl mx-auto shadow-xl">
+            <p class="text-xl font-light leading-relaxed">
+                Utsav Unites is more than an event—it’s a <span class="font-semibold text-yellow-500">movement</span>.  
+                A place where traditions thrive, communities come together, and celebrations create lifelong memories.
+            </p>
+
+            <div class="mt-6 grid grid-cols-1 md:grid-cols-2 gap-6 text-left">
+                <div class="p-4 bg-white bg-opacity-50 rounded-xl shadow-md hover:scale-105 transition">
+                    <h3 class="text-2xl font-bold text-yellow-500">🌏 Unity in Diversity</h3>
+                    <p class="text-md opacity-90">We bring people from all backgrounds together through festivals.</p>
+                </div>
+                <div class="p-4 bg-white bg-opacity-50 rounded-xl shadow-md hover:scale-105 transition">
+                    <h3 class="text-2xl font-bold text-red-500">🎭 Cultural Fusion</h3>
+                    <p class="text-md opacity-90">Celebrating traditions with a modern twist to keep them alive.</p>
+                </div>
+                <div class="p-4 bg-white bg-opacity-50 rounded-xl shadow-md hover:scale-105 transition">
+                    <h3 class="text-2xl font-bold text-blue-500">🎶 Unforgettable Experiences</h3>
+                    <p class="text-md opacity-90">Music, dance, and joy—every moment is a story waiting to be told.</p>
+                </div>
+                <div class="p-4 bg-white bg-opacity-50 rounded-xl shadow-md hover:scale-105 transition">
+                    <h3 class="text-2xl font-bold text-green-500">🤝 Community First</h3>
+                    <p class="text-md opacity-90">Supporting local artists, performers, and cultural icons.</p>
+                </div>
+            </div>
+        </div>
+
+        
+    </div>
+</section>
+<section class="articles py-20 bg-gradient-to-b from-gray-100 to-gray-200">
+    <div class="container mx-auto px-6">
+        <h3 class="text-5xl font-extrabold text-center text-gray-900 mb-16">Latest Stories</h3>
+        
+        <div class="grid md:grid-cols-3 gap-12">
+            <!-- Card 1 -->
+            <div class="bg-white/60 backdrop-blur-lg rounded-xl shadow-xl overflow-hidden transition transform hover:scale-105 hover:shadow-2xl">
+                <img src="https://assets.onecompiler.app/4362nvr75/436am4ert/jaghadhatri%20puja%206.png" 
+                     alt="Story" class="w-full h-64 object-cover">
+                <div class="p-6">
+                    <h4 class="text-3xl font-bold text-indigo-700 mb-3">Festival of Colors</h4>
+                    <p class="text-gray-700 text-lg">Dive into the vibrant celebrations of Holi across the globe.</p>
+                    <a href="celeb.html" class="mt-4 inline-block">
+                        <button class="bg-indigo-600 text-white font-semibold px-6 py-2 rounded-lg shadow-md hover:bg-indigo-800 transition">Read More</button>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Card 2 -->
+            <div class="bg-white/60 backdrop-blur-lg rounded-xl shadow-xl overflow-hidden transition transform hover:scale-105 hover:shadow-2xl">
+                <img src="https://assets.onecompiler.app/4362nvr75/436bvvcvg/WhatsApp%20Image%202025-01-17%20at%2020.43.11_9e2b837f.jpg" 
+                     alt="Story" class="w-full h-64 object-cover">
+                <div class="p-6">
+                    <h4 class="text-3xl font-bold text-red-600 mb-3">Culinary Journeys</h4>
+                    <p class="text-gray-700 text-lg">Explore unique recipes passed down through generations.</p>
+                    <a href="celeb.html" class="mt-4 inline-block">
+                        <button class="bg-red-600 text-white font-semibold px-6 py-2 rounded-lg shadow-md hover:bg-red-800 transition">Read More</button>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Card 3 -->
+            <div class="bg-white/60 backdrop-blur-lg rounded-xl shadow-xl overflow-hidden transition transform hover:scale-105 hover:shadow-2xl">
+                <img src="https://assets.onecompiler.app/4362nvr75/439fm45cr/pal.jpg" 
+                     alt="Story" class="w-full h-64 object-cover">
+                <div class="p-6">
+                    <h4 class="text-3xl font-bold text-green-600 mb-3">Rhythms of Unity</h4>
+                    <p class="text-gray-700 text-lg">How music brings communities together across borders.</p>
+                    <a href="celeb.html" class="mt-4 inline-block">
+                        <button class="bg-green-600 text-white font-semibold px-6 py-2 rounded-lg shadow-md hover:bg-green-800 transition">Read More</button>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+</section>
+  
+</section>
+   <section class="puja-gallery bg-gray-100 py-16">
+    <div class="max-w-6xl mx-auto text-center">
+        <h3 class="text-4xl font-extrabold text-gray-800 mb-12">Famous Pujas</h3>
+        
+        <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-8 place-items-center">
+            <img src="https://assets.onecompiler.app/4362nvr75/439fm45cr/pal.jpg" alt="Puja 1" 
+                 class="w-40 h-40 object-cover rounded-full shadow-lg transition-transform transform hover:scale-110 cursor-pointer"
+                 onclick="openFullscreen(this)">
+                 
+            <img src="https://assets.onecompiler.app/4362nvr75/436bvmy94/WhatsApp%20Image%202025-01-17%20at%2020.43.12_e66aa031.jpg" alt="Puja 2" 
+                 class="w-40 h-40 object-cover rounded-full shadow-lg transition-transform transform hover:scale-110 cursor-pointer"
+                 onclick="openFullscreen(this)">
+                 
+            <img src="https://assets.onecompiler.app/4362nvr75/436bvvcvg/WhatsApp%20Image%202025-01-17%20at%2020.43.11_9e2b837f.jpg" alt="Puja 3" 
+                 class="w-40 h-40 object-cover rounded-full shadow-lg transition-transform transform hover:scale-110 cursor-pointer"
+                 onclick="openFullscreen(this)">
+                 
+            <img src="https://assets.onecompiler.app/4362nvr75/4377z58ue/WhatsApp%20Image%202025-01-26%20at%2021.25.53_4c2b419b.jpg" alt="Puja 4" 
+                 class="w-40 h-40 object-cover rounded-full shadow-lg transition-transform transform hover:scale-110 cursor-pointer"
+                 onclick="openFullscreen(this)">
+                 
+            <img src="https://assets.onecompiler.app/4362nvr75/436am4ert/jaghadhatri%20puja%206.png" alt="Puja 5" 
+                 class="w-40 h-40 object-cover rounded-full shadow-lg transition-transform transform hover:scale-110 cursor-pointer"
+                 onclick="openFullscreen(this)">
+        </div>
+    </div>
+</section>
+
+<!-- Fullscreen Image Modal -->
+<div class="fixed inset-0 bg-black bg-opacity-80 flex justify-center items-center hidden" id="fullscreen" onclick="closeFullscreen()">
+    <img id="fullscreen-img" class="max-w-full max-h-full rounded-lg shadow-2xl">
+</div>
+
+<script>
+    function openFullscreen(img) {
+        document.getElementById("fullscreen-img").src = img.src;
+        document.getElementById("fullscreen").classList.remove("hidden");
+    }
+    
+    function closeFullscreen() {
+        document.getElementById("fullscreen").classList.add("hidden");
+    }
+</script>
+
+</section>
+<section class="countdown-section py-16 text-center">
+    <h2 class="text-3xl md:text-4xl font-bold">
+        Jagadhatri Puja <span class="text-blue-500">Countdown 2025</span>
+    </h2>
+    <div class="grid grid-cols-4 gap-2 sm:gap-4 mt-6 justify-center max-w-2xl mx-auto">
+        <div class="border-2 border-gray-300 p-3 sm:p-6 rounded-lg">
+            <span class="text-2xl sm:text-4xl font-bold text-yellow-500" id="days">0</span>
+            <p class="text-xs sm:text-lg">Days</p>
+        </div>
+        <div class="border-2 border-gray-300 p-3 sm:p-6 rounded-lg">
+            <span class="text-2xl sm:text-4xl font-bold text-yellow-500" id="hours">0</span>
+            <p class="text-xs sm:text-lg">Hours</p>
+        </div>
+        <div class="border-2 border-gray-300 p-3 sm:p-6 rounded-lg">
+            <span class="text-2xl sm:text-4xl font-bold text-yellow-500" id="minutes">0</span>
+            <p class="text-xs sm:text-lg">Minutes</p>
+        </div>
+        <div class="border-2 border-gray-300 p-3 sm:p-6 rounded-lg">
+            <span class="text-2xl sm:text-4xl font-bold text-yellow-500" id="seconds">0</span>
+            <p class="text-xs sm:text-lg">Seconds</p>
+        </div>
+    </div>
+</section>
+</section>
+    <section class="puja-details">
+    <div class="puja-card">
+        <img src="icon1.png" alt="Icon">
+        <p><strong>On the sixth day of Jagadhatri Puja (Sasthi), rituals are performed to awaken and welcome Devi Jagadhatri.</strong></p>
+        <p>Sasthi: 28th October 2025</p>
+    </div>
+    <div class="puja-card">
+        <img src="icon2.png" alt="Icon">
+        <p><strong>The 4-day Puja starts from the seventh day of Jagadhatri Puja by Ghot Snan with the holy water of Ganga.</strong></p>
+        <p>Saptami: 29th October 2025</p>
+    </div>
+    <div class="puja-card">
+        <img src="icon3.png" alt="Icon">
+        <p><strong>Special puja offering is done on the eighth day of Jagadhatri Puja, followed by the preparation of the procession.</strong></p>
+        <p>Astami: 30th October 2025</p>
+    </div>
+    <div class="puja-card">
+        <img src="icon4.png" alt="Icon">
+        <p><strong>The ninth day of Jagadhatri Puja followed by Puspanjali, marked with hom, kumari puja, and khichudi bhog.</strong></p>
+        <p>Nabami: 31st October 2025</p>
+    </div>
+    <div class="puja-card">
+        <img src="icon5.png" alt="Icon">
+        <p><strong>The last day of Puja is called Dashami, marked by Sindur Khela and a special lighted procession through Chandannagar.</strong></p>
+        <p>Dasami: 1st November 2025</p>
+    </div>
+</section>
+<!-- Advertisement Container -->
+<div id="ad-container" class="fixed bottom-4 right-4 bg-white shadow-lg rounded-lg p-2 w-64 sm:w-80 flex flex-col items-center border border-gray-300 z-50">
+    <button class="absolute top-1 right-2 text-gray-600 hover:text-red-500" onclick="closeAd()">✖</button>
+    
+    <a id="ad-link" href="" target="_blank">
+        <img id="ad-image" src="" alt="Advertisement" class="w-full h-auto rounded-md">
+    </a>
+    
+    <p class="text-xs text-gray-500 mt-2">Sponsored</p>
+</div>
+
+<script>
+    const ads = [
+        { image: "https://assets.onecompiler.app/4362nvr75/43b9e66zd/burger.png", link: "https://ad1.com" },
+        { image: "https://assets.onecompiler.app/4362nvr75/43b9mzgrt/cloth.png", link: "https://ad2.com" },
+        { image: "https://assets.onecompiler.app/4362nvr75/43b9mzgrt/trav.png", link: "https://ad3.com" }
+    ];
+
+    let currentAdIndex = 0;
+    function showNextAd() {
+        document.getElementById("ad-image").src = ads[currentAdIndex].image;
+        document.getElementById("ad-link").href = ads[currentAdIndex].link;
+        currentAdIndex = (currentAdIndex + 1) % ads.length;
+    }
+
+    function closeAd() {
+        document.getElementById("ad-container").style.display = "none";
+    }
+
+    // Start ad rotation
+    setTimeout(() => {
+        document.getElementById("ad-container").style.display = "block";
+        showNextAd();
+        setInterval(showNextAd, 5000); // Change ad every 5 seconds
+    }, 3000);
+</script>
+
+<style>
+    #ad-container {
+        display: none;
+        z-index: 9999;
+    }
+</style>
+</section>
+<div class="container mx-auto p-6">
+    <h2 class="text-4xl font-bold text-center mb-8 text-gray-900">🌟 Meet Our Team 🌟</h2>
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
+        
+        <!-- Team Member Card -->
+        <div class="bg-white rounded-xl overflow-hidden shadow-xl transition transform hover:scale-105 hover:shadow-2xl">
+            <div class="relative w-full h-40 bg-gradient-to-r from-pink-500 to-purple-500 flex justify-center items-center">
+                <img class="w-24 h-24 rounded-full border-4 border-white shadow-md object-cover" src="https://assets.onecompiler.app/4362nvr75/43b9mzgrt/ron.png" alt="Saurashis Baral">
+            </div>
+            <div class="p-6 text-center">
+                <h3 class="text-xl font-bold text-gray-900">Saurashis Baral</h3>
+                <p class="text-sm text-gray-600">CoFounder & Devoloper</p>
+                <p class="text-xs text-gray-500 mt-2">A visionary leader with a passion for innovation and expert for using AI tools.</p>
+                <div class="flex justify-center mt-4 space-x-3">
+                    <a href="https://www.facebook.com/share/1Fik4eoZfq/" class="text-gray-700 hover:text-blue-500"><i class="fab fa-facebook fa-lg"></i></a>
+                    <a href="#" class="text-gray-700 hover:text-blue-400"><i class="fab fa-linkedin fa-lg"></i></a>
+                    <a href="#" class="text-gray-700 hover:text-gray-900"><i class="fab fa-instagram fa-lg"></i></a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Repeat for More Members -->
+        <div class="bg-white rounded-xl overflow-hidden shadow-xl transition transform hover:scale-105 hover:shadow-2xl">
+            <div class="relative w-full h-40 bg-gradient-to-r from-blue-500 to-teal-500 flex justify-center items-center">
+                <img class="w-24 h-24 rounded-full border-4 border-white shadow-md object-cover" src="https://assets.onecompiler.app/4362nvr75/43b9mzgrt/dev%202.png" alt="Hritam Das">
+            </div>
+            <div class="p-6 text-center">
+                <h3 class="text-xl font-bold text-gray-900">Hritam Das</h3>
+                <p class="text-sm text-gray-600">CoFounder & devoloper</p>
+                <p class="text-xs text-gray-500 mt-2">Expert in problem solving and digital marketing strategies.</p>
+                <div class="flex justify-center mt-4 space-x-3">
+                    <a href="https://www.facebook.com/Hritam Das" class="text-gray-700 hover:text-blue-500"><i class="fab fa-facebook fa-lg"></i></a>
+                    <a href="#" class="text-gray-700 hover:text-blue-400"><i class="fab fa-linkedin fa-lg"></i></a>
+                    <a href="#" class="text-gray-700 hover:text-gray-900"><i class="fab fa-instagram fa-lg"></i></a>
+                </div>
+            </div>
+        </div>
+
+        <div class="bg-white rounded-xl overflow-hidden shadow-xl transition transform hover:scale-105 hover:shadow-2xl">
+            <div class="relative w-full h-40 bg-gradient-to-r from-yellow-500 to-orange-500 flex justify-center items-center">
+                <img class="w-24 h-24 rounded-full border-4 border-white shadow-md object-cover" src="https://assets.onecompiler.app/4362nvr75/43b9mzgrt/dev%201.jpg" alt="Soham Saha">
+            </div>
+            <div class="p-6 text-center">
+                <h3 class="text-xl font-bold text-gray-900">Soham Saha</h3>
+                <p class="text-sm text-gray-600">Devoloper</p>
+                <p class="text-xs text-gray-500 mt-2">Passionate about coding and innovative solutions.</p>
+                <div class="flex justify-center mt-4 space-x-3">
+                    <a href="https://www.facebook.com/Soham Saha" class="text-gray-700 hover:text-blue-500"><i class="fab fa-facebook fa-lg"></i></a>
+                    <a href="#" class="text-gray-700 hover:text-blue-400"><i class="fab fa-linkedin fa-lg"></i></a>
+                    <a href="#" class="text-gray-700 hover:text-gray-900"><i class="fab fa-instagram fa-lg"></i></a>
+                </div>
+            </div>
+        </div>
+
+        <div class="bg-white rounded-xl overflow-hidden shadow-xl transition transform hover:scale-105 hover:shadow-2xl">
+            <div class="relative w-full h-40 bg-gradient-to-r from-green-500 to-lime-500 flex justify-center items-center">
+                <img class="w-24 h-24 rounded-full border-4 border-white shadow-md object-cover" src="" alt="Michael Lee">
+            </div>
+            <div class="p-6 text-center">
+                <h3 class="text-xl font-bold text-gray-900">Michael Lee</h3>
+                <p class="text-sm text-gray-600">Lead Developer</p>
+                <p class="text-xs text-gray-500 mt-2">Passionate about coding and innovative solutions.</p>
+                <div class="flex justify-center mt-4 space-x-3">
+                    <a href="#" class="text-gray-700 hover:text-blue-500"><i class="fab fa-linkedin fa-lg"></i></a>
+                    <a href="#" class="text-gray-700 hover:text-blue-400"><i class="fab fa-twitter fa-lg"></i></a>
+                    <a href="#" class="text-gray-700 hover:text-gray-900"><i class="fab fa-github fa-lg"></i></a>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+</section>
+
+</section>
+<section class="social-media text-center py-8 bg-gray-100">
+    <h3 class="text-2xl font-bold">Follow Us</h3>
+    <div class="container mx-auto p-6 bg-white shadow-lg rounded-lg mt-4">
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
+            <div class="p-4 border rounded-lg social-card">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/cd/Facebook_logo_%28square%29.png/900px-Facebook_logo_%28square%29.png?20140103173026" alt="Facebook" class="social-logo">
+                <p class="text-lg font-bold">Facebook</p>
+                <span class="text-xl font-semibold">1.2M</span>
+            </div>
+            <div class="p-4 border rounded-lg social-card">
+                <img src="https://banner2.cleanpng.com/20180619/sul/aa6xrbjzf.webp" alt="YouTube" class="social-logo">
+                <p class="text-lg font-bold">YouTube</p>
+                <span class="text-xl font-semibold">2.5M</span>
+            </div>
+            <div class="p-4 border rounded-lg social-card">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a5/Instagram_icon.png/900px-Instagram_icon.png" alt="Instagram" class="social-logo">
+                <p class="text-lg font-bold">Instagram</p>
+                <span class="text-xl font-semibold">800K</span>
+            </div>
+            <div class="p-4 border rounded-lg social-card">
+                <img src="https://img.freepik.com/free-vector/new-2023-twitter-logo-x-icon-design_1017-45418.jpg?t=st=1741520011~exp=1741523611~hmac=d1e9a7b3c1a252bafc38285c2b10cbf02ac681fcbfd1e3b360fb12b82246be08&w=900" alt="X" class="social-logo">
+                <p class="text-lg font-bold">X</p>
+                <span class="text-xl font-semibold">500K</span>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script>
+    function updateCountdown() {
+        const eventDate = new Date("October 28, 2025 00:00:00").getTime();
+        const now = new Date().getTime();
+        const timeLeft = eventDate - now;
+        
+        const days = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
+        
+        document.getElementById("days").innerText = days;
+        document.getElementById("hours").innerText = hours;
+        document.getElementById("minutes").innerText = minutes;
+        document.getElementById("seconds").innerText = seconds;
+    }
+    setInterval(updateCountdown, 1000);
+    updateCountdown();
+</script>
+<section class="video-section py-16 text-center">
+    <h2 class="text-3xl font-bold">Videos & Reels</h2>
+    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6 mt-6 justify-center max-w-3xl mx-auto">
+        <div class="w-full aspect-w-16 aspect-h-9">
+            <iframe class="w-full h-full" src="https://youtu.be/lwzfdw36HFM?si=0ZQ5RZ80SXmlngS4" frameborder="0" allowfullscreen></iframe>
+        </div>
+        <div class="w-full aspect-w-16 aspect-h-9">
+            <iframe class="w-full h-full" src="https://www.youtube.com/embed/3JZ_D3ELwOQ" frameborder="0" allowfullscreen></iframe>
+        </div>
+    </div>
+</section>
+
+<footer class="bg-indigo-600 text-white py-8 text-center">
+    <p>&copy; 2025 Utsav Unites. All rights reserved.</p>
+    <div class="mt-4">
+        <a href="#" class="mx-2 hover:underline">Privacy Policy</a>
+        <a href="#" class="mx-2 hover:underline">Terms of Service</a>
+    </div>
+</footer>
+</body>
+</html>

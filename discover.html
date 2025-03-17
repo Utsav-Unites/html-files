@@ -1,0 +1,745 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Utsav Unites - Your ultimate portal for news, events, cultural celebration, and live content.">
+  <title>Utsav Unites</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+  <style>
+    /* General Styles */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: #f8f9fa;
+      color: #9f9f9f;
+      scroll-behavior: smooth;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    /* Header */
+    header {
+      background: linear-gradient(90deg, #0f4c75, #3282b8);
+      color: white;
+      padding: 15px 0;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    .navbar {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 20px;
+    }
+
+    .logo {
+      font-size: 1.8rem;
+      font-weight: 600;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 20px;
+    }
+
+    .nav-links li {
+      list-style: none;
+    }
+
+    .nav-links li a {
+      color: white;
+      padding: 8px 15px;
+      font-weight: 500;
+      border-radius: 5px;
+      transition: 0.3s;
+    }
+
+    .nav-links li a:hover {
+      background: white;
+      color: #3282b8;
+    }
+     /* Responsive Navigation Bar */
+     .menu-icon {
+      display: none;
+      font-size: 1.8rem;
+      cursor: pointer;
+    }
+
+    .nav-links.responsive {
+      display: flex;
+      flex-direction: column;
+      background: #0f4c75;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      width: 100%;
+      padding: 10px 0;
+    }
+
+    .nav-links.responsive li {
+      text-align: center;
+      margin: 10px 0;
+    }
+
+    @media (max-width: 768px) {
+      .nav-links {
+        display: none;
+      }
+
+      .menu-icon {
+        display: block;
+        color: white;
+      }
+    }
+    /* Hero Section */
+    .hero {
+      position: relative;
+      height: 600px;
+      background: url('/img/line.jpg') no-repeat center center/cover;
+      transition: background-image 1s ease-in-out; /* Smooth transition for slideshow */
+    }
+
+    .hero-overlay {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      text-align: center;
+      color: white;
+      text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.7);
+      background: rgba(0, 0, 0, 0.4);
+      padding: 20px 40px;
+      border-radius: 10px;
+    }
+
+    .hero h1 {
+      font-size: 3.5rem;
+      margin-bottom: 20px;
+    }
+
+    .hero p {
+      font-size: 1.2rem;
+      margin-bottom: 30px;
+    }
+
+    .hero .btn {
+      background: #3282b8;
+      color: white;
+      padding: 10px 25px;
+      border-radius: 5px;
+      font-size: 1.2rem;
+      font-weight: 500;
+      transition: 0.3s;
+    }
+
+    .hero .btn:hover {
+      background: white;
+      color: #3282b8;
+    }
+
+    .countdown {
+      font-size: 2rem;
+      font-weight: 600;
+      color: #ff5722;
+      margin-top: 20px;
+    }
+
+    /* Section Styles */
+    section {
+      max-width: 1200px;
+      margin: 50px auto;
+      padding: 0 20px;
+      text-align: center;
+    }
+
+    section h2 {
+      font-size: 2.5rem;
+      color: #0f4c75;
+      margin-bottom: 30px;
+    }
+
+    /* Gallery Section */
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 20px;
+    }
+
+    .gallery img {
+      border-radius: 10px;
+      transition: transform 0.3s ease;
+      cursor: pointer;
+    }
+
+    .gallery img:hover {
+      transform: scale(1.05);
+    }
+
+    .fullscreen-overlay {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.9);
+      justify-content: center;
+      align-items: center;
+      z-index: 1000;
+    }
+
+    .fullscreen-overlay img {
+      max-width: 90%;
+      max-height: 90%;
+      border-radius: 10px;
+    }
+
+    .fullscreen-overlay .close-btn {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      background: #ff5722;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      font-size: 1.2rem;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    .fullscreen-overlay .close-btn:hover {
+      background: white;
+      color: #ff5722;
+    }
+
+    /* Videos Section */
+    .video-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      justify-content: center;
+    }
+
+    .video-container iframe {
+      width: 300px;
+      height: 200px;
+      border-radius: 10px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    /* Live Stream */
+    .live-stream {
+      background: #0f4c75;
+      color: white;
+      padding: 30px 20px;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    }
+
+    .live-stream iframe {
+      width: 100%;
+      height: 300px;
+      border-radius: 10px;
+    }
+
+    /* Footer */
+    footer {
+      background: #0f4c75;
+      color: white;
+      text-align: center;
+      padding: 15px 20px;
+      font-size: 0.9rem;
+    }
+
+    footer a {
+      color: #3282b8;
+      text-decoration: none;
+    }
+
+    footer a:hover {
+      text-decoration: underline;
+    }
+
+    .image-container {
+      position: relative; /* Adjust the height as needed */
+      overflow: hidden;
+    }
+
+    .image-container img {
+      width: 100%;
+      height: 100%;
+      display: block;
+      transition: transform 0.4s ease;
+    }
+
+    .overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.7); /* Adjust the color and opacity */
+      color: #fff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      opacity: 0;
+      transform: rotateY(180deg);
+      transition: opacity 0.3s ease, transform 0.3s ease;
+    }
+
+    .details {
+      font-size: 16px; /* Adjust the font size as needed */
+    }
+
+    .image-container:hover img {
+      transform: scale(1.1); /* Adjust the zoom level as needed */
+    }
+
+    .image-container:hover .overlay {
+      opacity: 1;
+      transform: rotateY(0deg);
+    }
+
+    .slide-card {
+      position: relative;
+      height: 400px;
+      overflow: hidden;
+      border-radius: 15px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      transition: transform 0.6s ease-in-out;
+    }
+
+    .slide-card:hover {
+      transform: scale(1.05);
+    }
+
+    .slide-card-inner {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+    }
+
+    .slide-card-front {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      z-index: 1;
+    }
+
+    .slide-card-front img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover; /* Ensures the image fills the space */
+    }
+
+    .slide-card-back {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: #00000044;
+      color: #ffffff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transform: translateX(100%); /* Keep the back hidden */
+      transition: transform 0.6s ease-in-out;
+      z-index: 2; /* Ensure the back content appears above the front */
+    }
+
+    .slide-card:hover .slide-card-back {
+      transform: translateX(0); /* Slide the content in on hover */
+    }
+
+    .slide-card-back h3 {
+      font-size: 1.5rem;
+    }
+
+    .description{
+      text-orientation: upright;
+      height: 400px;
+      width: 268.44px;
+      padding-top: 70px;
+      padding-bottom: 70px;
+    }
+    .info a{
+      text-align: center;
+    }
+    
+
+  </style>
+</head>
+<body>
+    <header>
+      <nav class="navbar">
+        <div class="logo">Utsav Unites</div>
+        <span class="menu-icon" onclick="toggleMenu()">&#9776;</span>
+        <ul class="nav-links">
+          <li><a href="#home">Home</a></li>
+          <li><a href="celeb.html">History</a></li>
+          <li><a href="zoomfull.html">Gallery</a></li>
+          <li><a href="#videos">Videos</a></li>
+          <li><a href="#live-stream">Live Stream</a></li>
+          <li><a href="finalpujalist.html" target="_blank">Puja Lists</a></li>
+        </ul>
+      </nav>
+    </header>
+
+  <!-- Hero Section -->
+<section class="hero" id="home">
+    <div class="hero-overlay">
+      <h1>Welcome to Utsav Unites!</h1>
+      <p>Experience the Spirit of Jagadhatri, Anytime, Anywhere.</p>
+      <a href="#timer" class="btn">Explore Now</a>
+     
+  </section>
+  
+  <!-- CSS for Countdown -->
+  <style>
+            /* CSS styles */
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f8f9fa;
+            color: #8d8d8d;
+            text-align: center;
+        }
+
+        .countdown-container {
+            margin-top: 50px;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            color: #ffcc00;
+            text-transform: uppercase;
+        }
+
+        h2 {
+            font-size: 2rem;
+            margin: 10px 0 30px;
+            color: #222;
+        }
+
+        h2 .highlight {
+            color: #333;
+            font-weight: bold;
+        }
+
+        h2 .year {
+            color: #f8b700;
+        }
+
+        .countdown {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .box {
+            background-color: #fff;
+            border: 2px solid #ccc;
+            border-radius: 8px;
+            padding: 15px;
+            width: 80px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .box h3 {
+            font-size: 2rem;
+            color: #f8b700;
+            margin: 0;
+        }
+
+        .box p {
+            font-size: 0.9rem;
+            margin: 5px 0 0;
+            color: #555;
+        }
+  </style>
+  
+  </head>
+<body>
+    <div class="countdown-container" id="timer">
+        <h1>JAGADHATRI PUJA</h1>
+        <h2><span class="highlight">Countdown</span> <span class="year">2025</span></h2>
+        <div class="countdown">
+            <div class="box">
+                <h3 id="days">--</h3>
+                <p>Days</p>
+            </div>
+            <div class="box">
+                <h3 id="hours">--</h3>
+                <p>Hours</p>
+            </div>
+            <div class="box">
+                <h3 id="minutes">--</h3>
+                <p>Minutes</p>
+            </div>
+            <div class="box">
+                <h3 id="seconds">--</h3>
+                <p>Seconds</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // JavaScript Countdown Logic
+        const targetDate = new Date("October 26, 2025 00:00:00").getTime();
+
+        function updateCountdown() {
+            const now = new Date().getTime();
+            const timeDifference = targetDate - now;
+
+            // Calculate time components
+            const days = Math.floor(timeDifference / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((timeDifference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((timeDifference % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((timeDifference % (1000 * 60)) / 1000);
+
+            // Update HTML elements
+            document.getElementById("days").innerText = days;
+            document.getElementById("hours").innerText = hours;
+            document.getElementById("minutes").innerText = minutes;
+            document.getElementById("seconds").innerText = seconds;
+
+            // Stop the countdown when the target date is reached
+            if (timeDifference < 0) {
+                clearInterval(countdownInterval);
+                document.querySelector(".countdown").innerHTML = "<h3>Event has started!</h3>";
+            }
+        }
+
+        // Update countdown every second
+        const countdownInterval = setInterval(updateCountdown, 1000);
+
+        // Initial call to display timer without waiting 1 second
+        updateCountdown();
+    
+  
+    // JavaScript for Hero Slideshow
+    const heroSection = document.querySelector(".hero");
+    const images = [
+      "/img/line.jpg",
+      "/img/coverkholi.jpg",
+      "/img/besocover.jpg",
+      "/img/temathafull.jpg",
+    ];
+  
+    let currentImageIndex = 0;
+  
+    function changeHeroBackground() {
+      heroSection.style.backgroundImage = `url('${images[currentImageIndex]}')`;
+      currentImageIndex = (currentImageIndex + 1) % images.length;
+    }
+  
+    heroSection.style.backgroundImage = `url('${images[0]}')`;
+    setInterval(changeHeroBackground, 2000);
+  </script>
+  <!-- Gallery Section -->
+  <section id="gallery">
+    <h2>TOP 10 BEST IDOL'S FACES</h2>
+    <div class="gallery">
+
+      <div class="slide-card">
+        <div class="slide-card-inner">
+          <div class="slide-card-front">
+            <img src="/img/palpara.jpg" alt="Gallery Image 1" >
+          </div>
+          <div class="slide-card-back">
+            <div class="description">
+              <div>Sliding content</div>
+              <div><a href="palparaweb.html" title="Click to view">View</a></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+
+      <div class="slide-card">
+        <div class="slide-card-inner">
+          <div class="slide-card-front">
+            <img src="/img/tematha.jpg" alt="Gallery Image 2" >
+          </div>
+          <div class="slide-card-back">
+            <div class="description">Sliding Content</div>
+          </div>
+        </div>
+      </div>
+
+
+      <div class="slide-card">
+        <div class="slide-card-inner">
+          <div class="slide-card-front">
+            <img src="/img/borothana.jpg" alt="Gallery Image 3" >
+          </div>
+          <div class="slide-card-back">
+            <div class="description">Sliding Content</div>
+          </div>
+        </div>
+      </div>
+
+
+      <div class="slide-card">
+        <div class="slide-card-inner">
+          <div class="slide-card-front">
+            <img src="/img/originalborobaz.jpg" alt="Gallery Image 4" >
+          </div>
+          <div class="slide-card-back">
+            <div class="description">Sliding Content</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="slide-card">
+        <div class="slide-card-inner">
+          <div class="slide-card-front">
+            <img src="/img/WhatsApp Image 2024-12-15 at 00.03.29_f0e8c5b7.jpg" alt="Gallery Image 5" >
+          </div>
+          <div class="slide-card-back">
+            <div class="description">Sliding Content</div>
+          </div>
+        </div>
+      </div>
+      
+
+      <div class="slide-card">
+        <div class="slide-card-inner">
+          <div class="slide-card-front">
+            <img src="/img/charmon.jpg" alt="Gallery Image 6" >
+          </div>
+          <div class="slide-card-back">
+            <div class="description">Sliding Content</div>
+          </div>
+        </div>
+      </div>
+
+
+      <div class="slide-card">
+        <div class="slide-card-inner">
+          <div class="slide-card-front">
+            <img src="/img/fotok.jpg" alt="Gallery Image 7" >
+          </div>
+          <div class="slide-card-back">
+            <div class="description">Sliding Content</div>
+          </div>
+        </div>
+      </div>
+
+
+      <div class="slide-card">
+        <div class="slide-card-inner">
+          <div class="slide-card-front">
+            <img src="/img/borobaz.jpg" alt="Gallery Image 8" >
+          </div>
+          <div class="slide-card-back">
+            <div class="description">Sliding Content</div>
+          </div>
+        </div>
+      </div>
+
+
+      <div class="slide-card">
+        <div class="slide-card-inner">
+          <div class="slide-card-front">
+            <img src="/img/besoface.jpg" alt="Gallery Image 9" >
+          </div>
+          <div class="slide-card-back">
+            <div class="description">Sliding Content</div>
+          </div>
+        </div>
+      </div>
+      
+
+      <div class="slide-card">
+        <div class="slide-card-inner">
+          <div class="slide-card-front">
+            <img src="/img/kholi.jpg" alt="Gallery Image 10" >
+          </div>
+          <div class="slide-card-back">
+            <div class="description">Sliding Content</div>
+          </div>
+        </div>
+      </div>
+
+       
+    </div>
+  </section>
+
+  <!-- Videos Section -->
+  <section id="videos">
+    <h2>Video Highlights</h2>
+    <div class="video-container">
+      <iframe width="560" height="315" src="https://www.youtube.com/embed/IGIzFCyxyeA?si=oXFklp2wbfourjy6" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>
+      <iframe src="https://www.youtube.com/embed/samplevideo2" frameborder="0" allowfullscreen></iframe>
+      <iframe src="https://www.youtube.com/embed/samplevideo3" frameborder="0" allowfullscreen></iframe>
+    </div>
+  </section>
+
+  <!-- Live Stream Section -->
+  <section id="live-stream">
+    <h2>Live Stream</h2>
+    <div class="live-stream">
+      <iframe src="https://www.youtube.com/embed/livestream" frameborder="0" allowfullscreen></iframe>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2024 Utsav Unites. All rights reserved. <a href="#home">Back to Top</a></p>
+  </footer>
+
+  <!-- Fullscreen Image Overlay Script -->
+  <script>
+    const fullscreenOverlay = document.createElement("div");
+    fullscreenOverlay.className = "fullscreen-overlay";
+    document.body.appendChild(fullscreenOverlay);
+
+    const closeBtn = document.createElement("button");
+    closeBtn.className = "close-btn";
+    closeBtn.textContent = "Close";
+    fullscreenOverlay.appendChild(closeBtn);
+
+    const imgElement = document.createElement("img");
+    fullscreenOverlay.appendChild(imgElement);
+
+    function openFullscreen(image) {
+      imgElement.src = image.src;
+      fullscreenOverlay.style.display = "flex";
+    }
+
+    closeBtn.addEventListener("click", () => {
+      fullscreenOverlay.style.display = "none";
+    });
+    // Toggle Menu
+    function toggleMenu() {
+      const navLinks = document.querySelector('.nav-links');
+      navLinks.classList.toggle('responsive');
+    }
+  </script>
+</body>
+</html>

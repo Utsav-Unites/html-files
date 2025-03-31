@@ -1,0 +1,1883 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Palpara Sarbojoni Jagadhatri Puja | Chandannagar</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:wght@700&family=Montserrat:wght@800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lightgallery-js/1.4.0/css/lightgallery.min.css">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        'sans': ['Poppins', 'sans-serif'],
+                        'serif': ['Playfair Display', 'serif'],
+                        'display': ['Montserrat', 'sans-serif'],
+                    },
+                    colors: {
+                        'primary': '#4F46E5',
+                        'primary-dark': '#4338CA',
+                        'secondary': '#F59E0B',
+                        'secondary-dark': '#D97706',
+                        'dark': '#0F172A',
+                        'light': '#F8FAFC',
+                        'accent': '#EC4899',
+                        'glass': 'rgba(255, 255, 255, 0.1)',
+                    },
+                    animation: {
+                        'fade-in': 'fadeIn 1s ease-in-out',
+                        'slide-up': 'slideUp 0.8s ease-out',
+                        'pulse-slow': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                        'float': 'float 6s ease-in-out infinite',
+                        'float-reverse': 'floatReverse 6s ease-in-out infinite',
+                        'tilt': 'tilt 10s infinite linear',
+                        'gradient': 'gradient 15s ease infinite',
+                        'meteor': 'meteor 5s linear infinite',
+                        'shimmer': 'shimmer 8s infinite',
+                    },
+                    keyframes: {
+                        fadeIn: {
+                            '0%': { opacity: '0' },
+                            '100%': { opacity: '1' },
+                        },
+                        slideUp: {
+                            '0%': { transform: 'translateY(20px)', opacity: '0' },
+                            '100%': { transform: 'translateY(0)', opacity: '1' },
+                        },
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-20px)' },
+                        },
+                        floatReverse: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(20px)' },
+                        },
+                        tilt: {
+                            '0%, 100%': { transform: 'rotate(-1deg)' },
+                            '50%': { transform: 'rotate(1deg)' },
+                        },
+                        gradient: {
+                            '0%, 100%': { 'background-position': '0% 50%' },
+                            '50%': { 'background-position': '100% 50%' },
+                        },
+                        meteor: {
+                            '0%': { transform: 'rotate(215deg) translateX(0)', opacity: '1' },
+                            '70%': { opacity: '1' },
+                            '100%': { transform: 'rotate(215deg) translateX(-500px)', opacity: '0' },
+                        },
+                        shimmer: {
+                            '0%': { 'background-position': '-1000px 0' },
+                            '100%': { 'background-position': '1000px 0' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <style>
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 10px;
+            height: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: rgba(241, 241, 241, 0.3);
+        }
+        ::-webkit-scrollbar-thumb {
+            background: linear-gradient(to bottom, #4F46E5, #EC4899);
+            border-radius: 10px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: linear-gradient(to bottom, #4338CA, #DB2777);
+        }
+        
+        /* Splash screen animation */
+        @keyframes splashFade {
+            0% { opacity: 1; transform: scale(1); }
+            80% { opacity: 1; transform: scale(1); }
+            100% { opacity: 0; transform: scale(1.1); visibility: hidden; }
+        }
+        
+        .splash-animation {
+            animation: splashFade 3s ease-in-out forwards;
+        }
+        
+        /* Glass morphism effect */
+        .glass-effect {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.2);
+        }
+        
+        /* Gradient text */
+        .gradient-text {
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+        }
+        
+        /* Glow effect */
+        .glow-effect {
+            filter: drop-shadow(0 0 12px rgba(79, 70, 229, 0.8));
+        }
+        .glow-effect-secondary {
+            filter: drop-shadow(0 0 12px rgba(245, 158, 11, 0.8));
+        }
+        
+        /* Section divider */
+        .wave-divider {
+            height: 100px;
+            overflow: hidden;
+        }
+        .wave-divider svg {
+            height: 100%;
+            width: 100%;
+        }
+        .wave-divider .shape-fill {
+            fill: currentColor;
+        }
+        
+        /* Particle background */
+        .particles {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            pointer-events: none;
+        }
+        
+        /* Neon border effect */
+        .neon-border {
+            position: relative;
+        }
+        .neon-border::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            border-radius: inherit;
+            padding: 2px;
+            background: linear-gradient(45deg, #4F46E5, #EC4899);
+            -webkit-mask: 
+                linear-gradient(#fff 0 0) content-box, 
+                linear-gradient(#fff 0 0);
+            -webkit-mask-composite: xor;
+            mask-composite: exclude;
+            pointer-events: none;
+        }
+        
+        /* 3D card effect */
+        .card-3d {
+            transform-style: preserve-3d;
+            transition: all 0.5s ease;
+        }
+        .card-3d:hover {
+            transform: rotateY(10deg) rotateX(5deg) translateY(-10px);
+        }
+        
+        /* Custom shape */
+        .custom-shape {
+            clip-path: polygon(0 0, 100% 0, 100% 80%, 0 100%);
+        }
+        
+        /* Text stroke */
+        .text-stroke {
+            -webkit-text-stroke: 1px rgba(255, 255, 255, 0.3);
+            color: transparent;
+        }
+        
+        /* Floating elements */
+        .floating-element {
+            animation: float 8s ease-in-out infinite;
+        }
+        .floating-element-2 {
+            animation: floatReverse 7s ease-in-out infinite;
+        }
+        .floating-element-3 {
+            animation: float 9s ease-in-out infinite 1s;
+        }
+        
+        /* Gradient background animation */
+        .gradient-bg {
+            background-size: 400% 400%;
+            animation: gradient 15s ease infinite;
+        }
+        
+        /* Meteor effect */
+        .meteor-effect {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 300px;
+            height: 1px;
+            background: linear-gradient(90deg, rgba(255,255,255,0), #4F46E5);
+            transform: rotate(215deg);
+            animation: meteor 5s linear infinite;
+        }
+        
+        /* Shimmer effect */
+        .shimmer-effect {
+            background: linear-gradient(90deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0.3) 50%, rgba(255,255,255,0) 100%);
+            background-size: 200% 100%;
+            animation: shimmer 8s infinite;
+        }
+        
+        /* Custom checkbox */
+        .custom-checkbox input:checked ~ .checkmark {
+            background: linear-gradient(45deg, #4F46E5, #EC4899);
+            border-color: transparent;
+        }
+        
+        /* Image hover effect */
+        .img-hover-effect {
+            transition: all 0.5s cubic-bezier(0.25, 0.8, 0.25, 1);
+        }
+        .img-hover-effect:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.3);
+        }
+        
+        /* Gallery item */
+        .gallery-item {
+            transition: all 0.3s ease;
+        }
+        .gallery-item:hover {
+            transform: scale(1.03);
+            z-index: 10;
+        }
+        
+        /* Parallax effect */
+        .parallax-bg {
+            background-attachment: fixed;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+        
+        /* Custom underline animation */
+        .underline-animation {
+            position: relative;
+        }
+        .underline-animation::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -4px;
+            left: 0;
+            background: linear-gradient(90deg, #4F46E5, #EC4899);
+            transition: width 0.3s ease;
+        }
+        .underline-animation:hover::after {
+            width: 100%;
+        }
+        
+        /* Floating action button */
+        .fab-effect {
+            box-shadow: 0 10px 25px -5px rgba(79, 70, 229, 0.4);
+            transition: all 0.3s ease;
+        }
+        .fab-effect:hover {
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 15px 30px -5px rgba(79, 70, 229, 0.6);
+        }
+        
+        /* Custom radio */
+        .custom-radio input:checked ~ .checkmark {
+            background: linear-gradient(45deg, #4F46E5, #EC4899);
+            border-color: transparent;
+        }
+        
+        /* Custom switch */
+        .custom-switch input:checked ~ .dot {
+            transform: translateX(100%);
+            background: linear-gradient(45deg, #4F46E5, #EC4899);
+        }
+        
+        /* Background pattern */
+        .pattern-dots {
+            background-image: radial-gradient(rgba(79, 70, 229, 0.2) 1px, transparent 1px);
+            background-size: 20px 20px;
+        }
+        
+        /* Floating particles */
+        .floating-particle {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(40px);
+            opacity: 0.2;
+            z-index: -1;
+        }
+    </style>
+</head>
+<body class="font-sans bg-light text-dark antialiased overflow-x-hidden">
+    <!-- Splash Screen -->
+    <div id="splash" class="fixed inset-0 bg-dark flex flex-col items-center justify-center z-50 splash-animation">
+        <div class="text-center relative">
+            <div class="absolute -inset-4 bg-primary rounded-full opacity-20 blur-lg animate-pulse"></div>
+            <div class="relative">
+                <img src="https://assets.onecompiler.app/4362nvr75/43cmzk9zg/Animation%20-%201742715694644.gif" 
+                     alt="Diwali Lamp" 
+                     class="w-40 h-40 mx-auto mb-6 animate-pulse-slow glow-effect">
+                <h1 class="text-4xl md:text-5xl font-bold text-white mb-2">
+                    <span class="gradient-text bg-gradient-to-r from-secondary to-accent">Palpara Sarbojoni</span>
+                </h1>
+                <p class="text-2xl text-white font-medium mb-6">Jagadhatri Puja</p>
+                <div class="w-32 h-1 bg-gradient-to-r from-primary to-accent mx-auto rounded-full"></div>
+                <p class="text-gray-300 mt-6 text-sm tracking-wider">Celebrating 82 Years of Divine Tradition</p>
+            </div>
+        </div>
+        
+        <!-- Floating decorative elements -->
+        <div class="absolute top-20 left-10 w-8 h-8 rounded-full bg-primary/20 floating-element"></div>
+        <div class="absolute bottom-20 right-10 w-12 h-12 rounded-full bg-secondary/20 floating-element-2"></div>
+        <div class="absolute top-1/3 right-1/4 w-6 h-6 rounded-full bg-accent/20 floating-element-3"></div>
+    </div>
+
+    <!-- Main Content -->
+    <div id="main-content" class="opacity-0 animate-fade-in">
+        <!-- Particle Background -->
+        <div class="particles" id="particles-js"></div>
+        
+        <!-- Floating particles -->
+        <div class="floating-particle w-64 h-64 bg-primary top-1/4 left-1/4 floating-element"></div>
+        <div class="floating-particle w-80 h-80 bg-secondary bottom-1/3 right-1/4 floating-element-2"></div>
+        <div class="floating-particle w-48 h-48 bg-accent top-1/3 right-1/3 floating-element-3"></div>
+        
+        <!-- Navigation -->
+        <nav x-data="{ open: false, scrolled: false }" 
+             @scroll.window="scrolled = window.scrollY > 10"
+             :class="{'bg-white/90 shadow-xl backdrop-blur-md': scrolled, 'bg-transparent': !scrolled}"
+             class="fixed w-full transition-all duration-500 z-40">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="flex justify-between h-20 items-center">
+                    <!-- Logo -->
+                    <div class="flex-shrink-0 flex items-center">
+                        <span class="text-2xl font-bold bg-gradient-to-r from-primary to-accent gradient-text">Palpara Sarbojoni</span>
+                    </div>
+                    
+                    <!-- Desktop Navigation -->
+                    <div class="hidden md:flex space-x-8 items-center">
+                        <a href="#home" 
+                           class="relative px-3 py-2 text-dark hover:text-primary font-medium transition-colors underline-animation">
+                            <span>Home</span>
+                        </a>
+                        <a href="#about" 
+                           class="relative px-3 py-2 text-dark hover:text-primary font-medium transition-colors underline-animation">
+                            <span>About</span>
+                        </a>
+                        <a href="#gallery" 
+                           class="relative px-3 py-2 text-dark hover:text-primary font-medium transition-colors underline-animation">
+                            <span>Gallery</span>
+                        </a>
+                        <a href="#history" 
+                           class="relative px-3 py-2 text-dark hover:text-primary font-medium transition-colors underline-animation">
+                            <span>History</span>
+                        </a>
+                        <a href="#events" 
+                           class="relative px-3 py-2 text-dark hover:text-primary font-medium transition-colors underline-animation">
+                            <span>Events</span>
+                        </a>
+                        <a href="#contact" 
+                           class="relative px-3 py-2 text-dark hover:text-primary font-medium transition-colors underline-animation">
+                            <span>Contact</span>
+                        </a>
+                        <a href="#" 
+                           class="px-4 py-2 bg-gradient-to-r from-primary to-accent text-white rounded-lg shadow-lg hover:shadow-xl transition-all transform hover:-translate-y-0.5 flex items-center gap-2">
+                            <i class="fas fa-donate"></i> Donate
+                        </a>
+                    </div>
+                    
+                    <!-- Mobile menu button -->
+                    <div class="md:hidden flex items-center">
+                        <button @click="open = !open" 
+                                class="inline-flex items-center justify-center p-2 rounded-md text-dark hover:text-primary focus:outline-none transition-colors">
+                            <svg class="h-6 w-6" :class="{'hidden': open, 'block': !open}" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                            </svg>
+                            <svg class="h-6 w-6" :class="{'hidden': !open, 'block': open}" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Mobile Navigation -->
+            <div x-show="open" @click.away="open = false" 
+                 x-transition:enter="transition ease-out duration-300"
+                 x-transition:enter-start="opacity-0 scale-95"
+                 x-transition:enter-end="opacity-100 scale-100"
+                 x-transition:leave="transition ease-in duration-200"
+                 x-transition:leave-start="opacity-100 scale-100"
+                 x-transition:leave-end="opacity-0 scale-95"
+                 class="md:hidden glass-effect shadow-xl rounded-lg mx-4 mt-2 overflow-hidden">
+                <div class="px-2 pt-2 pb-4 space-y-2 sm:px-3">
+                    <a href="#home" class="block px-4 py-3 rounded-lg text-base font-medium text-dark hover:bg-gray-100/30 transition-colors">Home</a>
+                    <a href="#about" class="block px-4 py-3 rounded-lg text-base font-medium text-dark hover:bg-gray-100/30 transition-colors">About</a>
+                    <a href="#gallery" class="block px-4 py-3 rounded-lg text-base font-medium text-dark hover:bg-gray-100/30 transition-colors">Gallery</a>
+                    <a href="#history" class="block px-4 py-3 rounded-lg text-base font-medium text-dark hover:bg-gray-100/30 transition-colors">History</a>
+                    <a href="#events" class="block px-4 py-3 rounded-lg text-base font-medium text-dark hover:bg-gray-100/30 transition-colors">Events</a>
+                    <a href="#contact" class="block px-4 py-3 rounded-lg text-base font-medium text-dark hover:bg-gray-100/30 transition-colors">Contact</a>
+                    <a href="#" class="block px-4 py-3 bg-gradient-to-r from-primary to-accent text-white rounded-lg shadow text-center">Donate</a>
+                </div>
+            </div>
+        </nav>
+
+
+       <!-- Refined Hero Section -->
+<section class="relative h-screen flex items-center justify-center overflow-hidden bg-dark">
+  <!-- Particle Background -->
+  <div class="particles absolute inset-0 w-full h-full z-0" id="hero-particles"></div>
+  
+  <!-- Background Carousel -->
+  <div class="absolute inset-0 w-full h-full overflow-hidden" id="hero-carousel">
+    <!-- Slides will be inserted here by JavaScript -->
+  </div>
+  
+  <!-- Gradient Overlay -->
+  <div class="absolute inset-0 bg-gradient-to-t from-dark/90 via-dark/50 to-transparent z-1"></div>
+  
+  <!-- Hero Content Container -->
+  <div class="relative z-10 w-full max-w-7xl px-6 mx-auto text-center">
+    <div class="flex flex-col items-center justify-center h-full">
+      <!-- Main Heading with Beautiful Styling -->
+      <h1 class="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-white mb-4 md:mb-6 leading-tight">
+        <span class="block text-transparent bg-clip-text bg-gradient-to-r from-primary to-accent mb-2">
+          Palpara Sarbojoni
+        </span>
+        <span class="block text-3xl sm:text-4xl md:text-5xl font-serif text-white mt-2">
+          Jagadhatri Puja
+        </span>
+      </h1>
+      
+      <!-- Subheading with Beautiful Typography -->
+      <p class="text-lg sm:text-xl md:text-2xl text-gray-300 max-w-2xl mx-auto mb-8 md:mb-12 leading-relaxed">
+        Celebrating 82 years of divine tradition and cultural heritage in Chandannagar
+      </p>
+      
+      <!-- Action Buttons with Hover Effects -->
+      <div class="flex flex-col sm:flex-row gap-4 sm:gap-6">
+        <a href="#about" class="px-8 py-3 sm:px-10 sm:py-4 bg-gradient-to-r from-primary to-primary-dark text-white rounded-lg font-medium shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 hover:scale-105">
+          Explore Tradition
+        </a>
+        <a href="#gallery" class="px-8 py-3 sm:px-10 sm:py-4 bg-gradient-to-r from-secondary to-secondary-dark text-dark rounded-lg font-medium shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 hover:scale-105">
+          View Gallery
+        </a>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Scroll Indicator -->
+  <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 z-10 animate-bounce">
+    <a href="#about" class="text-white hover:text-secondary transition-colors">
+      <i class="fas fa-chevron-down text-2xl"></i>
+    </a>
+  </div>
+</section>
+
+<style>
+  /* Custom Styles for Hero Section */
+  .hero-slide {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    transition: opacity 1.2s cubic-bezier(0.4, 0, 0.2, 1);
+    z-index: 0;
+    transform: scale(1);
+    filter: brightness(0.8);
+  }
+  
+  .hero-slide.active {
+    opacity: 1;
+    z-index: 1;
+    filter: brightness(0.7) contrast(1.05) saturate(1.1);
+  }
+  
+  .hero-slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+  }
+  
+  /* Beautiful Text Effects */
+  .text-shadow-lg {
+    text-shadow: 0 2px 8px rgba(0,0,0,0.3);
+  }
+  
+  /* Animation for Floating Elements */
+  @keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-15px); }
+  }
+  
+  .animate-bounce {
+    animation: float 2s ease-in-out infinite;
+  }
+  
+  /* Particle Canvas Styling */
+  .particles {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+  }
+</style>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    // Image Data with Perfect Alignment
+    const slideData = [
+      {
+        url: 'https://assets.onecompiler.app/4362nvr75/436am4ert/jaghadhatri%20puja%206.png',
+        position: 'center center',
+        filter: 'brightness(0.7) contrast(1.1)'
+      },
+      {
+        url: 'https://assets.onecompiler.app/4362nvr75/43ceedbub/IMG20241110205517.jpg',
+        position: 'center center',
+        filter: 'brightness(0.65) contrast(1.15)'
+      },
+      {
+        url: 'https://assets.onecompiler.app/4362nvr75/43ceedbub/115.jpg',
+        position: 'center center',
+        filter: 'brightness(0.75) contrast(1.05)'
+      },
+      {
+        url: 'https://assets.onecompiler.app/4362nvr75/43cy86e7v/1221.jpg',
+        position: 'center center',
+        filter: 'brightness(0.7) contrast(1.1)'
+      }
+    ];
+    
+    const carousel = document.getElementById('hero-carousel');
+    let currentSlide = 0;
+    const intervalTime = 5000;
+    let carouselInterval;
+    
+    // Create Slides with Perfect Alignment
+    slideData.forEach((slide, index) => {
+      const slideElement = document.createElement('div');
+      slideElement.className = `hero-slide ${index === 0 ? 'active' : ''}`;
+      slideElement.style.filter = slide.filter;
+      slideElement.innerHTML = `
+        <img src="${slide.url}" alt="Slide ${index + 1}" 
+             style="object-position: ${slide.position}"
+             class="w-full h-full object-cover">
+        <div class="absolute inset-0 bg-gradient-to-t from-dark/80 via-dark/30 to-transparent"></div>
+      `;
+      carousel.appendChild(slideElement);
+    });
+    
+    const slides = document.querySelectorAll('.hero-slide');
+    
+    // Smooth Transition Between Slides
+    function changeSlide() {
+      // Fade out current slide
+      slides[currentSlide].classList.remove('active');
+      
+      // Move to next slide
+      currentSlide = (currentSlide + 1) % slides.length;
+      
+      // Fade in new slide
+      slides[currentSlide].classList.add('active');
+    }
+    
+    // Initialize Carousel
+    function startCarousel() {
+      carouselInterval = setInterval(changeSlide, intervalTime);
+    }
+    
+    // Initialize Particles
+    particlesJS('hero-particles', {
+      particles: {
+        number: { value: 50, density: { enable: true, value_area: 800 } },
+        color: { value: "#ffffff" },
+        shape: { type: "circle" },
+        opacity: { value: 0.3, random: true },
+        size: { value: 3, random: true },
+        line_linked: { 
+          enable: true, 
+          distance: 150, 
+          color: "#ffffff", 
+          opacity: 0.2, 
+          width: 1 
+        },
+        move: { 
+          enable: true, 
+          speed: 1, 
+          direction: "none", 
+          random: true, 
+          straight: false, 
+          out_mode: "out" 
+        }
+      },
+      interactivity: {
+        detect_on: "canvas",
+        events: {
+          onhover: { enable: true, mode: "grab" },
+          onclick: { enable: true, mode: "push" }
+        }
+      }
+    });
+    
+    // Start Carousel
+    startCarousel();
+    
+    // Pause on Hover (Optional)
+    carousel.addEventListener('mouseenter', () => clearInterval(carouselInterval));
+    carousel.addEventListener('mouseleave', startCarousel);
+  });
+</script>
+            <!-- Scroll Indicator -->
+            <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
+                <a href="#about" class="text-white hover:text-secondary transition-colors">
+                    <i class="fas fa-chevron-down text-2xl"></i>
+                </a>
+            </div>
+        </section>
+
+        <!-- Wave Divider -->
+        <div class="wave-divider text-white custom-shape">
+            <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
+                <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z" class="shape-fill"></path>
+            </svg>
+        </div>
+
+        <!-- About Section -->
+        <section id="about" class="py-20 bg-white relative overflow-hidden pattern-dots">
+            <!-- Decorative elements -->
+            <div class="absolute -top-20 -right-20 w-64 h-64 bg-primary/5 rounded-full blur-3xl"></div>
+            <div class="absolute -bottom-20 -left-20 w-64 h-64 bg-secondary/5 rounded-full blur-3xl"></div>
+            
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+                <div class="text-center mb-16" data-aos="fade-up">
+                    <h2 class="text-4xl sm:text-5xl font-serif font-bold text-dark mb-4">
+                        <span class="gradient-text bg-gradient-to-r from-primary to-accent">About Our Puja</span>
+                    </h2>
+                    <div class="w-32 h-1 bg-gradient-to-r from-primary to-accent mx-auto rounded-full mb-6"></div>
+                    <p class="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
+                        The Palpara Sarbojoni Jagadhatri Puja is one of the oldest and most revered community celebrations in Chandannagar, with a rich history spanning over eight decades.
+                    </p>
+                </div>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+                    <div class="space-y-8">
+                        <div class="glass-effect p-8 rounded-2xl shadow-sm hover:shadow-lg transition-all duration-300 card-3d" data-aos="fade-right">
+                            <div class="flex items-start">
+                                <div class="flex-shrink-0 bg-primary/10 p-4 rounded-xl text-primary">
+                                    <i class="fas fa-history text-2xl"></i>
+                                </div>
+                                <div class="ml-6">
+                                    <h3 class="text-2xl font-semibold text-dark mb-3">Our Origin</h3>
+                                    <p class="text-gray-600 leading-relaxed">
+                                        Established in 1944, our puja began in the front yard of Harihar Seth Mahashay's house, initiated by energetic youth and supported by prominent community members.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="glass-effect p-8 rounded-2xl shadow-sm hover:shadow-lg transition-all duration-300 card-3d" data-aos="fade-right" data-aos-delay="100">
+                            <div class="flex items-start">
+                                <div class="flex-shrink-0 bg-primary/10 p-4 rounded-xl text-primary">
+                                    <i class="fas fa-users text-2xl"></i>
+                                </div>
+                                <div class="ml-6">
+                                    <h3 class="text-2xl font-semibold text-dark mb-3">Community Spirit</h3>
+                                    <p class="text-gray-600 leading-relaxed">
+                                        The festival thrives on the active participation of local residents who consider it an integral part of their cultural identity and heritage.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="glass-effect p-8 rounded-2xl shadow-sm hover:shadow-lg transition-all duration-300 card-3d" data-aos="fade-right" data-aos-delay="200">
+                            <div class="flex items-start">
+                                <div class="flex-shrink-0 bg-primary/10 p-4 rounded-xl text-primary">
+                                    <i class="fas fa-landmark text-2xl"></i>
+                                </div>
+                                <div class="ml-6">
+                                    <h3 class="text-2xl font-semibold text-dark mb-3">Cultural Significance</h3>
+                                    <p class="text-gray-600 leading-relaxed">
+                                        While maintaining traditional rituals, the festival has evolved to include cultural programs and social initiatives that engage all generations.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="relative" data-aos="fade-left">
+                        <div class="relative rounded-2xl overflow-hidden shadow-2xl img-hover-effect neon-border">
+                            <img src="https://assets.onecompiler.app/4362nvr75/439fm45cr/pal.jpg" 
+                                 alt="Palpara Sarbojoni Jagadhatri Puja" 
+                                 class="w-full h-auto object-cover">
+                            <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end p-8">
+                                <div>
+                                    <h3 class="text-2xl font-bold text-white">82 Years of Tradition</h3>
+                                    <p class="text-gray-200 mt-2">A journey through generations</p>
+                                    <button class="mt-4 px-6 py-2 bg-white text-dark rounded-lg font-medium hover:bg-gray-100 transition-colors">
+                                        View History
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="absolute -bottom-8 -left-8 w-32 h-32 bg-secondary rounded-full -z-10"></div>
+                        <div class="absolute -top-8 -right-8 w-24 h-24 bg-primary rounded-full -z-10"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Stats Section -->
+        <section class="py-20 bg-gradient-to-r from-primary to-indigo-700 text-white relative overflow-hidden">
+            <!-- Decorative elements -->
+            <div class="absolute top-0 left-0 w-full h-full opacity-10">
+                <div class="absolute top-20 left-10 w-16 h-16 rounded-full bg-white floating-element"></div>
+                <div class="absolute bottom-20 right-10 w-20 h-20 rounded-full bg-white floating-element-2"></div>
+                <div class="absolute top-1/3 right-1/4 w-12 h-12 rounded-full bg-white floating-element-3"></div>
+            </div>
+            
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+                    <div class="p-6 glass-effect rounded-xl" data-aos="fade-up">
+                        <div class="text-5xl font-bold mb-2 flex items-center justify-center">
+                            <span class="counter" data-target="82">0</span>
+                            <span class="text-3xl">+</span>
+                        </div>
+                        <div class="text-lg uppercase tracking-wider">Years of Tradition</div>
+                    </div>
+                    <div class="p-6 glass-effect rounded-xl" data-aos="fade-up" data-aos-delay="100">
+                        <div class="text-5xl font-bold mb-2 flex items-center justify-center">
+                            <span class="counter" data-target="500">0</span>
+                            <span class="text-3xl">+</span>
+                        </div>
+                        <div class="text-lg uppercase tracking-wider">Active Members</div>
+                    </div>
+                    <div class="p-6 glass-effect rounded-xl" data-aos="fade-up" data-aos-delay="200">
+                        <div class="text-5xl font-bold mb-2 flex items-center justify-center">
+                            <span class="counter" data-target="10">0</span>
+                            <span class="text-3xl">K+</span>
+                        </div>
+                        <div class="text-lg uppercase tracking-wider">Visitors Annually</div>
+                    </div>
+                    <div class="p-6 glass-effect rounded-xl" data-aos="fade-up" data-aos-delay="300">
+                        <div class="text-5xl font-bold mb-2">24/7</div>
+                        <div class="text-lg uppercase tracking-wider">Community Support</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Gallery Section -->
+        <section id="gallery" class="py-20 bg-gray-50 relative overflow-hidden">
+            <!-- Decorative elements -->
+            <div class="absolute top-0 right-0 w-64 h-64 bg-primary/5 rounded-full blur-3xl"></div>
+            
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+                <div class="text-center mb-16" data-aos="fade-up">
+                    <h2 class="text-4xl sm:text-5xl font-serif font-bold text-dark mb-4">
+                        <span class="gradient-text bg-gradient-to-r from-secondary to-accent">Glimpse of 2025</span>
+                    </h2>
+                    <div class="w-32 h-1 bg-gradient-to-r from-secondary to-accent mx-auto rounded-full mb-6"></div>
+                    <p class="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
+                        Explore moments from our recent celebrations that capture the essence of our tradition and community spirit.
+                    </p>
+                </div>
+                
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6" id="lightgallery">
+                    <a href="https://assets.onecompiler.app/4362nvr75/439fm45cr/pal.jpg" 
+                       class="gallery-item relative group overflow-hidden rounded-2xl shadow-lg hover:shadow-xl transition-all duration-500" 
+                       data-aos="zoom-in"
+                       data-sub-html="<h4>Divine Decorations</h4><p>The beautifully adorned pandal in 2025</p>">
+                        <img src="https://assets.onecompiler.app/4362nvr75/439fm45cr/pal.jpg" 
+                             alt="Gallery Image 1" 
+                             class="w-full h-80 object-cover transform group-hover:scale-110 transition duration-700">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent flex flex-col justify-end p-6 opacity-0 group-hover:opacity-100 transition duration-500">
+                            <h3 class="text-xl font-bold text-white">Divine Decorations</h3>
+                            <p class="text-gray-200 mt-2">The beautifully adorned pandal in 2025</p>
+                            <div class="mt-4 flex space-x-3">
+                                <span class="text-white bg-primary/80 hover:bg-primary p-3 rounded-full transition">
+                                    <i class="fas fa-expand"></i>
+                                </span>
+                            </div>
+                        </div>
+                    </a>
+                    
+                    <a href="https://assets.onecompiler.app/4362nvr75/43cy86e7v/1221.jpg" 
+                       class="gallery-item relative group overflow-hidden rounded-2xl shadow-lg hover:shadow-xl transition-all duration-500" 
+                       data-aos="zoom-in" data-aos-delay="100"
+                       data-sub-html="<h4>Cultural Performances</h4><p>Traditional dances during the puja</p>">
+                        <img src="https://assets.onecompiler.app/4362nvr75/43cy86e7v/1221.jpg" 
+                             alt="Gallery Image 2" 
+                             class="w-full h-80 object-cover transform group-hover:scale-110 transition duration-700">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent flex flex-col justify-end p-6 opacity-0 group-hover:opacity-100 transition duration-500">
+                            <h3 class="text-xl font-bold text-white">Cultural Performances</h3>
+                            <p class="text-gray-200 mt-2">Traditional dances during the puja</p>
+                            <div class="mt-4 flex space-x-3">
+                                <span class="text-white bg-primary/80 hover:bg-primary p-3 rounded-full transition">
+                                    <i class="fas fa-expand"></i>
+                                </span>
+                            </div>
+                        </div>
+                    </a>
+                    
+                    <a href="https://assets.onecompiler.app/4362nvr75/43cy86e7v/candid.jpg" 
+                       class="gallery-item relative group overflow-hidden rounded-2xl shadow-lg hover:shadow-xl transition-all duration-500" 
+                       data-aos="zoom-in" data-aos-delay="200"
+                       data-sub-html="<h4>Community Gathering</h4><p>Devotees during the evening aarti</p>">
+                        <img src="https://assets.onecompiler.app/4362nvr75/43cy86e7v/candid.jpg" 
+                             alt="Gallery Image 3" 
+                             class="w-full h-80 object-cover transform group-hover:scale-110 transition duration-700">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent flex flex-col justify-end p-6 opacity-0 group-hover:opacity-100 transition duration-500">
+                            <h3 class="text-xl font-bold text-white">Community Gathering</h3>
+                            <p class="text-gray-200 mt-2">Devotees during the evening aarti</p>
+                            <div class="mt-4 flex space-x-3">
+                                <span class="text-white bg-primary/80 hover:bg-primary p-3 rounded-full transition">
+                                    <i class="fas fa-expand"></i>
+                                </span>
+                            </div>
+                        </div>
+                    </a>
+                    
+                    <a href="https://assets.onecompiler.app/4362nvr75/43ceedbub/IMG20241110205517.jpg" 
+                       class="gallery-item relative group overflow-hidden rounded-2xl shadow-lg hover:shadow-xl transition-all duration-500" 
+                       data-aos="zoom-in" data-aos-delay="300"
+                       data-sub-html="<h4>Idol Making</h4><p>Artisans at work before the puja</p>">
+                        <img src="https://assets.onecompiler.app/4362nvr75/43ceedbub/IMG20241110205517.jpg" 
+                             alt="Gallery Image 4" 
+                             class="w-full h-80 object-cover transform group-hover:scale-110 transition duration-700">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent flex flex-col justify-end p-6 opacity-0 group-hover:opacity-100 transition duration-500">
+                            <h3 class="text-xl font-bold text-white">Idol Making</h3>
+                            <p class="text-gray-200 mt-2">Artisans at work before the puja</p>
+                            <div class="mt-4 flex space-x-3">
+                                <span class="text-white bg-primary/80 hover:bg-primary p-3 rounded-full transition">
+                                    <i class="fas fa-expand"></i>
+                                </span>
+                            </div>
+                        </div>
+                    </a>
+                    
+                    <a href="https://assets.onecompiler.app/4362nvr75/436am4ert/jaghadhatri%20puja%206.png" 
+                       class="gallery-item relative group overflow-hidden rounded-2xl shadow-lg hover:shadow-xl transition-all duration-500" 
+                       data-aos="zoom-in" data-aos-delay="400"
+                       data-sub-html="<h4>Evening Illuminations</h4><p>The pandal at night with lights</p>">
+                        <img src="https://assets.onecompiler.app/4362nvr75/436am4ert/jaghadhatri%20puja%206.png" 
+                             alt="Gallery Image 5" 
+                             class="w-full h-80 object-cover transform group-hover:scale-110 transition duration-700">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent flex flex-col justify-end p-6 opacity-0 group-hover:opacity-100 transition duration-500">
+                            <h3 class="text-xl font-bold text-white">Evening Illuminations</h3>
+                            <p class="text-gray-200 mt-2">The pandal at night with lights</p>
+                            <div class="mt-4 flex space-x-3">
+                                <span class="text-white bg-primary/80 hover:bg-primary p-3 rounded-full transition">
+                                    <i class="fas fa-expand"></i>
+                                </span>
+                            </div>
+                        </div>
+                    </a>
+                    
+                    <a href="https://assets.onecompiler.app/4362nvr75/43ceedbub/IMG20241110205523.jpg" 
+                       class="gallery-item relative group overflow-hidden rounded-2xl shadow-lg hover:shadow-xl transition-all duration-500" 
+                       data-aos="zoom-in" data-aos-delay="500"
+                       data-sub-html="<h4>Divine Idol</h4><p>The beautifully crafted Jagadhatri idol</p>">
+                        <img src="https://assets.onecompiler.app/4362nvr75/43ceedbub/IMG20241110205523.jpg" 
+                             alt="Gallery Image 6" 
+                             class="w-full h-80 object-cover transform group-hover:scale-110 transition duration-700">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent flex flex-col justify-end p-6 opacity-0 group-hover:opacity-100 transition duration-500">
+                            <h3 class="text-xl font-bold text-white">Divine Idol</h3>
+                            <p class="text-gray-200 mt-2">The beautifully crafted Jagadhatri idol</p>
+                            <div class="mt-4 flex space-x-3">
+                                <span class="text-white bg-primary/80 hover:bg-primary p-3 rounded-full transition">
+                                    <i class="fas fa-expand"></i>
+                                </span>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                
+                <div class="text-center mt-16" data-aos="fade-up">
+                    <button class="px-10 py-4 bg-gradient-to-r from-primary to-accent text-white font-medium rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 flex items-center justify-center gap-3 mx-auto">
+                        <i class="fas fa-images"></i>
+                        View Full Gallery
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- History Timeline -->
+        <section id="history" class="py-20 bg-white relative overflow-hidden pattern-dots">
+            <!-- Decorative elements -->
+            <div class="absolute top-0 left-0 w-full h-full opacity-5">
+                <div class="absolute top-1/4 left-1/4 w-32 h-32 bg-primary rounded-full blur-xl floating-element"></div>
+                <div class="absolute bottom-1/3 right-1/4 w-40 h-40 bg-secondary rounded-full blur-xl floating-element-2"></div>
+            </div>
+            
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+                <div class="text-center mb-16" data-aos="fade-up">
+                    <h2 class="text-4xl sm:text-5xl font-serif font-bold text-dark mb-4">
+                        <span class="gradient-text bg-gradient-to-r from-primary to-accent">Our Journey</span>
+                    </h2>
+                    <div class="w-32 h-1 bg-gradient-to-r from-primary to-accent mx-auto rounded-full mb-6"></div>
+                    <p class="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
+                        A timeline of our rich history and significant milestones over the past eight decades.
+                    </p>
+                </div>
+                
+                <div class="relative">
+                    <!-- Timeline line -->
+                    <div class="hidden md:block absolute left-1/2 top-0 bottom-0 w-1 bg-gradient-to-b from-primary to-accent transform -translate-x-1/2"></div>
+                    
+                    <!-- Timeline items -->
+                    <div class="space-y-16 md:space-y-0">
+                        <!-- Item 1 -->
+                        <div class="relative md:flex justify-between items-center" data-aos="fade-up">
+                            <div class="md:w-5/12 mb-8 md:mb-0 md:pr-12 text-right">
+                                <div class="glass-effect p-8 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 card-3d">
+                                    <div class="flex items-center justify-end mb-4">
+                                        <span class="text-sm font-medium text-gray-500">1944</span>
+                                        <div class="ml-3 w-12 h-0.5 bg-primary"></div>
+                                    </div>
+                                    <h3 class="text-2xl font-semibold text-dark mb-3">The Beginning</h3>
+                                    <p class="text-gray-600 leading-relaxed">
+                                        The inception of Palpara Sarbojoni Jagadhatri Puja in the front yard of Harihar Seth Mahashay's house.
+                                    </p>
+                                </div>
+                            </div>
+                            
+                            <div class="hidden md:flex items-center justify-center w-2/12">
+                                <div class="h-8 w-8 rounded-full bg-gradient-to-r from-primary to-accent border-4 border-white shadow-xl"></div>
+                            </div>
+                            
+                            <div class="md:w-5/12 md:pl-12">
+                                <!-- Empty on this side -->
+                            </div>
+                        </div>
+                        
+                        <!-- Item 2 -->
+                        <div class="relative md:flex justify-between items-center" data-aos="fade-up" data-aos-delay="100">
+                            <div class="md:w-5/12 md:pr-12">
+                                <!-- Empty on this side -->
+                            </div>
+                            
+                            <div class="hidden md:flex items-center justify-center w-2/12">
+                                <div class="h-8 w-8 rounded-full bg-gradient-to-r from-primary to-accent border-4 border-white shadow-xl"></div>
+                            </div>
+                            
+                            <div class="md:w-5/12 mb-8 md:mb-0 md:pl-12">
+                                <div class="glass-effect p-8 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 card-3d">
+                                    <div class="flex items-center mb-4">
+                                        <div class="w-12 h-0.5 bg-primary"></div>
+                                        <span class="ml-3 text-sm font-medium text-gray-500">1960s</span>
+                                    </div>
+                                    <h3 class="text-2xl font-semibold text-dark mb-3">Growing Popularity</h3>
+                                    <p class="text-gray-600 leading-relaxed">
+                                        The puja gains popularity and becomes a significant community event in Chandannagar.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Item 3 -->
+                        <div class="relative md:flex justify-between items-center" data-aos="fade-up" data-aos-delay="200">
+                            <div class="md:w-5/12 mb-8 md:mb-0 md:pr-12 text-right">
+                                <div class="glass-effect p-8 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 card-3d">
+                                    <div class="flex items-center justify-end mb-4">
+                                        <span class="text-sm font-medium text-gray-500">1980s</span>
+                                        <div class="ml-3 w-12 h-0.5 bg-primary"></div>
+                                    </div>
+                                    <h3 class="text-2xl font-semibold text-dark mb-3">Cultural Expansion</h3>
+                                    <p class="text-gray-600 leading-relaxed">
+                                        Introduction of cultural programs and competitions alongside the religious ceremonies.
+                                    </p>
+                                </div>
+                            </div>
+                            
+                            <div class="hidden md:flex items-center justify-center w-2/12">
+                                <div class="h-8 w-8 rounded-full bg-gradient-to-r from-primary to-accent border-4 border-white shadow-xl"></div>
+                            </div>
+                            
+                            <div class="md:w-5/12 md:pl-12">
+                                <!-- Empty on this side -->
+                            </div>
+                        </div>
+                        
+                        <!-- Item 4 -->
+                        <div class="relative md:flex justify-between items-center" data-aos="fade-up" data-aos-delay="300">
+                            <div class="md:w-5/12 md:pr-12">
+                                <!-- Empty on this side -->
+                            </div>
+                            
+                            <div class="hidden md:flex items-center justify-center w-2/12">
+                                <div class="h-8 w-8 rounded-full bg-gradient-to-r from-primary to-accent border-4 border-white shadow-xl"></div>
+                            </div>
+                            
+                            <div class="md:w-5/12 mb-8 md:mb-0 md:pl-12">
+                                <div class="glass-effect p-8 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 card-3d">
+                                    <div class="flex items-center mb-4">
+                                        <div class="w-12 h-0.5 bg-primary"></div>
+                                        <span class="ml-3 text-sm font-medium text-gray-500">2000s</span>
+                                    </div>
+                                    <h3 class="text-2xl font-semibold text-dark mb-3">Modernization</h3>
+                                    <p class="text-gray-600 leading-relaxed">
+                                        Modernization of celebrations while preserving traditional rituals and values.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Item 5 -->
+                        <div class="relative md:flex justify-between items-center" data-aos="fade-up" data-aos-delay="400">
+                            <div class="md:w-5/12 mb-8 md:mb-0 md:pr-12 text-right">
+                                <div class="glass-effect p-8 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 card-3d">
+                                    <div class="flex items-center justify-end mb-4">
+                                        <span class="text-sm font-medium text-gray-500">2024</span>
+                                        <div class="ml-3 w-12 h-0.5 bg-primary"></div>
+                                    </div>
+                                    <h3 class="text-2xl font-semibold text-dark mb-3">Grand Celebrations</h3>
+                                    <p class="text-gray-600 leading-relaxed">
+                                        Celebrating 80 glorious years with grand festivities and community participation.
+                                    </p>
+                                </div>
+                            </div>
+                            
+                            <div class="hidden md:flex items-center justify-center w-2/12">
+                                <div class="h-8 w-8 rounded-full bg-gradient-to-r from-primary to-accent border-4 border-white shadow-xl"></div>
+                            </div>
+                            
+                            <div class="md:w-5/12 md:pl-12">
+                                <!-- Empty on this side -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Testimonials Section -->
+        <section class="py-20 bg-gradient-to-r from-primary to-indigo-700 text-white relative overflow-hidden">
+            <!-- Decorative elements -->
+            <div class="absolute top-0 left-0 w-full h-full opacity-10">
+                <div class="absolute top-1/4 left-1/4 w-24 h-24 rounded-full bg-white floating-element"></div>
+                <div class="absolute bottom-1/3 right-1/4 w-28 h-28 rounded-full bg-white floating-element-2"></div>
+            </div>
+            
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+                <div class="text-center mb-16" data-aos="fade-up">
+                    <h2 class="text-4xl sm:text-5xl font-serif font-bold text-white mb-4">
+                        <span class="gradient-text bg-gradient-to-r from-secondary to-accent">Community Voices</span>
+                    </h2>
+                    <div class="w-32 h-1 bg-gradient-to-r from-secondary to-accent mx-auto rounded-full mb-6"></div>
+                    <p class="text-xl text-gray-200 max-w-3xl mx-auto leading-relaxed">
+                        Hear what our community members have to say about this sacred tradition.
+                    </p>
+                </div>
+                
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <div class="glass-effect p-8 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 card-3d" data-aos="zoom-in">
+                        <div class="flex items-center mb-6">
+                            <div class="flex-shrink-0 relative">
+                                <img class="h-14 w-14 rounded-full object-cover" src="https://randomuser.me/api/portraits/men/32.jpg" alt="Testimonial">
+                                <div class="absolute -bottom-1 -right-1 bg-primary p-1 rounded-full">
+                                    <i class="fas fa-quote-right text-xs text-white"></i>
+                                </div>
+                            </div>
+                            <div class="ml-4">
+                                <h4 class="text-lg font-semibold">Rajiv Banerjee</h4>
+                                <p class="text-gray-300 text-sm">Committee Member</p>
+                            </div>
+                        </div>
+                        <p class="text-gray-200 italic leading-relaxed">
+                            "This puja is not just a festival, it's our identity. For 82 years, it has brought our community together in celebration of our shared heritage."
+                        </p>
+                        <div class="mt-6 flex text-yellow-400">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                    </div>
+                    
+                    <div class="glass-effect p-8 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 card-3d" data-aos="zoom-in" data-aos-delay="100">
+                        <div class="flex items-center mb-6">
+                            <div class="flex-shrink-0 relative">
+                                <img class="h-14 w-14 rounded-full object-cover" src="https://randomuser.me/api/portraits/women/45.jpg" alt="Testimonial">
+                                <div class="absolute -bottom-1 -right-1 bg-primary p-1 rounded-full">
+                                    <i class="fas fa-quote-right text-xs text-white"></i>
+                                </div>
+                            </div>
+                            <div class="ml-4">
+                                <h4 class="text-lg font-semibold">Mitali Das</h4>
+                                <p class="text-gray-300 text-sm">Long-time Participant</p>
+                            </div>
+                        </div>
+                        <p class="text-gray-200 italic leading-relaxed">
+                            "I've been coming to this puja since I was a child. Now I bring my grandchildren. The continuity of tradition is what makes it so special."
+                        </p>
+                        <div class="mt-6 flex text-yellow-400">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star-half-alt"></i>
+                        </div>
+                    </div>
+                    
+                    <div class="glass-effect p-8 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 card-3d" data-aos="zoom-in" data-aos-delay="200">
+                        <div class="flex items-center mb-6">
+                            <div class="flex-shrink-0 relative">
+                                <img class="h-14 w-14 rounded-full object-cover" src="https://randomuser.me/api/portraits/men/68.jpg" alt="Testimonial">
+                                <div class="absolute -bottom-1 -right-1 bg-primary p-1 rounded-full">
+                                    <i class="fas fa-quote-right text-xs text-white"></i>
+                                </div>
+                            </div>
+                            <div class="ml-4">
+                                <h4 class="text-lg font-semibold">Arjun Chatterjee</h4>
+                                <p class="text-gray-300 text-sm">Youth Coordinator</p>
+                            </div>
+                        </div>
+                        <p class="text-gray-200 italic leading-relaxed">
+                            "As a youth member, I'm proud to be part of this tradition. We blend modern ideas with ancient rituals to keep the puja relevant for new generations."
+                        </p>
+                        <div class="mt-6 flex text-yellow-400">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Events Section -->
+        <section id="events" class="py-20 bg-white relative overflow-hidden">
+            <!-- Decorative elements -->
+            <div class="absolute top-0 right-0 w-64 h-64 bg-primary/5 rounded-full blur-3xl"></div>
+            <div class="absolute bottom-0 left-0 w-64 h-64 bg-secondary/5 rounded-full blur-3xl"></div>
+            
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+                <div class="text-center mb-16" data-aos="fade-up">
+                    <h2 class="text-4xl sm:text-5xl font-serif font-bold text-dark mb-4">
+                        <span class="gradient-text bg-gradient-to-r from-primary to-accent">Upcoming Events</span>
+                    </h2>
+                    <div class="w-32 h-1 bg-gradient-to-r from-primary to-accent mx-auto rounded-full mb-6"></div>
+                    <p class="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
+                        Join us in celebrating the divine mother with these special events and rituals.
+                    </p>
+                </div>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <div class="glass-effect p-8 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 card-3d" data-aos="fade-up">
+                        <div class="flex items-center mb-6">
+                            <div class="flex-shrink-0 bg-primary/10 p-4 rounded-xl text-primary">
+                                <i class="fas fa-leaf text-2xl"></i>
+                            </div>
+                            <div class="ml-4">
+                                <h3 class="text-xl font-semibold">Nabapatrika</h3>
+                                <p class="text-gray-500">November 10, 2025</p>
+                            </div>
+                        </div>
+                        <p class="text-gray-600 leading-relaxed">
+                            The ceremonial installation of nine plants representing the nine forms of Goddess Durga.
+                        </p>
+                        <div class="mt-6 flex items-center justify-between">
+                            <span class="text-sm text-primary font-medium">6:00 AM - 8:00 AM</span>
+                            <button class="px-4 py-2 bg-primary/10 text-primary rounded-lg font-medium hover:bg-primary/20 transition-colors">
+                                Details
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div class="glass-effect p-8 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 card-3d" data-aos="fade-up" data-aos-delay="100">
+                        <div class="flex items-center mb-6">
+                            <div class="flex-shrink-0 bg-primary/10 p-4 rounded-xl text-primary">
+                                <i class="fas fa-fire text-2xl"></i>
+                            </div>
+                            <div class="ml-4">
+                                <h3 class="text-xl font-semibold">Mahasaptami</h3>
+                                <p class="text-gray-500">November 11, 2025</p>
+                            </div>
+                        </div>
+                        <p class="text-gray-600 leading-relaxed">
+                            The first day of main puja with elaborate rituals and cultural programs throughout the day.
+                        </p>
+                        <div class="mt-6 flex items-center justify-between">
+                            <span class="text-sm text-primary font-medium">All Day Event</span>
+                            <button class="px-4 py-2 bg-primary/10 text-primary rounded-lg font-medium hover:bg-primary/20 transition-colors">
+                                Details
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div class="glass-effect p-8 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 card-3d" data-aos="fade-up" data-aos-delay="200">
+                        <div class="flex items-center mb-6">
+                            <div class="flex-shrink-0 bg-primary/10 p-4 rounded-xl text-primary">
+                                <i class="fas fa-clock text-2xl"></i>
+                            </div>
+                            <div class="ml-4">
+                                <h3 class="text-xl font-semibold">Sandhi Puja</h3>
+                                <p class="text-gray-500">November 12, 2025</p>
+                            </div>
+                        </div>
+                        <p class="text-gray-600 leading-relaxed">
+                            The most auspicious moment when Ashtami ends and Navami begins, with special rituals.
+                        </p>
+                        <div class="mt-6 flex items-center justify-between">
+                            <span class="text-sm text-primary font-medium">8:00 PM - 9:00 PM</span>
+                            <button class="px-4 py-2 bg-primary/10 text-primary rounded-lg font-medium hover:bg-primary/20 transition-colors">
+                                Details
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div class="glass-effect p-8 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 card-3d" data-aos="fade-up" data-aos-delay="300">
+                        <div class="flex items-center mb-6">
+                            <div class="flex-shrink-0 bg-primary/10 p-4 rounded-xl text-primary">
+                                <i class="fas fa-music text-2xl"></i>
+                            </div>
+                            <div class="ml-4">
+                                <h3 class="text-xl font-semibold">Cultural Night</h3>
+                                <p class="text-gray-500">November 12, 2025</p>
+                            </div>
+                        </div>
+                        <p class="text-gray-600 leading-relaxed">
+                            An evening of traditional music, dance, and performances by local artists and community members.
+                        </p>
+                        <div class="mt-6 flex items-center justify-between">
+                            <span class="text-sm text-primary font-medium">7:00 PM - 11:00 PM</span>
+                            <button class="px-4 py-2 bg-primary/10 text-primary rounded-lg font-medium hover:bg-primary/20 transition-colors">
+                                Details
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div class="glass-effect p-8 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 card-3d" data-aos="fade-up" data-aos-delay="400">
+                        <div class="flex items-center mb-6">
+                            <div class="flex-shrink-0 bg-primary/10 p-4 rounded-xl text-primary">
+                                <i class="fas fa-utensils text-2xl"></i>
+                            </div>
+                            <div class="ml-4">
+                                <h3 class="text-xl font-semibold">Community Feast</h3>
+                                <p class="text-gray-500">November 13, 2025</p>
+                            </div>
+                        </div>
+                        <p class="text-gray-600 leading-relaxed">
+                            A grand feast where the entire community comes together to share food and celebrate.
+                        </p>
+                        <div class="mt-6 flex items-center justify-between">
+                            <span class="text-sm text-primary font-medium">1:00 PM - 3:00 PM</span>
+                            <button class="px-4 py-2 bg-primary/10 text-primary rounded-lg font-medium hover:bg-primary/20 transition-colors">
+                                Details
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div class="glass-effect p-8 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 card-3d" data-aos="fade-up" data-aos-delay="500">
+                        <div class="flex items-center mb-6">
+                            <div class="flex-shrink-0 bg-primary/10 p-4 rounded-xl text-primary">
+                                <i class="fas fa-water text-2xl"></i>
+                            </div>
+                            <div class="ml-4">
+                                <h3 class="text-xl font-semibold">Immersion Ceremony</h3>
+                                <p class="text-gray-500">November 14, 2025</p>
+                            </div>
+                        </div>
+                        <p class="text-gray-600 leading-relaxed">
+                            The grand procession and immersion of the idol, marking the conclusion of the festival.
+                        </p>
+                        <div class="mt-6 flex items-center justify-between">
+                            <span class="text-sm text-primary font-medium">4:00 PM - 7:00 PM</span>
+                            <button class="px-4 py-2 bg-primary/10 text-primary rounded-lg font-medium hover:bg-primary/20 transition-colors">
+                                Details
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="py-20 bg-gradient-to-r from-primary to-indigo-700 text-white relative overflow-hidden">
+            <!-- Decorative elements -->
+            <div class="absolute top-0 left-0 w-full h-full opacity-10">
+                <div class="absolute top-1/4 left-1/4 w-24 h-24 rounded-full bg-white floating-element"></div>
+                <div class="absolute bottom-1/3 right-1/4 w-28 h-28 rounded-full bg-white floating-element-2"></div>
+            </div>
+            
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+                <div class="text-center mb-16" data-aos="fade-up">
+                    <h2 class="text-4xl sm:text-5xl font-serif font-bold text-white mb-4">
+                        <span class="gradient-text bg-gradient-to-r from-secondary to-accent">Get In Touch</span>
+                    </h2>
+                    <div class="w-32 h-1 bg-gradient-to-r from-secondary to-accent mx-auto rounded-full mb-6"></div>
+                    <p class="text-xl text-gray-200 max-w-3xl mx-auto leading-relaxed">
+                        Connect with us to learn more about our traditions or participate in the celebrations.
+                    </p>
+                </div>
+                
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+                    <div>
+                        <h3 class="text-3xl font-semibold mb-8">Contact Information</h3>
+                        
+                        <div class="space-y-8">
+                            <div class="flex items-start" data-aos="fade-right">
+                                <div class="flex-shrink-0 bg-white/20 p-5 rounded-xl text-white">
+                                    <i class="fas fa-map-marker-alt text-2xl"></i>
+                                </div>
+                                <div class="ml-6">
+                                    <h4 class="text-xl font-medium text-white">Address</h4>
+                                    <p class="mt-2 text-gray-300 leading-relaxed">Palpara, Chandannagar, West Bengal 712136</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start" data-aos="fade-right" data-aos-delay="100">
+                                <div class="flex-shrink-0 bg-white/20 p-5 rounded-xl text-white">
+                                    <i class="fas fa-phone-alt text-2xl"></i>
+                                </div>
+                                <div class="ml-6">
+                                    <h4 class="text-xl font-medium text-white">Phone</h4>
+                                    <p class="mt-2 text-gray-300 leading-relaxed">+91 98765 43210</p>
+                                    <p class="text-gray-300 leading-relaxed">+91 98765 43211</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start" data-aos="fade-right" data-aos-delay="200">
+                                <div class="flex-shrink-0 bg-white/20 p-5 rounded-xl text-white">
+                                    <i class="fas fa-envelope text-2xl"></i>
+                                </div>
+                                <div class="ml-6">
+                                    <h4 class="text-xl font-medium text-white">Email</h4>
+                                    <p class="mt-2 text-gray-300 leading-relaxed">info@palparasarbojoni.com</p>
+                                    <p class="text-gray-300 leading-relaxed">support@palparasarbojoni.com</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="mt-12" data-aos="fade-right" data-aos-delay="300">
+                            <h4 class="text-xl font-medium text-white mb-6">Follow Us</h4>
+                            <div class="flex space-x-6">
+                                <a href="#" class="text-gray-300 hover:text-white transition-colors transform hover:-translate-y-1 text-2xl" aria-label="Facebook">
+                                    <i class="fab fa-facebook-f"></i>
+                                </a>
+                                <a href="#" class="text-gray-300 hover:text-white transition-colors transform hover:-translate-y-1 text-2xl" aria-label="Twitter">
+                                    <i class="fab fa-twitter"></i>
+                                </a>
+                                <a href="#" class="text-gray-300 hover:text-white transition-colors transform hover:-translate-y-1 text-2xl" aria-label="Instagram">
+                                    <i class="fab fa-instagram"></i>
+                                </a>
+                                <a href="#" class="text-gray-300 hover:text-white transition-colors transform hover:-translate-y-1 text-2xl" aria-label="YouTube">
+                                    <i class="fab fa-youtube"></i>
+                                </a>
+                                <a href="#" class="text-gray-300 hover:text-white transition-colors transform hover:-translate-y-1 text-2xl" aria-label="WhatsApp">
+                                    <i class="fab fa-whatsapp"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div data-aos="fade-left">
+                        <form class="space-y-6 glass-effect p-8 rounded-2xl shadow-lg">
+                            <div>
+                                <label for="name" class="block text-sm font-medium text-white mb-2">Your Name</label>
+                                <input type="text" id="name" name="name" 
+                                       class="block w-full bg-white/10 border border-white/20 rounded-lg shadow-sm py-3 px-4 focus:outline-none focus:ring-2 focus:ring-secondary focus:border-secondary transition-all text-white placeholder-gray-300">
+                            </div>
+                            
+                            <div>
+                                <label for="email" class="block text-sm font-medium text-white mb-2">Email Address</label>
+                                <input type="email" id="email" name="email" 
+                                       class="block w-full bg-white/10 border border-white/20 rounded-lg shadow-sm py-3 px-4 focus:outline-none focus:ring-2 focus:ring-secondary focus:border-secondary transition-all text-white placeholder-gray-300">
+                            </div>
+                            
+                            <div>
+                                <label for="phone" class="block text-sm font-medium text-white mb-2">Phone Number</label>
+                                <input type="tel" id="phone" name="phone" 
+                                       class="block w-full bg-white/10 border border-white/20 rounded-lg shadow-sm py-3 px-4 focus:outline-none focus:ring-2 focus:ring-secondary focus:border-secondary transition-all text-white placeholder-gray-300">
+                            </div>
+                            
+                            <div>
+                                <label for="subject" class="block text-sm font-medium text-white mb-2">Subject</label>
+                                <select id="subject" name="subject" 
+                                        class="block w-full bg-white/10 border border-white/20 rounded-lg shadow-sm py-3 px-4 focus:outline-none focus:ring-2 focus:ring-secondary focus:border-secondary transition-all text-white">
+                                    <option class="bg-dark">General Inquiry</option>
+                                    <option class="bg-dark">Participation</option>
+                                    <option class="bg-dark">Donation</option>
+                                    <option class="bg-dark">Volunteer</option>
+                                    <option class="bg-dark">Other</option>
+                                </select>
+                            </div>
+                            
+                            <div>
+                                <label for="message" class="block text-sm font-medium text-white mb-2">Your Message</label>
+                                <textarea id="message" name="message" rows="5" 
+                                          class="block w-full bg-white/10 border border-white/20 rounded-lg shadow-sm py-3 px-4 focus:outline-none focus:ring-2 focus:ring-secondary focus:border-secondary transition-all text-white placeholder-gray-300"></textarea>
+                            </div>
+                            
+                            <div class="flex items-center">
+                                <input id="agree" name="agree" type="checkbox" 
+                                       class="h-4 w-4 text-primary focus:ring-primary border-gray-300 rounded">
+                                <label for="agree" class="ml-2 block text-sm text-gray-300">
+                                    I agree to the <a href="#" class="text-secondary hover:underline">privacy policy</a>
+                                </label>
+                            </div>
+                            
+                            <div>
+                                <button type="submit" 
+                                        class="w-full flex justify-center py-4 px-6 border border-transparent rounded-lg shadow-sm text-lg font-medium text-white bg-gradient-to-r from-secondary to-accent hover:from-secondary-dark hover:to-accent focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-secondary transition-all transform hover:-translate-y-1">
+                                    Send Message
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Enhanced Circular Map Section -->
+<section class="py-20 bg-gradient-to-b from-gray-100 to-gray-50 relative overflow-hidden">
+  <!-- Decorative elements -->
+  <div class="absolute -top-20 -right-20 w-64 h-64 bg-primary/5 rounded-full blur-3xl"></div>
+  <div class="absolute -bottom-20 -left-20 w-64 h-64 bg-secondary/5 rounded-full blur-3xl"></div>
+  
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center mb-12">
+      <h2 class="text-3xl sm:text-4xl font-serif font-bold text-dark mb-4">
+        <span class="gradient-text bg-gradient-to-r from-primary to-accent">Our Location</span>
+      </h2>
+      <div class="w-24 h-1 bg-gradient-to-r from-primary to-accent mx-auto rounded-full mb-6"></div>
+      <p class="text-lg text-gray-600 max-w-2xl mx-auto">
+        Visit us during the festival at Palpara, Chandannagar
+      </p>
+    </div>
+
+    <div class="flex justify-center">
+      <div class="relative w-full max-w-2xl h-96">
+        <!-- Circular map container with shadow and border -->
+        <div class="absolute inset-0 rounded-full overflow-hidden shadow-2xl transform rotate-0 hover:rotate-1 transition-all duration-500 border-8 border-white z-10">
+          <iframe 
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3680.715236283839!2d88.36665561534395!3d22.87145498174098!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39f891c5a8e3a9b1%3A0x8a6c0e8b0e8b0e8b!2sPalpara%2C%20Chandannagar%2C%20West%20Bengal%20712136!5e0!3m2!1sen!2sin!4v1620000000000!5m2!1sen!2sin" 
+            width="100%" 
+            height="100%" 
+            style="border:0;" 
+            allowfullscreen="" 
+            loading="lazy"
+            class="filter grayscale hover:grayscale-0 contrast-110 brightness-1.1 transition-all duration-700">
+          </iframe>
+        </div>
+        
+        <!-- Decorative circle behind -->
+        <div class="absolute -inset-4 bg-gradient-to-br from-primary to-accent rounded-full blur-md opacity-20 animate-pulse-slow z-0"></div>
+        
+        <!-- Floating location pin -->
+        <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-20 w-16 h-16 bg-white rounded-full flex items-center justify-center shadow-xl border-4 border-white animate-bounce-slow">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+          </svg>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Address box -->
+    <div class="mt-12 text-center">
+      <div class="inline-block bg-white rounded-xl shadow-lg px-8 py-6 max-w-md mx-auto border border-gray-100 transform hover:-translate-y-2 transition-all duration-300">
+        <h3 class="text-xl font-semibold text-dark mb-2">Palpara Sarbojoni Jagadhatri Puja</h3>
+        <p class="text-gray-600">Palpara, Chandannagar</p>
+        <p class="text-gray-600">West Bengal 712136, India</p>
+        <a href="https://maps.google.com/?q=Palpara,Chandannagar" target="_blank" class="mt-4 inline-flex items-center text-primary hover:text-primary-dark transition-colors">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-1" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clip-rule="evenodd" />
+          </svg>
+          Open in Maps
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  /* Add these custom styles */
+  @keyframes bounce-slow {
+    0%, 100% { transform: translate(-50%, -50%) scale(1); }
+    50% { transform: translate(-50%, -50%) scale(1.1); }
+  }
+  
+  .animate-bounce-slow {
+    animation: bounce-slow 3s ease-in-out infinite;
+  }
+  
+  .animate-pulse-slow {
+    animation: pulse 6s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  }
+  
+  /* Ensure map maintains circular shape */
+  @media (max-width: 640px) {
+    .relative.w-full.max-w-2xl.h-96 {
+      height: 80vw;
+      max-width: 80vw;
+    }
+  }
+</style>
+
+        <!-- Newsletter Section -->
+        <section class="py-16 bg-dark text-white">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+                    <div data-aos="fade-right">
+                        <h3 class="text-3xl font-bold mb-4">Stay Updated</h3>
+                        <p class="text-lg text-gray-300 leading-relaxed">
+                            Subscribe to our newsletter to receive updates about the puja celebrations, events, and community activities.
+                        </p>
+                    </div>
+                    
+                    <div data-aos="fade-left">
+                        <form class="flex">
+                            <input type="email" placeholder="Your email address" 
+                                   class="flex-grow px-6 py-4 rounded-l-lg focus:outline-none text-dark bg-white">
+                            <button type="submit" 
+                                    class="bg-secondary text-dark px-8 py-4 rounded-r-lg font-medium hover:bg-secondary-dark transition-colors">
+                                Subscribe
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="bg-dark text-white pt-20 pb-12 relative overflow-hidden">
+            <!-- Decorative elements -->
+            <div class="absolute top-0 left-0 w-full h-full opacity-10">
+                <div class="absolute top-1/4 left-1/4 w-24 h-24 rounded-full bg-primary floating-element"></div>
+                <div class="absolute bottom-1/3 right-1/4 w-28 h-28 rounded-full bg-secondary floating-element-2"></div>
+            </div>
+            
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+                <div class="grid grid-cols-1 md:grid-cols-4 gap-12">
+                    <div data-aos="fade-up">
+                        <h3 class="text-2xl font-bold mb-6">Palpara Sarbojoni</h3>
+                        <p class="text-gray-400 mb-6 leading-relaxed">
+                            Celebrating 82 years of divine tradition and cultural heritage in the heart of Chandannagar.
+                        </p>
+                        <div class="flex space-x-4">
+                            <a href="#" class="text-gray-400 hover:text-white transition-colors">
+                                <i class="fab fa-facebook-f text-xl"></i>
+                            </a>
+                            <a href="#" class="text-gray-400 hover:text-white transition-colors">
+                                <i class="fab fa-twitter text-xl"></i>
+                            </a>
+                            <a href="#" class="text-gray-400 hover:text-white transition-colors">
+                                <i class="fab fa-instagram text-xl"></i>
+                            </a>
+                            <a href="#" class="text-gray-400 hover:text-white transition-colors">
+                                <i class="fab fa-youtube text-xl"></i>
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <div data-aos="fade-up" data-aos-delay="100">
+                        <h4 class="text-lg font-semibold mb-6">Quick Links</h4>
+                        <ul class="space-y-3">
+                            <li><a href="#home" class="text-gray-400 hover:text-white transition-colors underline-animation">Home</a></li>
+                            <li><a href="#about" class="text-gray-400 hover:text-white transition-colors underline-animation">About</a></li>
+                            <li><a href="#gallery" class="text-gray-400 hover:text-white transition-colors underline-animation">Gallery</a></li>
+                            <li><a href="#history" class="text-gray-400 hover:text-white transition-colors underline-animation">History</a></li>
+                            <li><a href="#events" class="text-gray-400 hover:text-white transition-colors underline-animation">Events</a></li>
+                            <li><a href="#contact" class="text-gray-400 hover:text-white transition-colors underline-animation">Contact</a></li>
+                        </ul>
+                    </div>
+                    
+                    <div data-aos="fade-up" data-aos-delay="200">
+                        <h4 class="text-lg font-semibold mb-6">Important Dates</h4>
+                        <ul class="space-y-3">
+                            <li class="text-gray-400">Nabapatrika: Nov 10</li>
+                            <li class="text-gray-400">Mahasaptami: Nov 11</li>
+                            <li class="text-gray-400">Mahaashtami: Nov 12</li>
+                            <li class="text-gray-400">Mahanavami: Nov 13</li>
+                            <li class="text-gray-400">Vijayadashami: Nov 14</li>
+                        </ul>
+                    </div>
+                    
+                    <div data-aos="fade-up" data-aos-delay="300">
+                        <h4 class="text-lg font-semibold mb-6">Support Us</h4>
+                        <p class="text-gray-400 mb-6 leading-relaxed">
+                            Your donations help us continue this sacred tradition and serve the community.
+                        </p>
+                        <button class="px-8 py-3 bg-gradient-to-r from-primary to-accent text-white rounded-lg shadow-lg hover:shadow-xl transition-all transform hover:-translate-y-1 fab-effect">
+                            Donate Now
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="border-t border-gray-800 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center">
+                    <p class="text-gray-400 text-sm">
+                        &copy; 2025 Palpara Sarbojoni Jagadhatri Puja Committee. All rights reserved.
+                    </p>
+                    
+                    <div class="flex space-x-6 mt-4 md:mt-0">
+                        <a href="#" class="text-gray-400 hover:text-white transition-colors text-sm underline-animation">Privacy Policy</a>
+                        <a href="#" class="text-gray-400 hover:text-white transition-colors text-sm underline-animation">Terms of Service</a>
+                        <a href="#" class="text-gray-400 hover:text-white transition-colors text-sm underline-animation">Sitemap</a>
+                    </div>
+                </div>
+            </div>
+        </footer>
+
+        <!-- Back to Top Button -->
+        <button id="back-to-top" class="fixed bottom-8 right-8 bg-gradient-to-r from-primary to-accent text-white p-4 rounded-full shadow-xl opacity-0 invisible transition-all duration-300 hover:from-primary-dark hover:to-accent transform hover:scale-110 fab-effect">
+            <i class="fas fa-arrow-up text-xl"></i>
+        </button>
+
+        <!-- Floating WhatsApp Button -->
+        <a href="https://wa.me/919876543210" class="fixed bottom-8 left-8 bg-green-500 text-white p-4 rounded-full shadow-xl transition-all hover:bg-green-600 transform hover:scale-110 z-40 fab-effect" aria-label="Chat on WhatsApp">
+            <i class="fab fa-whatsapp text-2xl"></i>
+        </a>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lightgallery-js/1.4.0/js/lightgallery.min.js"></script>
+    <script>
+        // Initialize AOS animation library
+        AOS.init({
+            duration: 800,
+            easing: 'ease-in-out',
+            once: true,
+            offset: 100
+        });
+
+        // Hide splash screen after animation
+        document.addEventListener("DOMContentLoaded", function() {
+            setTimeout(function() {
+                document.getElementById('splash').style.display = 'none';
+                document.getElementById('main-content').classList.remove('opacity-0');
+            }, 3000);
+        });
+        
+        // Initialize particles.js
+        particlesJS("particles-js", {
+            "particles": {
+                "number": {
+                    "value": 80,
+                    "density": {
+                        "enable": true,
+                        "value_area": 800
+                    }
+                },
+                "color": {
+                    "value": "#4F46E5"
+                },
+                "shape": {
+                    "type": "circle",
+                    "stroke": {
+                        "width": 0,
+                        "color": "#000000"
+                    },
+                    "polygon": {
+                        "nb_sides": 5
+                    }
+                },
+                "opacity": {
+                    "value": 0.3,
+                    "random": false,
+                    "anim": {
+                        "enable": false,
+                        "speed": 1,
+                        "opacity_min": 0.1,
+                        "sync": false
+                    }
+                },
+                "size": {
+                    "value": 3,
+                    "random": true,
+                    "anim": {
+                        "enable": false,
+                        "speed": 40,
+                        "size_min": 0.1,
+                        "sync": false
+                    }
+                },
+                "line_linked": {
+                    "enable": true,
+                    "distance": 150,
+                    "color": "#4F46E5",
+                    "opacity": 0.2,
+                    "width": 1
+                },
+                "move": {
+                    "enable": true,
+                    "speed": 2,
+                    "direction": "none",
+                    "random": false,
+                    "straight": false,
+                    "out_mode": "out",
+                    "bounce": false,
+                    "attract": {
+                        "enable": false,
+                        "rotateX": 600,
+                        "rotateY": 1200
+                    }
+                }
+            },
+            "interactivity": {
+                "detect_on": "canvas",
+                "events": {
+                    "onhover": {
+                        "enable": true,
+                        "mode": "grab"
+                    },
+                    "onclick": {
+                        "enable": true,
+                        "mode": "push"
+                    },
+                    "resize": true
+                },
+                "modes": {
+                    "grab": {
+                        "distance": 140,
+                        "line_linked": {
+                            "opacity": 1
+                        }
+                    },
+                    "bubble": {
+                        "distance": 400,
+                        "size": 40,
+                        "duration": 2,
+                        "opacity": 8,
+                        "speed": 3
+                    },
+                    "repulse": {
+                        "distance": 200,
+                        "duration": 0.4
+                    },
+                    "push": {
+                        "particles_nb": 4
+                    },
+                    "remove": {
+                        "particles_nb": 2
+                    }
+                }
+            },
+            "retina_detect": true
+        });
+        
+        // Back to top button
+        const backToTopButton = document.getElementById('back-to-top');
+        
+        window.addEventListener('scroll', function() {
+            if (window.pageYOffset > 300) {
+                backToTopButton.classList.remove('opacity-0', 'invisible');
+                backToTopButton.classList.add('opacity-100', 'visible');
+            } else {
+                backToTopButton.classList.remove('opacity-100', 'visible');
+                backToTopButton.classList.add('opacity-0', 'invisible');
+            }
+        });
+        
+        backToTopButton.addEventListener('click', function() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+        
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Counter animation
+        const counters = document.querySelectorAll('.counter');
+        const speed = 200;
+
+        counters.forEach(counter => {
+            const animate = () => {
+                const target = +counter.getAttribute('data-target');
+                const count = +counter.innerText;
+                const increment = target / speed;
+                
+                if (count < target) {
+                    counter.innerText = Math.ceil(count + increment);
+                    setTimeout(animate, 1);
+                } else {
+                    counter.innerText = target;
+                }
+            };
+            
+            const observer = new IntersectionObserver((entries) => {
+                if (entries[0].isIntersecting) {
+                    animate();
+                }
+            });
+            
+            observer.observe(counter);
+        });
+
+        // Form submission
+        const form = document.querySelector('form');
+        if (form) {
+            form.addEventListener('submit', function(e) {
+                e.preventDefault();
+                // Add your form submission logic here
+                alert('Thank you for your message! We will get back to you soon.');
+                form.reset();
+            });
+        }
+        
+        // Initialize lightGallery
+        lightGallery(document.getElementById('lightgallery'), {
+            selector: '.gallery-item',
+            download: false,
+            counter: false,
+        });
+        
+        // Meteor effect
+        function createMeteor() {
+            const meteor = document.createElement('div');
+            meteor.className = 'meteor-effect';
+            meteor.style.top = `${Math.random() * 100}%`;
+            meteor.style.left = `${Math.random() * 100}%`;
+            meteor.style.animationDelay = `${Math.random() * 5}s`;
+            document.getElementById('home').appendChild(meteor);
+            
+            setTimeout(() => {
+                meteor.remove();
+            }, 5000);
+        }
+        
+        // Create multiple meteors
+        setInterval(createMeteor, 3000);
+    </script>
+</body>
+</html>

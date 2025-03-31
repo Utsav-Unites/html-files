@@ -1,0 +1,1208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Utsav Unites - Digital Magazine</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Bubblegum+Sans:wght@400;600;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <script src="https://unpkg.com/scrollreveal"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        bubblegum: ['Bubblegum Sans', 'sans-serif'],
+                        poppins: ['Poppins', 'sans-serif'],
+                    },
+                    animation: {
+                        'fade-in': 'fadeIn 1s ease-in-out',
+                        'float': 'float 6s ease-in-out infinite',
+                        'pulse-slow': 'pulse 5s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                        'text-gradient': 'textGradient 8s ease infinite',
+                    },
+                    keyframes: {
+                        fadeIn: {
+                            '0%': { opacity: '0' },
+                            '100%': { opacity: '1' },
+                        },
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-15px)' },
+                        },
+                        textGradient: {
+                            '0%, 100%': { 'background-position': '0% 50%' },
+                            '50%': { 'background-position': '100% 50%' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        :root {
+            --color-primary: 79, 70, 229;
+            --color-secondary: 236, 72, 153;
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            scroll-behavior: smooth;
+            background-color: #f8fafc;
+        }
+        
+        .dark body {
+            background-color: #0f172a;
+            color: #f8fafc;
+        }
+        
+        .heading-font {
+            font-family: 'Bubblegum Sans', sans-serif;
+        }
+        
+        .hero-slide {
+            opacity: 0;
+            transition: opacity 1.5s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .hero-slide.active {
+            opacity: 1;
+        }
+        
+        .gradient-text {
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+            background-size: 300% 300%;
+            animation: text-gradient 8s ease infinite;
+        }
+        
+        .glass-effect {
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.18);
+        }
+        
+        .dark .glass-effect {
+            background: rgba(15, 23, 42, 0.7);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .card-hover-effect {
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        
+        .card-hover-effect:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+        
+        .dark .card-hover-effect:hover {
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.3), 0 10px 10px -5px rgba(0, 0, 0, 0.1);
+        }
+        
+        .puja-thumbnail {
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            box-shadow: 0 10px 15px -3px rgba(var(--color-primary), 0.3);
+            border: 3px solid rgba(var(--color-primary), 0.5);
+        }
+        
+        .puja-thumbnail:hover {
+            transform: scale(1.15);
+            box-shadow: 0 25px 50px -12px rgba(var(--color-primary), 0.5);
+        }
+        
+        .team-image {
+            transition: transform 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        
+        .team-card:hover .team-image {
+            transform: scale(1.05);
+        }
+        
+        .social-icon {
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        
+        .social-card:hover .social-icon {
+            transform: translateY(-8px) scale(1.15);
+            filter: drop-shadow(0 10px 8px rgba(0, 0, 0, 0.2));
+        }
+        
+        .countdown-digit {
+            font-feature-settings: "tnum";
+            font-variant-numeric: tabular-nums;
+        }
+        
+        .scrollbar-hide::-webkit-scrollbar {
+            display: none;
+        }
+        
+        .custom-shape-divider-bottom-1719842609 {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            overflow: hidden;
+            line-height: 0;
+            transform: rotate(180deg);
+        }
+        
+        .custom-shape-divider-bottom-1719842609 svg {
+            position: relative;
+            display: block;
+            width: calc(100% + 1.3px);
+            height: 150px;
+        }
+        
+        .custom-shape-divider-bottom-1719842609 .shape-fill {
+            fill: #FFFFFF;
+        }
+        
+        .dark .custom-shape-divider-bottom-1719842609 .shape-fill {
+            fill: #0f172a;
+        }
+        
+        /* Mobile menu animation */
+        .mobile-menu {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .mobile-menu.open {
+            max-height: 500px;
+        }
+        
+        /* Video section enhancements */
+        .video-container {
+            position: relative;
+            overflow: hidden;
+            border-radius: 1rem;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+        }
+        
+        .video-container:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+        
+        .video-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0.3) 50%, transparent 100%);
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            padding: 1.5rem;
+            color: white;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        .video-container:hover .video-overlay {
+            opacity: 1;
+        }
+        
+        .play-button {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 70px;
+            height: 70px;
+            background-color: rgba(255, 255, 255, 0.9);
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: all 0.3s ease;
+        }
+        
+        .video-container:hover .play-button {
+            background-color: rgba(255, 255, 255, 1);
+            transform: translate(-50%, -50%) scale(1.1);
+        }
+        
+        /* Dark mode toggle */
+        .toggle-checkbox:checked {
+            right: 0;
+            border-color: #6366f1;
+        }
+        
+        .toggle-checkbox:checked + .toggle-label {
+            background-color: #6366f1;
+        }
+    </style>
+</head>
+<body class="bg-gray-50 font-poppins antialiased dark:bg-slate-900">
+
+<!-- Dark Mode Toggle -->
+<div class="fixed top-4 right-4 z-50">
+    <div class="relative inline-block w-12 mr-2 align-middle select-none">
+        <input type="checkbox" name="toggle" id="toggle" class="toggle-checkbox absolute block w-6 h-6 rounded-full bg-white border-4 appearance-none cursor-pointer"/>
+        <label for="toggle" class="toggle-label block overflow-hidden h-6 rounded-full bg-gray-300 cursor-pointer"></label>
+    </div>
+    <span class="text-gray-700 dark:text-gray-300 font-medium text-sm">
+        <i class="fas fa-moon mr-1"></i>
+    </span>
+</div>
+
+<!-- Animated Background -->
+<div class="fixed inset-0 -z-50 overflow-hidden">
+    <div class="absolute inset-0 bg-gradient-to-br from-indigo-50 to-purple-50 opacity-50 dark:from-indigo-900/20 dark:to-purple-900/20"></div>
+    <div class="absolute inset-0 opacity-20">
+        <div class="absolute top-1/4 left-1/4 w-64 h-64 rounded-full bg-indigo-200 blur-3xl animate-float dark:bg-indigo-900/30"></div>
+        <div class="absolute top-3/4 right-1/4 w-72 h-72 rounded-full bg-purple-200 blur-3xl animate-float animation-delay-2000 dark:bg-purple-900/30"></div>
+        <div class="absolute bottom-1/3 left-1/3 w-80 h-80 rounded-full bg-pink-200 blur-3xl animate-float animation-delay-4000 dark:bg-pink-900/30"></div>
+    </div>
+</div>
+
+<!-- Header with Sticky Navigation -->
+<header class="fixed top-0 left-0 right-0 z-50 transition-all duration-300 bg-white/80 backdrop-blur-sm shadow-sm dark:bg-slate-800/80 dark:shadow-slate-900/50" id="main-header">
+    <div class="container mx-auto px-4 sm:px-6 py-3 flex justify-between items-center">
+        <a href="#" class="text-2xl md:text-3xl font-bold text-indigo-600 hover:text-indigo-800 dark:text-indigo-400 dark:hover:text-indigo-300 transition-colors heading-font flex items-center">
+            <span class="mr-2">🎉</span>
+            Utsav Unites
+        </a>
+        
+        <!-- Desktop Navigation -->
+        <nav class="hidden md:flex items-center">
+            <ul class="flex space-x-1">
+                <li>
+                    <a href="#" class="relative px-4 py-2 text-gray-800 hover:text-indigo-600 dark:text-gray-300 dark:hover:text-indigo-400 transition-colors group">
+                        <span>Home</span>
+                        <span class="absolute bottom-0 left-0 w-full h-0.5 bg-indigo-600 dark:bg-indigo-400 transform scale-x-0 group-hover:scale-x-100 transition-transform origin-left"></span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#gallery" class="relative px-4 py-2 text-gray-800 hover:text-indigo-600 dark:text-gray-300 dark:hover:text-indigo-400 transition-colors group">
+                        <span>Gallery</span>
+                        <span class="absolute bottom-0 left-0 w-full h-0.5 bg-indigo-600 dark:bg-indigo-400 transform scale-x-0 group-hover:scale-x-100 transition-transform origin-left"></span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#videos" class="relative px-4 py-2 text-gray-800 hover:text-indigo-600 dark:text-gray-300 dark:hover:text-indigo-400 transition-colors group">
+                        <span>Video</span>
+                        <span class="absolute bottom-0 left-0 w-full h-0.5 bg-indigo-600 dark:bg-indigo-400 transform scale-x-0 group-hover:scale-x-100 transition-transform origin-left"></span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#pujas" class="relative px-4 py-2 text-gray-800 hover:text-indigo-600 dark:text-gray-300 dark:hover:text-indigo-400 transition-colors group">
+                        <span>Pujalist</span>
+                        <span class="absolute bottom-0 left-0 w-full h-0.5 bg-indigo-600 dark:bg-indigo-400 transform scale-x-0 group-hover:scale-x-100 transition-transform origin-left"></span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#team" class="relative px-4 py-2 text-gray-800 hover:text-indigo-600 dark:text-gray-300 dark:hover:text-indigo-400 transition-colors group">
+                        <span>Team</span>
+                        <span class="absolute bottom-0 left-0 w-full h-0.5 bg-indigo-600 dark:bg-indigo-400 transform scale-x-0 group-hover:scale-x-100 transition-transform origin-left"></span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+        
+        <!-- Mobile Menu Button -->
+        <button id="menu-toggle" class="md:hidden text-indigo-600 dark:text-indigo-400 focus:outline-none p-2 rounded-lg bg-white/80 dark:bg-slate-700/80 backdrop-blur-sm border border-indigo-100 dark:border-slate-600 shadow-sm hover:shadow-md transition-all">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+            </svg>
+        </button>
+    </div>
+    
+    <!-- Mobile Menu with Animation -->
+    <div id="mobile-menu" class="mobile-menu md:hidden bg-white/95 dark:bg-slate-800/95 backdrop-blur-lg shadow-xl">
+        <div class="container mx-auto px-4 py-3 flex flex-col space-y-2">
+            <a href="#" class="block py-3 px-4 text-gray-800 dark:text-gray-200 hover:bg-indigo-50 dark:hover:bg-slate-700 rounded-lg transition-colors font-medium">Home</a>
+            <a href="#gallery" class="block py-3 px-4 text-gray-800 dark:text-gray-200 hover:bg-indigo-50 dark:hover:bg-slate-700 rounded-lg transition-colors font-medium">Gallery</a>
+            <a href="#videos" class="block py-3 px-4 text-gray-800 dark:text-gray-200 hover:bg-indigo-50 dark:hover:bg-slate-700 rounded-lg transition-colors font-medium">Video</a>
+            <a href="#pujas" class="block py-3 px-4 text-gray-800 dark:text-gray-200 hover:bg-indigo-50 dark:hover:bg-slate-700 rounded-lg transition-colors font-medium">Pujalist</a>
+            <a href="#team" class="block py-3 px-4 text-gray-800 dark:text-gray-200 hover:bg-indigo-50 dark:hover:bg-slate-700 rounded-lg transition-colors font-medium">Team</a>
+        </div>
+    </div>
+</header>
+
+<!-- Hero Section with Fixed Alignment -->
+<section class="hero relative h-screen min-h-[600px] overflow-hidden flex justify-center items-center text-center">
+    <div class="absolute inset-0 bg-gradient-to-t from-black/40 to-black/20 z-10"></div>
+    
+    <!-- Hero Slides - Properly Aligned -->
+    <div class="absolute inset-0 overflow-hidden">
+        <img src="https://assets.onecompiler.app/4362nvr75/436am4ert/jaghadhatri%20puja%206.png" 
+             class="hero-slide active absolute inset-0 w-full h-full object-cover object-center" 
+             alt="Festival Image">
+        <img src="https://assets.onecompiler.app/4362nvr75/436bvmy94/WhatsApp%20Image%202025-01-17%20at%2020.43.12_e66aa031.jpg" 
+             class="hero-slide absolute inset-0 w-full h-full object-cover object-center" 
+             alt="Culture Image">
+        <img src="https://assets.onecompiler.app/4362nvr75/4377z58ue/WhatsApp%20Image%202025-01-26%20at%2021.25.53_4c2b419b.jpg" 
+             class="hero-slide absolute inset-0 w-full h-full object-cover object-center" 
+             alt="Tradition Image">
+    </div>
+    
+    <!-- Hero Content -->
+    <div class="hero-content relative z-20 text-white px-4 max-w-4xl mx-auto transform transition-all duration-1000" id="hero-content">
+        <h2 class="text-4xl sm:text-5xl md:text-6xl font-bold mb-6 heading-font">
+            <span class="gradient-text bg-gradient-to-r from-yellow-400 via-pink-500 to-indigo-600">Celebrating Culture & Unity</span>
+        </h2>
+        <p class="text-xl md:text-2xl mb-8 max-w-2xl mx-auto leading-relaxed">
+            Discover stories, traditions, and voices from around the world.
+        </p>
+        <div>
+            <button class="explore-btn bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 text-white font-semibold py-3 px-8 rounded-full shadow-lg transition-all transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-white focus:ring-opacity-50 hover:shadow-xl">
+                Explore the Festivities
+            </button>
+        </div>
+    </div>
+    
+    <!-- Scroll Down Indicator -->
+    <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 z-20 animate-bounce">
+        <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
+        </svg>
+    </div>
+</section>
+
+<!-- About Section with Animated Wave Divider -->
+<section class="py-20 md:py-28 bg-white dark:bg-slate-800 relative overflow-hidden">
+    <!-- Wave Divider -->
+    <div class="custom-shape-divider-bottom-1719842609">
+        <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
+            <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z" class="shape-fill"></path>
+        </svg>
+    </div>
+    
+    <div class="container mx-auto px-4 sm:px-6 text-center relative z-10">
+        <!-- Animated Title -->
+        <h2 class="text-4xl sm:text-5xl font-extrabold tracking-wide uppercase mb-2 heading-font">
+            <span class="gradient-text bg-gradient-to-r from-yellow-400 via-pink-500 to-indigo-600">Utsav Unites</span>
+        </h2>
+        <p class="text-lg md:text-xl italic tracking-widest opacity-80 mb-12 dark:text-gray-300">"Where Culture Meets Celebration!"</p>
+
+        <!-- Glass Morphism Content Box -->
+        <div class="mt-8 glass-effect rounded-3xl p-6 sm:p-8 max-w-4xl mx-auto shadow-xl">
+            <p class="text-lg sm:text-xl leading-relaxed dark:text-gray-300">
+                Utsav Unites is more than an event—it's a <span class="font-bold gradient-text bg-gradient-to-r from-yellow-400 to-pink-500">movement</span>.  
+                A place where traditions thrive, communities come together, and celebrations create lifelong memories.
+            </p>
+
+            <div class="mt-8 grid grid-cols-1 md:grid-cols-2 gap-6 text-left">
+                <div class="p-5 bg-white/60 dark:bg-slate-700/60 rounded-xl shadow-md card-hover-effect border border-white/30 dark:border-slate-600/30">
+                    <h3 class="text-2xl font-bold text-yellow-500 mb-2">🌏 Unity in Diversity</h3>
+                    <p class="text-gray-700 dark:text-gray-300">We bring people from all backgrounds together through festivals.</p>
+                </div>
+                <div class="p-5 bg-white/60 dark:bg-slate-700/60 rounded-xl shadow-md card-hover-effect border border-white/30 dark:border-slate-600/30">
+                    <h3 class="text-2xl font-bold text-red-500 mb-2">🎭 Cultural Fusion</h3>
+                    <p class="text-gray-700 dark:text-gray-300">Celebrating traditions with a modern twist to keep them alive.</p>
+                </div>
+                <div class="p-5 bg-white/60 dark:bg-slate-700/60 rounded-xl shadow-md card-hover-effect border border-white/30 dark:border-slate-600/30">
+                    <h3 class="text-2xl font-bold text-blue-500 mb-2">🎶 Unforgettable Experiences</h3>
+                    <p class="text-gray-700 dark:text-gray-300">Music, dance, and joy—every moment is a story waiting to be told.</p>
+                </div>
+                <div class="p-5 bg-white/60 dark:bg-slate-700/60 rounded-xl shadow-md card-hover-effect border border-white/30 dark:border-slate-600/30">
+                    <h3 class="text-2xl font-bold text-green-500 mb-2">🤝 Community First</h3>
+                    <p class="text-gray-700 dark:text-gray-300">Supporting local artists, performers, and cultural icons.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Articles Section with 3D Tilt Effect -->
+<section class="py-20 md:py-28 bg-gradient-to-b from-gray-100 to-gray-200 dark:from-slate-800 dark:to-slate-900">
+    <div class="container mx-auto px-4 sm:px-6">
+        <h3 class="text-4xl sm:text-5xl font-extrabold text-center text-gray-900 dark:text-white mb-12 md:mb-16 heading-font">
+            Latest Stories
+        </h3>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" data-js="cards-container">
+            <!-- Card 1 -->
+            <div class="bg-white dark:bg-slate-700 rounded-xl shadow-xl overflow-hidden transition-all duration-500 hover:shadow-2xl border border-white/30 dark:border-slate-600/30 card-hover-effect">
+                <div class="h-48 sm:h-56 overflow-hidden relative">
+                    <img src="https://assets.onecompiler.app/4362nvr75/436am4ert/jaghadhatri%20puja%206.png" 
+                         alt="Story" class="w-full h-full object-cover transition-transform duration-700 hover:scale-110">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent"></div>
+                </div>
+                <div class="p-6">
+                    <h4 class="text-2xl sm:text-3xl font-bold text-indigo-700 dark:text-indigo-400 mb-3">Festival of Colors</h4>
+                    <p class="text-gray-700 dark:text-gray-300 mb-4">Dive into the vibrant celebrations of Holi across the globe.</p>
+                    <a href="#" class="inline-block">
+                        <button class="bg-indigo-600 hover:bg-indigo-700 text-white font-semibold px-6 py-2 rounded-lg shadow-md transition-all transform hover:scale-105 group">
+                            <span class="relative z-10">Read More</span>
+                            <span class="absolute inset-0 bg-indigo-700 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity"></span>
+                        </button>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Card 2 -->
+            <div class="bg-white dark:bg-slate-700 rounded-xl shadow-xl overflow-hidden transition-all duration-500 hover:shadow-2xl border border-white/30 dark:border-slate-600/30 card-hover-effect">
+                <div class="h-48 sm:h-56 overflow-hidden relative">
+                    <img src="https://assets.onecompiler.app/4362nvr75/436bvvcvg/WhatsApp%20Image%202025-01-17%20at%2020.43.11_9e2b837f.jpg" 
+                         alt="Story" class="w-full h-full object-cover transition-transform duration-700 hover:scale-110">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent"></div>
+                </div>
+                <div class="p-6">
+                    <h4 class="text-2xl sm:text-3xl font-bold text-red-600 dark:text-red-400 mb-3">Culinary Journeys</h4>
+                    <p class="text-gray-700 dark:text-gray-300 mb-4">Explore unique recipes passed down through generations.</p>
+                    <a href="#" class="inline-block">
+                        <button class="bg-red-600 hover:bg-red-700 text-white font-semibold px-6 py-2 rounded-lg shadow-md transition-all transform hover:scale-105 group">
+                            <span class="relative z-10">Read More</span>
+                            <span class="absolute inset-0 bg-red-700 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity"></span>
+                        </button>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Card 3 -->
+            <div class="bg-white dark:bg-slate-700 rounded-xl shadow-xl overflow-hidden transition-all duration-500 hover:shadow-2xl border border-white/30 dark:border-slate-600/30 card-hover-effect">
+                <div class="h-48 sm:h-56 overflow-hidden relative">
+                    <img src="https://assets.onecompiler.app/4362nvr75/439fm45cr/pal.jpg" 
+                         alt="Story" class="w-full h-full object-cover transition-transform duration-700 hover:scale-110">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent"></div>
+                </div>
+                <div class="p-6">
+                    <h4 class="text-2xl sm:text-3xl font-bold text-green-600 dark:text-green-400 mb-3">Rhythms of Unity</h4>
+                    <p class="text-gray-700 dark:text-gray-300 mb-4">How music brings communities together across borders.</p>
+                    <a href="#" class="inline-block">
+                        <button class="bg-green-600 hover:bg-green-700 text-white font-semibold px-6 py-2 rounded-lg shadow-md transition-all transform hover:scale-105 group">
+                            <span class="relative z-10">Read More</span>
+                            <span class="absolute inset-0 bg-green-700 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity"></span>
+                        </button>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Puja Gallery Section with Interactive Grid -->
+<section id="gallery" class="py-20 md:py-28 bg-gray-100 dark:bg-slate-800 relative overflow-hidden">
+    <div class="absolute inset-0 opacity-10">
+        <div class="absolute top-1/4 left-1/4 w-64 h-64 rounded-full bg-indigo-200 dark:bg-indigo-900/30 blur-3xl animate-float"></div>
+        <div class="absolute bottom-1/3 right-1/4 w-72 h-72 rounded-full bg-purple-200 dark:bg-purple-900/30 blur-3xl animate-float animation-delay-2000"></div>
+    </div>
+    
+    <div class="container mx-auto px-4 sm:px-6 text-center relative z-10">
+        <h3 class="text-3xl sm:text-4xl font-extrabold text-gray-800 dark:text-white mb-12 heading-font">
+            Famous Pujas
+        </h3>
+        
+        <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6 place-items-center">
+            <img src="https://assets.onecompiler.app/4362nvr75/439fm45cr/pal.jpg" alt="Puja 1" 
+                 class="w-28 h-28 sm:w-32 sm:h-32 md:w-36 md:h-36 object-cover rounded-full p-1 puja-thumbnail cursor-pointer"
+                 onclick="openFullscreen(this)">
+                 
+            <img src="https://assets.onecompiler.app/4362nvr75/436bvmy94/WhatsApp%20Image%202025-01-17%20at%2020.43.12_e66aa031.jpg" alt="Puja 2" 
+                 class="w-28 h-28 sm:w-32 sm:h-32 md:w-36 md:h-36 object-cover rounded-full p-1 puja-thumbnail cursor-pointer"
+                 onclick="openFullscreen(this)">
+                 
+            <img src="https://assets.onecompiler.app/4362nvr75/436bvvcvg/WhatsApp%20Image%202025-01-17%20at%2020.43.11_9e2b837f.jpg" alt="Puja 3" 
+                 class="w-28 h-28 sm:w-32 sm:h-32 md:w-36 md:h-36 object-cover rounded-full p-1 puja-thumbnail cursor-pointer"
+                 onclick="openFullscreen(this)">
+                 
+            <img src="https://assets.onecompiler.app/4362nvr75/4377z58ue/WhatsApp%20Image%202025-01-26%20at%2021.25.53_4c2b419b.jpg" alt="Puja 4" 
+                 class="w-28 h-28 sm:w-32 sm:h-32 md:w-36 md:h-36 object-cover rounded-full p-1 puja-thumbnail cursor-pointer"
+                 onclick="openFullscreen(this)">
+                 
+            <img src="https://assets.onecompiler.app/4362nvr75/436am4ert/jaghadhatri%20puja%206.png" alt="Puja 5" 
+                 class="w-28 h-28 sm:w-32 sm:h-32 md:w-36 md:h-36 object-cover rounded-full p-1 puja-thumbnail cursor-pointer"
+                 onclick="openFullscreen(this)">
+        </div>
+    </div>
+</section>
+
+<!-- Fullscreen Image Modal with Zoom Effect -->
+<div id="fullscreen" class="fixed inset-0 bg-black/90 flex justify-center items-center hidden z-50 cursor-zoom-out transition-opacity duration-300 opacity-0">
+    <div class="relative max-w-4xl w-full px-4">
+        <button class="absolute -top-12 right-0 text-white text-3xl z-50 hover:text-indigo-300 transition-colors" onclick="closeFullscreen(event)">
+            <i class="fas fa-times"></i>
+        </button>
+        <div class="overflow-hidden rounded-xl shadow-2xl">
+            <img id="fullscreen-img" class="max-w-full max-h-[90vh] object-contain transform scale-90 transition-transform duration-300">
+        </div>
+        <div class="flex justify-center mt-4 space-x-2">
+            <button class="p-2 text-white hover:text-indigo-300 transition-colors" onclick="navigateFullscreen(-1)">
+                <i class="fas fa-chevron-left text-xl"></i>
+            </button>
+            <button class="p-2 text-white hover:text-indigo-300 transition-colors" onclick="navigateFullscreen(1)">
+                <i class="fas fa-chevron-right text-xl"></i>
+            </button>
+        </div>
+    </div>
+</div>
+
+<!-- Countdown Section with Animated Digits -->
+<section class="py-16 md:py-20 bg-gradient-to-r from-indigo-600 to-purple-600 text-white relative overflow-hidden">
+    <div class="absolute inset-0 opacity-10">
+        <div class="absolute top-0 left-0 w-full h-full bg-gradient-to-br from-white/10 to-transparent"></div>
+    </div>
+    
+    <div class="container mx-auto px-4 sm:px-6 text-center relative z-10">
+        <h2 class="text-3xl sm:text-4xl font-bold mb-8 heading-font">
+            Jagadhatri Puja <span class="text-yellow-300">Countdown 2025</span>
+        </h2>
+        <div class="grid grid-cols-4 gap-4 sm:gap-6 max-w-2xl mx-auto">
+            <div class="bg-white/10 backdrop-blur-sm border border-white/20 rounded-lg p-4 sm:p-6 transition-all hover:bg-white/15">
+                <span class="text-3xl sm:text-5xl font-bold text-yellow-300 block mb-2 countdown-digit" id="days">00</span>
+                <span class="text-sm sm:text-base uppercase tracking-wider font-medium">Days</span>
+            </div>
+            <div class="bg-white/10 backdrop-blur-sm border border-white/20 rounded-lg p-4 sm:p-6 transition-all hover:bg-white/15">
+                <span class="text-3xl sm:text-5xl font-bold text-yellow-300 block mb-2 countdown-digit" id="hours">00</span>
+                <span class="text-sm sm:text-base uppercase tracking-wider font-medium">Hours</span>
+            </div>
+            <div class="bg-white/10 backdrop-blur-sm border border-white/20 rounded-lg p-4 sm:p-6 transition-all hover:bg-white/15">
+                <span class="text-3xl sm:text-5xl font-bold text-yellow-300 block mb-2 countdown-digit" id="minutes">00</span>
+                <span class="text-sm sm:text-base uppercase tracking-wider font-medium">Min</span>
+            </div>
+            <div class="bg-white/10 backdrop-blur-sm border border-white/20 rounded-lg p-4 sm:p-6 transition-all hover:bg-white/15">
+                <span class="text-3xl sm:text-5xl font-bold text-yellow-300 block mb-2 countdown-digit" id="seconds">00</span>
+                <span class="text-sm sm:text-base uppercase tracking-wider font-medium">Sec</span>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Puja Details Section - Removed Flip Animation -->
+<section class="py-16 md:py-20 bg-gray-50 dark:bg-slate-800">
+    <div class="container mx-auto px-4 sm:px-6">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6">
+            <div class="bg-white dark:bg-slate-700 rounded-xl shadow-md p-6 text-center hover:shadow-lg transition-all border border-gray-100 dark:border-slate-600">
+                <div class="w-16 h-16 bg-indigo-100 dark:bg-indigo-900/30 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <i class="fas fa-bell text-indigo-600 dark:text-indigo-400 text-xl"></i>
+                </div>
+                <h3 class="font-bold text-lg mb-2 dark:text-white">Sasthi</h3>
+                <p class="text-sm text-gray-600 dark:text-gray-400">28th October 2025</p>
+                <p class="text-sm text-gray-700 dark:text-gray-300 mt-3">On the sixth day of Jagadhatri Puja (Sasthi), rituals are performed to awaken and welcome Devi Jagadhatri.</p>
+            </div>
+            
+            <div class="bg-white dark:bg-slate-700 rounded-xl shadow-md p-6 text-center hover:shadow-lg transition-all border border-gray-100 dark:border-slate-600">
+                <div class="w-16 h-16 bg-indigo-100 dark:bg-indigo-900/30 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <i class="fas fa-water text-indigo-600 dark:text-indigo-400 text-xl"></i>
+                </div>
+                <h3 class="font-bold text-lg mb-2 dark:text-white">Saptami</h3>
+                <p class="text-sm text-gray-600 dark:text-gray-400">29th October 2025</p>
+                <p class="text-sm text-gray-700 dark:text-gray-300 mt-3">The 4-day Puja starts from the seventh day of Jagadhatri Puja by Ghot Snan with the holy water of Ganga.</p>
+            </div>
+            
+            <div class="bg-white dark:bg-slate-700 rounded-xl shadow-md p-6 text-center hover:shadow-lg transition-all border border-gray-100 dark:border-slate-600">
+                <div class="w-16 h-16 bg-indigo-100 dark:bg-indigo-900/30 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <i class="fas fa-fire text-indigo-600 dark:text-indigo-400 text-xl"></i>
+                </div>
+                <h3 class="font-bold text-lg mb-2 dark:text-white">Astami</h3>
+                <p class="text-sm text-gray-600 dark:text-gray-400">30th October 2025</p>
+                <p class="text-sm text-gray-700 dark:text-gray-300 mt-3">Special puja offering is done on the eighth day of Jagadhatri Puja, followed by the preparation of the procession.</p>
+            </div>
+            
+            <div class="bg-white dark:bg-slate-700 rounded-xl shadow-md p-6 text-center hover:shadow-lg transition-all border border-gray-100 dark:border-slate-600">
+                <div class="w-16 h-16 bg-indigo-100 dark:bg-indigo-900/30 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <i class="fas fa-book text-indigo-600 dark:text-indigo-400 text-xl"></i>
+                </div>
+                <h3 class="font-bold text-lg mb-2 dark:text-white">Nabami</h3>
+                <p class="text-sm text-gray-600 dark:text-gray-400">31st October 2025</p>
+                <p class="text-sm text-gray-700 dark:text-gray-300 mt-3">The ninth day of Jagadhatri Puja followed by Puspanjali, marked with hom, kumari puja, and khichudi bhog.</p>
+            </div>
+            
+            <div class="bg-white dark:bg-slate-700 rounded-xl shadow-md p-6 text-center hover:shadow-lg transition-all border border-gray-100 dark:border-slate-600">
+                <div class="w-16 h-16 bg-indigo-100 dark:bg-indigo-900/30 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <i class="fas fa-torii-gate text-indigo-600 dark:text-indigo-400 text-xl"></i>
+                </div>
+                <h3 class="font-bold text-lg mb-2 dark:text-white">Dasami</h3>
+                <p class="text-sm text-gray-600 dark:text-gray-400">1st November 2025</p>
+                <p class="text-sm text-gray-700 dark:text-gray-300 mt-3">The last day of Puja is called Dashami, marked by Sindur Khela and a special lighted procession through Chandannagar.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Team Section with 3D Perspective -->
+<section id="team" class="py-16 md:py-24 bg-white dark:bg-slate-900">
+    <div class="container mx-auto px-4 sm:px-6">
+        <h2 class="text-4xl font-bold text-center mb-12 text-gray-900 dark:text-white heading-font">
+            🌟 Meet Our Team 🌟
+        </h2>
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+            
+            <!-- Team Member Card -->
+            <div class="bg-white dark:bg-slate-800 rounded-xl overflow-hidden shadow-xl transition-all duration-500 hover:shadow-2xl border border-gray-100 dark:border-slate-700 team-card">
+                <div class="relative w-full h-48 bg-gradient-to-r from-pink-500 to-purple-500 flex justify-center items-center overflow-hidden">
+                    <img class="w-24 h-24 rounded-full border-4 border-white shadow-md object-cover team-image" 
+                         src="https://assets.onecompiler.app/4362nvr75/43b9mzgrt/ron.png" 
+                         alt="Saurashis Baral">
+                </div>
+                <div class="p-6 text-center">
+                    <h3 class="text-xl font-bold text-gray-900 dark:text-white">Saurashis Baral</h3>
+                    <p class="text-sm text-gray-600 dark:text-gray-400">CoFounder & Developer</p>
+                    <p class="text-xs text-gray-500 dark:text-gray-300 mt-2">A visionary leader with a passion for innovation and expert for using AI tools.</p>
+                    <div class="flex justify-center mt-4 space-x-3">
+                        <a href="https://www.facebook.com/share/1Fik4eoZfq/" class="text-gray-700 hover:text-blue-500 dark:text-gray-300 dark:hover:text-blue-400 transition-colors"><i class="fab fa-facebook fa-lg"></i></a>
+                        <a href="#" class="text-gray-700 hover:text-blue-400 dark:text-gray-300 dark:hover:text-blue-300 transition-colors"><i class="fab fa-linkedin fa-lg"></i></a>
+                        <a href="#" class="text-gray-700 hover:text-pink-600 dark:text-gray-300 dark:hover:text-pink-500 transition-colors"><i class="fab fa-instagram fa-lg"></i></a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Team Member Card -->
+            <div class="bg-white dark:bg-slate-800 rounded-xl overflow-hidden shadow-xl transition-all duration-500 hover:shadow-2xl border border-gray-100 dark:border-slate-700 team-card">
+                <div class="relative w-full h-48 bg-gradient-to-r from-blue-500 to-teal-500 flex justify-center items-center overflow-hidden">
+                    <img class="w-24 h-24 rounded-full border-4 border-white shadow-md object-cover team-image" 
+                         src="https://assets.onecompiler.app/4362nvr75/43b9mzgrt/dev%202.png" 
+                         alt="Hritam Das">
+                </div>
+                <div class="p-6 text-center">
+                    <h3 class="text-xl font-bold text-gray-900 dark:text-white">Hritam Das</h3>
+                    <p class="text-sm text-gray-600 dark:text-gray-400">CoFounder & Developer</p>
+                    <p class="text-xs text-gray-500 dark:text-gray-300 mt-2">Expert in problem solving and digital marketing strategies.</p>
+                    <div class="flex justify-center mt-4 space-x-3">
+                        <a href="https://www.facebook.com/Hritam Das" class="text-gray-700 hover:text-blue-500 dark:text-gray-300 dark:hover:text-blue-400 transition-colors"><i class="fab fa-facebook fa-lg"></i></a>
+                        <a href="#" class="text-gray-700 hover:text-blue-400 dark:text-gray-300 dark:hover:text-blue-300 transition-colors"><i class="fab fa-linkedin fa-lg"></i></a>
+                        <a href="#" class="text-gray-700 hover:text-pink-600 dark:text-gray-300 dark:hover:text-pink-500 transition-colors"><i class="fab fa-instagram fa-lg"></i></a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Team Member Card -->
+            <div class="bg-white dark:bg-slate-800 rounded-xl overflow-hidden shadow-xl transition-all duration-500 hover:shadow-2xl border border-gray-100 dark:border-slate-700 team-card">
+                <div class="relative w-full h-48 bg-gradient-to-r from-yellow-500 to-orange-500 flex justify-center items-center overflow-hidden">
+                    <img class="w-24 h-24 rounded-full border-4 border-white shadow-md object-cover team-image" 
+                         src="https://assets.onecompiler.app/4362nvr75/43b9mzgrt/dev%201.jpg" 
+                         alt="Soham Saha">
+                </div>
+                <div class="p-6 text-center">
+                    <h3 class="text-xl font-bold text-gray-900 dark:text-white">Soham Saha</h3>
+                    <p class="text-sm text-gray-600 dark:text-gray-400">Developer</p>
+                    <p class="text-xs text-gray-500 dark:text-gray-300 mt-2">Passionate about coding and innovative solutions.</p>
+                    <div class="flex justify-center mt-4 space-x-3">
+                        <a href="https://www.facebook.com/Soham Saha" class="text-gray-700 hover:text-blue-500 dark:text-gray-300 dark:hover:text-blue-400 transition-colors"><i class="fab fa-facebook fa-lg"></i></a>
+                        <a href="#" class="text-gray-700 hover:text-blue-400 dark:text-gray-300 dark:hover:text-blue-300 transition-colors"><i class="fab fa-linkedin fa-lg"></i></a>
+                        <a href="#" class="text-gray-700 hover:text-pink-600 dark:text-gray-300 dark:hover:text-pink-500 transition-colors"><i class="fab fa-instagram fa-lg"></i></a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Team Member Card -->
+            <div class="bg-white dark:bg-slate-800 rounded-xl overflow-hidden shadow-xl transition-all duration-500 hover:shadow-2xl border border-gray-100 dark:border-slate-700 team-card">
+                <div class="relative w-full h-48 bg-gradient-to-r from-green-500 to-lime-500 flex justify-center items-center overflow-hidden">
+                    <img class="w-24 h-24 rounded-full border-4 border-white shadow-md object-cover team-image" 
+                         src="https://via.placeholder.com/150" 
+                         alt="Michael Lee">
+                </div>
+                <div class="p-6 text-center">
+                    <h3 class="text-xl font-bold text-gray-900 dark:text-white">Michael Lee</h3>
+                    <p class="text-sm text-gray-600 dark:text-gray-400">Lead Developer</p>
+                    <p class="text-xs text-gray-500 dark:text-gray-300 mt-2">Passionate about coding and innovative solutions.</p>
+                    <div class="flex justify-center mt-4 space-x-3">
+                        <a href="#" class="text-gray-700 hover:text-blue-500 dark:text-gray-300 dark:hover:text-blue-400 transition-colors"><i class="fab fa-linkedin fa-lg"></i></a>
+                        <a href="#" class="text-gray-700 hover:text-blue-400 dark:text-gray-300 dark:hover:text-blue-300 transition-colors"><i class="fab fa-twitter fa-lg"></i></a>
+                        <a href="#" class="text-gray-700 hover:text-gray-900 dark:text-gray-300 dark:hover:text-gray-100 transition-colors"><i class="fab fa-github fa-lg"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Social Media Section with Hover Effects -->
+<section class="py-12 md:py-16 bg-gray-100 dark:bg-slate-800">
+    <div class="container mx-auto px-4 sm:px-6 text-center">
+        <h3 class="text-3xl font-bold mb-8 heading-font dark:text-white">
+            Follow Us
+        </h3>
+        <div class="bg-white dark:bg-slate-700 rounded-xl shadow-lg p-6 max-w-4xl mx-auto glass-effect">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
+                <div class="p-4 border border-gray-200 dark:border-slate-600 rounded-lg social-card hover:bg-blue-50 dark:hover:bg-blue-900/20 transition-colors">
+                    <div class="w-12 h-12 mx-auto mb-3 flex items-center justify-center social-icon">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/cd/Facebook_logo_%28square%29.png/900px-Facebook_logo_%28square%29.png?20140103173026" 
+                             alt="Facebook" class="w-full h-full object-contain">
+                    </div>
+                    <p class="text-lg font-bold text-gray-800 dark:text-white">Facebook</p>
+                    <span class="text-xl font-semibold text-blue-600 dark:text-blue-400">1.2M</span>
+                </div>
+                <div class="p-4 border border-gray-200 dark:border-slate-600 rounded-lg social-card hover:bg-red-50 dark:hover:bg-red-900/20 transition-colors">
+                    <div class="w-12 h-12 mx-auto mb-3 flex items-center justify-center social-icon">
+                        <img src="https://banner2.cleanpng.com/20180619/sul/aa6xrbjzf.webp" 
+                             alt="YouTube" class="w-full h-full object-contain">
+                    </div>
+                    <p class="text-lg font-bold text-gray-800 dark:text-white">YouTube</p>
+                    <span class="text-xl font-semibold text-red-600 dark:text-red-400">2.5M</span>
+                </div>
+                <div class="p-4 border border-gray-200 dark:border-slate-600 rounded-lg social-card hover:bg-pink-50 dark:hover:bg-pink-900/20 transition-colors">
+                    <div class="w-12 h-12 mx-auto mb-3 flex items-center justify-center social-icon">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a5/Instagram_icon.png/900px-Instagram_icon.png" 
+                             alt="Instagram" class="w-full h-full object-contain">
+                    </div>
+                    <p class="text-lg font-bold text-gray-800 dark:text-white">Instagram</p>
+                    <span class="text-xl font-semibold text-pink-600 dark:text-pink-400">800K</span>
+                </div>
+                <div class="p-4 border border-gray-200 dark:border-slate-600 rounded-lg social-card hover:bg-gray-100 dark:hover:bg-gray-900/20 transition-colors">
+                    <div class="w-12 h-12 mx-auto mb-3 flex items-center justify-center social-icon">
+                        <img src="https://img.freepik.com/free-vector/new-2023-twitter-logo-x-icon-design_1017-45418.jpg?t=st=1741520011~exp=1741523611~hmac=d1e9a7b3c1a252bafc38285c2b10cbf02ac681fcbfd1e3b360fb12b82246be08&w=900" 
+                             alt="X" class="w-full h-full object-contain">
+                    </div>
+                    <p class="text-lg font-bold text-gray-800 dark:text-white">X</p>
+                    <span class="text-xl font-semibold text-gray-800 dark:text-gray-300">500K</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Enhanced Video Section with Lightbox -->
+<section id="videos" class="py-12 md:py-16 bg-white dark:bg-slate-900">
+    <div class="container mx-auto px-4 sm:px-6">
+        <h2 class="text-3xl font-bold mb-8 text-center heading-font dark:text-white">
+            Videos & Reels
+        </h2>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
+            <!-- Video 1 -->
+            <div class="video-container" onclick="openVideoModal('https://www.youtube.com/embed/dQw4w9WgXcQ')">
+                <img src="https://i.ytimg.com/vi/dQw4w9WgXcQ/maxresdefault.jpg" class="w-full h-48 sm:h-56 object-cover">
+                <div class="video-overlay">
+                    <h3 class="text-xl font-bold mb-2 text-white">Festival Highlights</h3>
+                    <p class="text-sm text-gray-200">Watch the best moments from our latest festival</p>
+                </div>
+                <div class="play-button">
+                    <i class="fas fa-play text-indigo-600 text-2xl"></i>
+                </div>
+            </div>
+            
+            <!-- Video 2 -->
+            <div class="video-container" onclick="openVideoModal('https://www.youtube.com/embed/3JZ_D3ELwOQ')">
+                <img src="https://i.ytimg.com/vi/3JZ_D3ELwOQ/maxresdefault.jpg" class="w-full h-48 sm:h-56 object-cover">
+                <div class="video-overlay">
+                    <h3 class="text-xl font-bold mb-2 text-white">Cultural Performances</h3>
+                    <p class="text-sm text-gray-200">Traditional dances from around the world</p>
+                </div>
+                <div class="play-button">
+                    <i class="fas fa-play text-indigo-600 text-2xl"></i>
+                </div>
+            </div>
+            
+            <!-- Video 3 -->
+            <div class="video-container" onclick="openVideoModal('https://www.youtube.com/embed/9bZkp7q19f0')">
+                <img src="https://i.ytimg.com/vi/9bZkp7q19f0/maxresdefault.jpg" class="w-full h-48 sm:h-56 object-cover">
+                <div class="video-overlay">
+                    <h3 class="text-xl font-bold mb-2 text-white">Behind the Scenes</h3>
+                    <p class="text-sm text-gray-200">How we prepare for the big event</p>
+                </div>
+                <div class="play-button">
+                    <i class="fas fa-play text-indigo-600 text-2xl"></i>
+                </div>
+            </div>
+        </div>
+        
+        <!-- View More Button -->
+        <div class="text-center mt-10">
+            <button class="bg-indigo-600 hover:bg-indigo-700 text-white font-semibold py-3 px-8 rounded-full shadow-lg transition-all transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-opacity-50 hover:shadow-xl">
+                View More Videos
+            </button>
+        </div>
+    </div>
+</section>
+
+<!-- Video Modal -->
+<div id="video-modal" class="fixed inset-0 bg-black/90 flex justify-center items-center hidden z-50 p-4">
+    <div class="relative w-full max-w-4xl">
+        <button class="absolute -top-12 right-0 text-white text-3xl z-50 hover:text-indigo-300 transition-colors" onclick="closeVideoModal()">
+            <i class="fas fa-times"></i>
+        </button>
+        <div class="aspect-w-16 aspect-h-9 bg-black rounded-xl overflow-hidden">
+            <iframe id="video-iframe" class="w-full h-full" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </div>
+    </div>
+</div>
+
+<!-- Advertisement Container with Animation -->
+<div id="ad-container" class="fixed bottom-4 right-4 bg-white dark:bg-slate-800 shadow-2xl rounded-xl p-3 w-64 sm:w-80 flex flex-col items-center border border-gray-200 dark:border-slate-700 z-50 hidden transform transition-all duration-500 translate-y-20">
+    <button class="absolute top-1 right-2 text-gray-500 dark:text-gray-400 hover:text-red-500 transition-colors" onclick="closeAd()">✖</button>
+    
+    <a id="ad-link" href="" target="_blank" rel="noopener noreferrer" class="w-full overflow-hidden rounded-lg">
+        <img id="ad-image" src="" alt="Advertisement" class="w-full h-auto rounded-lg transition-transform duration-700 hover:scale-105">
+    </a>
+    
+    <p class="text-xs text-gray-500 dark:text-gray-400 mt-2">Sponsored</p>
+</div>
+
+<!-- Footer with Gradient Background -->
+<footer class="relative bg-gradient-to-r from-indigo-700 to-purple-700 text-white py-12 md:py-16 overflow-hidden">
+    <div class="absolute inset-0 opacity-10">
+        <div class="absolute top-0 left-0 w-full h-full bg-gradient-to-br from-white/10 to-transparent"></div>
+    </div>
+    
+    <div class="container mx-auto px-4 sm:px-6 relative z-10">
+        <div class="max-w-6xl mx-auto">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div class="md:col-span-2">
+                    <a href="#" class="text-2xl font-bold text-white hover:text-indigo-200 transition-colors heading-font flex items-center mb-4">
+                        <span class="mr-2">🎉</span>
+                        Utsav Unites
+                    </a>
+                    <p class="mb-6 max-w-md">Celebrating Culture & Unity through digital experiences and bringing communities together.</p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-white hover:text-indigo-200 transition-colors"><i class="fab fa-facebook fa-lg"></i></a>
+                        <a href="#" class="text-white hover:text-indigo-200 transition-colors"><i class="fab fa-twitter fa-lg"></i></a>
+                        <a href="#" class="text-white hover:text-indigo-200 transition-colors"><i class="fab fa-instagram fa-lg"></i></a>
+                        <a href="#" class="text-white hover:text-indigo-200 transition-colors"><i class="fab fa-youtube fa-lg"></i></a>
+                        <a href="#" class="text-white hover:text-indigo-200 transition-colors"><i class="fab fa-linkedin fa-lg"></i></a>
+                    </div>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-bold mb-4 heading-font">Quick Links</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="hover:text-indigo-200 transition-colors">Home</a></li>
+                        <li><a href="#gallery" class="hover:text-indigo-200 transition-colors">Gallery</a></li>
+                        <li><a href="#videos" class="hover:text-indigo-200 transition-colors">Videos</a></li>
+                        <li><a href="#pujas" class="hover:text-indigo-200 transition-colors">Pujas</a></li>
+                        <li><a href="#team" class="hover:text-indigo-200 transition-colors">Our Team</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-bold mb-4 heading-font">Legal</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="hover:text-indigo-200 transition-colors">Privacy Policy</a></li>
+                        <li><a href="#" class="hover:text-indigo-200 transition-colors">Terms of Service</a></li>
+                        <li><a href="#" class="hover:text-indigo-200 transition-colors">Cookie Policy</a></li>
+                        <li><a href="#" class="hover:text-indigo-200 transition-colors">GDPR</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="border-t border-white/20 mt-8 pt-8 text-center">
+                <p class="text-sm">&copy; 2025 Utsav Unites. All rights reserved.</p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- Back to Top Button with Animation -->
+<button id="back-to-top" class="fixed bottom-4 right-4 bg-gradient-to-r from-indigo-600 to-purple-600 text-white p-3 rounded-full shadow-lg opacity-0 invisible transition-all duration-300 z-40 hover:from-indigo-700 hover:to-purple-700 hover:shadow-xl">
+    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7m0 0l7 7m-7-7v18" />
+    </svg>
+</button>
+
+<script>
+    // Hero image slider
+    let currentIndex = 0;
+    const images = document.querySelectorAll('.hero-slide');
+    
+    function changeImage() {
+        images[currentIndex].classList.remove('active');
+        currentIndex = (currentIndex + 1) % images.length;
+        images[currentIndex].classList.add('active');
+    }
+    
+    setInterval(changeImage, 4000);
+
+    // Mobile menu toggle with animation
+    document.getElementById('menu-toggle').addEventListener('click', function() {
+        const menu = document.getElementById('mobile-menu');
+        menu.classList.toggle('open');
+        
+        // Change icon based on menu state
+        if (menu.classList.contains('open')) {
+            this.innerHTML = `
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                </svg>
+            `;
+        } else {
+            this.innerHTML = `
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                </svg>
+            `;
+        }
+    });
+
+    // Close mobile menu when clicking on a link
+    document.querySelectorAll('#mobile-menu a').forEach(link => {
+        link.addEventListener('click', () => {
+            document.getElementById('mobile-menu').classList.remove('open');
+            document.getElementById('menu-toggle').innerHTML = `
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                </svg>
+            `;
+        });
+    });
+
+    // Fullscreen image viewer with navigation
+    const pujaImages = [
+        "https://assets.onecompiler.app/4362nvr75/439fm45cr/pal.jpg",
+        "https://assets.onecompiler.app/4362nvr75/436bvmy94/WhatsApp%20Image%202025-01-17%20at%2020.43.12_e66aa031.jpg",
+        "https://assets.onecompiler.app/4362nvr75/436bvvcvg/WhatsApp%20Image%202025-01-17%20at%2020.43.11_9e2b837f.jpg",
+        "https://assets.onecompiler.app/4362nvr75/4377z58ue/WhatsApp%20Image%202025-01-26%20at%2021.25.53_4c2b419b.jpg",
+        "https://assets.onecompiler.app/4362nvr75/436am4ert/jaghadhatri%20puja%206.png"
+    ];
+    
+    let currentImageIndex = 0;
+    
+    function openFullscreen(img) {
+        currentImageIndex = pujaImages.indexOf(img.src);
+        document.getElementById("fullscreen-img").src = pujaImages[currentImageIndex];
+        document.getElementById("fullscreen").classList.remove("hidden");
+        setTimeout(() => {
+            document.getElementById("fullscreen").classList.remove("opacity-0");
+            document.getElementById("fullscreen-img").classList.remove("scale-90");
+        }, 10);
+        document.body.style.overflow = "hidden";
+    }
+    
+    function closeFullscreen(e) {
+        if(e) e.stopPropagation();
+        document.getElementById("fullscreen").classList.add("opacity-0");
+        document.getElementById("fullscreen-img").classList.add("scale-90");
+        setTimeout(() => {
+            document.getElementById("fullscreen").classList.add("hidden");
+            document.body.style.overflow = "auto";
+        }, 300);
+    }
+    
+    function navigateFullscreen(direction) {
+        currentImageIndex = (currentImageIndex + direction + pujaImages.length) % pujaImages.length;
+        document.getElementById("fullscreen-img").classList.add("scale-90");
+        setTimeout(() => {
+            document.getElementById("fullscreen-img").src = pujaImages[currentImageIndex];
+            document.getElementById("fullscreen-img").classList.remove("scale-90");
+        }, 150);
+    }
+
+    // Video modal
+    function openVideoModal(videoUrl) {
+        document.getElementById("video-iframe").src = videoUrl + "?autoplay=1";
+        document.getElementById("video-modal").classList.remove("hidden");
+        document.body.style.overflow = "hidden";
+    }
+    
+    function closeVideoModal() {
+        document.getElementById("video-iframe").src = "";
+        document.getElementById("video-modal").classList.add("hidden");
+        document.body.style.overflow = "auto";
+    }
+
+    // Countdown timer with animation
+    function updateCountdown() {
+        const eventDate = new Date("October 28, 2025 00:00:00").getTime();
+        const now = new Date().getTime();
+        const timeLeft = eventDate - now;
+        
+        const days = Math.floor(timeLeft / (1000 * 60 * 60 * 24)).toString().padStart(2, '0');
+        const hours = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)).toString().padStart(2, '0');
+        const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60)).toString().padStart(2, '0');
+        const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000).toString().padStart(2, '0');
+        
+        // Animate only if the value has changed
+        if (document.getElementById("days").textContent !== days) {
+            animateDigitChange("days", days);
+        }
+        if (document.getElementById("hours").textContent !== hours) {
+            animateDigitChange("hours", hours);
+        }
+        if (document.getElementById("minutes").textContent !== minutes) {
+            animateDigitChange("minutes", minutes);
+        }
+        if (document.getElementById("seconds").textContent !== seconds) {
+            animateDigitChange("seconds", seconds);
+        }
+    }
+    
+    function animateDigitChange(elementId, newValue) {
+        const element = document.getElementById(elementId);
+        element.style.transform = "translateY(-10px)";
+        element.style.opacity = "0";
+        
+        setTimeout(() => {
+            element.textContent = newValue;
+            element.style.transform = "translateY(0)";
+            element.style.opacity = "1";
+        }, 150);
+    }
+    
+    setInterval(updateCountdown, 1000);
+    updateCountdown();
+
+    // Ad rotation with entrance animation
+    const ads = [
+        { image: "https://assets.onecompiler.app/4362nvr75/43b9e66zd/burger.png", link: "https://ad1.com" },
+        { image: "https://assets.onecompiler.app/4362nvr75/43b9mzgrt/cloth.png", link: "https://ad2.com" },
+        { image: "https://assets.onecompiler.app/4362nvr75/43b9mzgrt/trav.png", link: "https://ad3.com" }
+    ];
+
+    let currentAdIndex = 0;
+    function showNextAd() {
+        document.getElementById("ad-image").src = ads[currentAdIndex].image;
+        document.getElementById("ad-link").href = ads[currentAdIndex].link;
+        currentAdIndex = (currentAdIndex + 1) % ads.length;
+    }
+
+    function closeAd() {
+        document.getElementById("ad-container").style.transform = "translateY(20px)";
+        setTimeout(() => {
+            document.getElementById("ad-container").style.display = "none";
+        }, 300);
+    }
+
+    // Start ad rotation after 3 seconds with entrance animation
+    setTimeout(() => {
+        const adContainer = document.getElementById("ad-container");
+        adContainer.style.display = "flex";
+        setTimeout(() => {
+            adContainer.style.transform = "translateY(0)";
+        }, 10);
+        showNextAd();
+        setInterval(showNextAd, 5000); // Change ad every 5 seconds
+    }, 3000);
+
+    // Back to top button with scroll detection
+    const backToTopButton = document.getElementById('back-to-top');
+    window.addEventListener('scroll', () => {
+        if (window.pageYOffset > 300) {
+            backToTopButton.classList.remove('opacity-0', 'invisible');
+            backToTopButton.classList.add('opacity-100', 'visible');
+        } else {
+            backToTopButton.classList.remove('opacity-100', 'visible');
+            backToTopButton.classList.add('opacity-0', 'invisible');
+        }
+    });
+
+    backToTopButton.addEventListener('click', () => {
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        });
+    });
+
+    // Sticky header with scroll effect - improved
+    const header = document.getElementById('main-header');
+    let lastScroll = 0;
+    const headerHeight = header.offsetHeight;
+    
+    window.addEventListener('scroll', () => {
+        const currentScroll = window.pageYOffset;
+        
+        if (currentScroll <= 0) {
+            header.classList.remove('scrolled');
+            header.style.transform = 'translateY(0)';
+            return;
+        }
+        
+        if (currentScroll > lastScroll && currentScroll > headerHeight) {
+            // Scroll down - hide header
+            header.style.transform = `translateY(-${headerHeight}px)`;
+            header.classList.add('scrolled');
+        } else if (currentScroll < lastScroll) {
+            // Scroll up - show header
+            header.style.transform = 'translateY(0)';
+            header.classList.add('scrolled');
+        }
+        
+        lastScroll = currentScroll;
+    });
+
+    // Smooth scrolling for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+            e.preventDefault();
+            const target = document.querySelector(this.getAttribute('href'));
+            if (target) {
+                window.scrollTo({
+                    top: target.offsetTop - 80,
+                    behavior: 'smooth'
+                });
+                
+                // Close mobile menu if open
+                document.getElementById('mobile-menu').classList.remove('open');
+                document.getElementById('menu-toggle').innerHTML = `
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                    </svg>
+                `;
+            }
+        });
+    });
+
+    // Dark mode toggle functionality
+    const darkModeToggle = document.getElementById('toggle');
+    const htmlElement = document.documentElement;
+    
+    // Check for saved user preference or use system preference
+    if (localStorage.getItem('darkMode') === 'true' || 
+        (!localStorage.getItem('darkMode') && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+        htmlElement.classList.add('dark');
+        darkModeToggle.checked = true;
+    }
+    
+    // Toggle dark mode
+    darkModeToggle.addEventListener('change', function() {
+        if (this.checked) {
+            htmlElement.classList.add('dark');
+            localStorage.setItem('darkMode', 'true');
+        } else {
+            htmlElement.classList.remove('dark');
+            localStorage.setItem('darkMode', 'false');
+        }
+    });
+
+    // Initialize ScrollReveal animations
+    ScrollReveal().reveal('[data-sr-id]', {
+        delay: 200,
+        distance: '20px',
+        origin: 'bottom',
+        interval: 100,
+        easing: 'cubic-bezier(0.5, 0, 0, 1)',
+        reset: true
+    });
+
+    // Initialize GSAP animations
+    gsap.registerPlugin(ScrollTrigger);
+    
+    // Animate hero content on load
+    gsap.from("#hero-content", {
+        duration: 1.5,
+        y: 50,
+        opacity: 0,
+        ease: "power3.out"
+    });
+    
+    // Animate cards on scroll
+    gsap.utils.toArray(".card-hover-effect").forEach(card => {
+        gsap.from(card, {
+            scrollTrigger: {
+                trigger: card,
+                start: "top 80%",
+                toggleActions: "play none none none"
+            },
+            y: 50,
+            opacity: 0,
+            duration: 0.8,
+            ease: "back.out(1.2)"
+        });
+    });
+    
+    // Animate video section
+    gsap.utils.toArray(".video-container").forEach((video, i) => {
+        gsap.from(video, {
+            scrollTrigger: {
+                trigger: video,
+                start: "top 80%",
+                toggleActions: "play none none none"
+            },
+            y: 50,
+            opacity: 0,
+            duration: 0.8,
+            delay: i * 0.1,
+            ease: "power2.out"
+        });
+    });
+</script>
+</body>
+</html>

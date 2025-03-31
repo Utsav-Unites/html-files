@@ -1,0 +1,884 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Experience the grandeur of Jagadhatri Puja - A divine celebration of strength and devotion in Chandannagar">
+  <title>Jagadhatri Puja | Divine Celebration of Strength</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:wght@700;800&family=Tangerine:wght@700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #f59e0b;
+      --primary-dark: #d97706;
+      --primary-light: #fcd34d;
+      --secondary: #0f172a;
+      --secondary-light: #1e293b;
+      --accent: #fde68a;
+      --text-light: #f8fafc;
+      --text-dark: #1e293b;
+    }
+    
+    body {
+      font-family: 'Poppins', sans-serif;
+      background-color: var(--secondary);
+      color: var(--text-light);
+      overflow-x: hidden;
+      scroll-behavior: smooth;
+    }
+    
+    .festival-title {
+      font-family: 'Tangerine', cursive;
+      text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+    }
+    
+    .section-title {
+      font-family: 'Playfair Display', serif;
+    }
+
+    /* Hero Section with Stable Text */
+    .hero-container {
+      position: relative;
+      min-height: 100vh;
+      overflow: hidden;
+    }
+    
+    .hero-background {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 0;
+      transition: opacity 1.5s ease-in-out;
+    }
+    
+    .hero-background.active {
+      opacity: 1;
+      z-index: 1;
+    }
+    
+    .hero-background.inactive {
+      opacity: 0;
+      z-index: 0;
+    }
+    
+    .hero-content {
+      position: relative;
+      z-index: 10;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      background: linear-gradient(135deg, rgba(15, 23, 42, 0.7) 0%, rgba(15, 23, 42, 0.5) 100%);
+    }
+    
+    /* Button Styles */
+    .btn-primary {
+      background: var(--primary);
+      color: var(--text-dark);
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      font-weight: 600;
+      letter-spacing: 0.05em;
+    }
+    
+    .btn-primary:hover {
+      background: var(--primary-dark);
+      transform: translateY(-2px) scale(1.02);
+      box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+    }
+    
+    .btn-primary:active {
+      transform: translateY(0) scale(0.98);
+    }
+    
+    /* Card Styles */
+    .card {
+      background: rgba(30, 41, 59, 0.7);
+      backdrop-filter: blur(10px);
+      border-radius: 12px;
+      overflow: hidden;
+      transition: all 0.4s ease;
+      border: 1px solid rgba(255, 255, 255, 0.05);
+    }
+    
+    .card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 20px 25px rgba(0, 0, 0, 0.2);
+      border-color: rgba(245, 158, 11, 0.3);
+    }
+    
+    /* Timeline Styles */
+    .timeline {
+      position: relative;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    
+    .timeline::after {
+      content: '';
+      position: absolute;
+      width: 6px;
+      background: var(--primary);
+      top: 0;
+      bottom: 0;
+      left: 50%;
+      margin-left: -3px;
+      border-radius: 3px;
+    }
+    
+    .timeline-item {
+      padding: 10px 40px;
+      position: relative;
+      width: 50%;
+      box-sizing: border-box;
+    }
+    
+    .timeline-item::after {
+      content: '';
+      position: absolute;
+      width: 25px;
+      height: 25px;
+      right: -12px;
+      background: var(--primary);
+      border: 4px solid var(--primary-dark);
+      top: 15px;
+      border-radius: 50%;
+      z-index: 1;
+    }
+    
+    .left {
+      left: 0;
+    }
+    
+    .right {
+      left: 50%;
+    }
+    
+    .left::before {
+      content: " ";
+      height: 0;
+      position: absolute;
+      top: 22px;
+      width: 0;
+      z-index: 1;
+      right: 30px;
+      border: medium solid var(--primary);
+      border-width: 10px 0 10px 10px;
+      border-color: transparent transparent transparent var(--primary);
+    }
+    
+    .right::before {
+      content: " ";
+      height: 0;
+      position: absolute;
+      top: 22px;
+      width: 0;
+      z-index: 1;
+      left: 30px;
+      border: medium solid var(--primary);
+      border-width: 10px 10px 10px 0;
+      border-color: transparent var(--primary) transparent transparent;
+    }
+    
+    .right::after {
+      left: -12px;
+    }
+    
+    /* Dropdown Styles */
+    .dropdown {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      z-index: 50;
+    }
+    
+    .dropdown-btn {
+      background: var(--primary);
+      color: var(--text-dark);
+      padding: 10px 20px;
+      border-radius: 50px;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+    
+    .dropdown-btn:hover {
+      background: var(--primary-dark);
+    }
+    
+    .dropdown-content {
+      position: absolute;
+      right: 0;
+      background: var(--secondary-light);
+      min-width: 160px;
+      border-radius: 8px;
+      box-shadow: 0 10px 15px rgba(0, 0, 0, 0.2);
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(10px);
+      transition: all 0.3s ease;
+      z-index: 10;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    
+    .dropdown:hover .dropdown-content {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+    }
+    
+    .dropdown-content a {
+      color: var(--text-light);
+      padding: 12px 16px;
+      text-decoration: none;
+      display: block;
+      transition: all 0.2s ease;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    }
+    
+    .dropdown-content a:last-child {
+      border-bottom: none;
+    }
+    
+    .dropdown-content a:hover {
+      background: rgba(255, 255, 255, 0.05);
+      padding-left: 20px;
+    }
+    
+    /* Animations */
+    @keyframes float {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-15px); }
+    }
+    
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    
+    .fade-in {
+      opacity: 0;
+      animation: fadeIn 1s forwards;
+    }
+    
+    .delay-100 {
+      animation-delay: 0.1s;
+    }
+    
+    .delay-200 {
+      animation-delay: 0.2s;
+    }
+    
+    .delay-300 {
+      animation-delay: 0.3s;
+    }
+    
+    /* Particle Effect */
+    .particles {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 5;
+      overflow: hidden;
+    }
+    
+    .particle {
+      position: absolute;
+      background: var(--accent);
+      border-radius: 50%;
+      opacity: 0.3;
+      filter: blur(1px);
+    }
+    
+    /* Responsive Adjustments */
+    @media (max-width: 768px) {
+      .timeline::after {
+        left: 31px;
+      }
+      
+      .timeline-item {
+        width: 100%;
+        padding-left: 70px;
+        padding-right: 25px;
+      }
+      
+      .timeline-item::before {
+        left: 60px;
+        border: medium solid var(--primary);
+        border-width: 10px 10px 10px 0;
+        border-color: transparent var(--primary) transparent transparent;
+      }
+      
+      .left::after, .right::after {
+        left: 18px;
+      }
+      
+      .right {
+        left: 0%;
+      }
+      
+      .festival-title {
+        font-size: 4rem;
+      }
+    }
+    
+    /* Custom Scrollbar */
+    ::-webkit-scrollbar {
+      width: 10px;
+    }
+    
+    ::-webkit-scrollbar-track {
+      background: var(--secondary-light);
+    }
+    
+    ::-webkit-scrollbar-thumb {
+      background: var(--primary);
+      border-radius: 5px;
+    }
+    
+    ::-webkit-scrollbar-thumb:hover {
+      background: var(--primary-dark);
+    }
+    
+    /* Skip Link */
+    .skip-link {
+      position: absolute;
+      top: -40px;
+      left: 0;
+      padding: 8px 16px;
+      background-color: var(--primary);
+      color: var(--text-dark);
+      font-weight: bold;
+      z-index: 1000;
+      transition: top 0.3s ease;
+    }
+    
+    .skip-link:focus {
+      top: 10px;
+      outline: 2px solid white;
+      outline-offset: 2px;
+    }
+    
+    /* Back to Top Button */
+    .back-to-top {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      width: 50px;
+      height: 50px;
+      background: var(--primary);
+      color: var(--text-dark);
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+      z-index: 99;
+      transition: all 0.3s ease;
+      opacity: 0;
+      visibility: hidden;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+    
+    .back-to-top.active {
+      opacity: 1;
+      visibility: visible;
+    }
+    
+    .back-to-top:hover {
+      background: var(--primary-dark);
+      transform: translateY(-3px);
+    }
+    
+    /* Section Dividers */
+    .section-divider {
+      position: relative;
+      height: 100px;
+      overflow: hidden;
+    }
+    
+    .section-divider::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: 0;
+      height: 100%;
+      background: linear-gradient(to bottom, var(--secondary), transparent);
+      z-index: 1;
+    }
+    
+    /* Glow Effects */
+    .glow-text {
+      text-shadow: 0 0 10px rgba(245, 158, 11, 0.5);
+    }
+    
+    .glow-box {
+      box-shadow: 0 0 20px rgba(245, 158, 11, 0.3);
+    }
+    
+    /* Image Zoom Effect */
+    .zoom-effect {
+      transition: transform 0.5s ease;
+    }
+    
+    .zoom-effect:hover {
+      transform: scale(1.05);
+    }
+  </style>
+</head>
+<body class="relative">
+  <!-- Skip to content link -->
+  <a href="#main-content" class="skip-link">Skip to content</a>
+  
+  <!-- Language Dropdown -->
+  <div class="dropdown">
+    <button class="dropdown-btn">
+      <i class="fas fa-language"></i> Language
+    </button>
+    <div class="dropdown-content">
+      <a href="#" id="lang-en"><i class="fas fa-check mr-2"></i>English</a>
+      <a href="#" id="lang-bn"><i class="far fa-circle mr-2"></i>বাংলা</a>
+      <a href="#" id="lang-hi"><i class="far fa-circle mr-2"></i>हिन्दी</a>
+    </div>
+  </div>
+
+  <!-- Hero Section with Stable Text -->
+  <div class="hero-container">
+    <!-- Background Images -->
+    <div class="hero-background active" style="background-image: url('https://assets.onecompiler.app/4362nvr75/436bvmy94/WhatsApp%20Image%202025-01-17%20at%2020.43.12_e66aa031.jpg'); background-size: cover; background-position: center;"></div>
+    <div class="hero-background inactive" style="background-image: url('https://assets.onecompiler.app/4362nvr75/4377z58ue/WhatsApp%20Image%202025-01-26%20at%2021.25.53_4c2b419b.jpg'); background-size: cover; background-position: center;"></div>
+    <div class="hero-background inactive" style="background-image: url('https://assets.onecompiler.app/4362nvr75/4377z58ue/lig1.jpg'); background-size: cover; background-position: center;"></div>
+    
+    <!-- Particle Effect -->
+    <div class="particles" id="particles-js"></div>
+    
+    <!-- Hero Content (Stable Text) -->
+    <div class="hero-content px-4">
+      <h1 class="festival-title text-6xl md:text-8xl lg:text-9xl font-bold mb-6 text-yellow-400 glow-text">
+        Jagadhatri Puja
+      </h1>
+      <p class="text-xl md:text-2xl text-yellow-200 mb-8">
+        A Divine Celebration of Strength and Devotion
+      </p>
+      <div>
+        <a href="#about" class="btn-primary inline-flex items-center px-8 py-3 rounded-full font-bold uppercase tracking-wider">
+          Explore the Festival <i class="fas fa-arrow-down ml-2"></i>
+        </a>
+      </div>
+    </div>
+    
+    <!-- Scroll Indicator -->
+    <div class="absolute bottom-10 left-1/2 transform -translate-x-1/2 animate-bounce z-20">
+      <a href="#about" class="text-yellow-400 text-4xl">
+        <i class="fas fa-chevron-down"></i>
+      </a>
+    </div>
+  </div>
+
+  <!-- Main Content -->
+  <main id="main-content" class="relative z-10">
+    <!-- About Section -->
+    <section id="about" class="py-20 px-4 md:px-10 lg:px-20 bg-gradient-to-b from-slate-900 to-slate-800" role="region" aria-labelledby="about-heading">
+      <div class="max-w-6xl mx-auto">
+        <div class="text-center mb-16 fade-in">
+          <h2 id="about-heading" class="section-title text-4xl md:text-5xl font-bold text-yellow-400 mb-4 uppercase tracking-wider">
+            About Jagadhatri Puja
+          </h2>
+          <div class="w-24 h-1 bg-yellow-400 mx-auto"></div>
+        </div>
+        
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+          <div class="fade-in delay-100 card p-8">
+            <p id="about-text" class="text-lg leading-relaxed text-gray-300">
+              Jagadhatri Puja, an esteemed festival in certain regions, extends across five joyous days, commencing from Sasthi and culminating on Dashami. The main observance traditionally takes place on the seventh day of the festivities. Much akin to the grandeur of Kolkata's revered Durga Puja and Barasat's revered Kali Puja, Chandannagar stands out for its opulent celebrations and cultural exuberance during the Jagadhatri Puja. The city comes alive with vibrant decorations, illuminations, and fervent devotional activities, attracting both locals and visitors alike, creating an atmosphere of religious significance and communal harmony.
+
+              In Chandannagar, Jagadhatri puja is celebrated as the annual festival of its own, surpassing the grandeur of Durga Puja. Acclaimed for its show of lights, during the four days of the Puja the entire town decks up beautifully as food stalls dot its streets and people throng to the pandals. On the last day of Dashami, all the effigies are paraded throughout the town in a night-long procession as the town showcases its skillful craftsmanship of lights and boasts its age-old tradition. The entire town celebrates for five days as monotonous every day routine comes to a halt. As birds turn to their nests when darkness kisses the ground, similarly the town beckons to all who have grown up in its nooks and crannies and migrated to different parts of the country or outside. During these four days as people return to their hometown to celebrate with their loved ones, the entire town state lights up in the warmth and glow of shared joy.
+            </p>
+          </div>
+          
+          <div class="fade-in delay-200">
+            <div class="relative overflow-hidden rounded-xl shadow-2xl glow-box zoom-effect">
+              <img src="https://assets.onecompiler.app/4362nvr75/4377z58ue/WhatsApp%20Image%202025-01-26%20at%2021.25.53_4c2b419b.jpg" 
+                   alt="Jagadhatri Puja Celebration" 
+                   class="w-full h-auto object-cover">
+              <div class="absolute inset-0 bg-gradient-to-t from-slate-900 via-transparent to-transparent opacity-70"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    
+    <!-- History Section -->
+    <section id="history" class="py-20 px-4 md:px-10 lg:px-20 bg-gradient-to-b from-slate-800 to-slate-900" role="region" aria-labelledby="history-heading">
+      <div class="max-w-6xl mx-auto">
+        <div class="text-center mb-16 fade-in">
+          <h2 id="history-heading" class="section-title text-4xl md:text-5xl font-bold text-yellow-400 mb-4 uppercase tracking-wider">
+            Historical Significance
+          </h2>
+          <div class="w-24 h-1 bg-yellow-400 mx-auto"></div>
+        </div>
+        
+        <div class="timeline fade-in delay-100">
+          <div class="timeline-item left">
+            <div class="card p-6">
+              <h3 class="text-xl font-bold text-yellow-400 mb-2">18th Century Origins</h3>
+              <p id="history-text" class="text-gray-300">
+                The Jagadhatri Puja dates back to the 18th century when it was first celebrated in Chandannagar under the patronage of the French colonial rulers. The festival gained prominence during the reign of Indranarayan Chowdhury, a wealthy Bengali merchant.
+              </p>
+            </div>
+          </div>
+          <div class="timeline-item right">
+            <div class="card p-6">
+              <h3 class="text-xl font-bold text-yellow-400 mb-2">Colonial Influence</h3>
+              <p class="text-gray-300">
+                The French colonial administration allowed the festival to flourish, creating a unique blend of Bengali traditions with European influences in the decorations and celebrations.
+              </p>
+            </div>
+          </div>
+          <div class="timeline-item left">
+            <div class="card p-6">
+              <h3 class="text-xl font-bold text-yellow-400 mb-2">20th Century Growth</h3>
+              <p class="text-gray-300">
+                During the 20th century, the festival evolved into a grand community celebration with elaborate light decorations, cultural programs, and massive processions becoming hallmark features.
+              </p>
+            </div>
+          </div>
+          <div class="timeline-item right">
+            <div class="card p-6">
+              <h3 class="text-xl font-bold text-yellow-400 mb-2">Modern Celebrations</h3>
+              <p class="text-gray-300">
+                Today, Jagadhatri Puja in Chandannagar attracts thousands of visitors with its spectacular light displays, artistic pandals, and the famous immersion procession that lasts through the night.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    
+    <!-- Gallery Preview Section -->
+    <section id="gallery" class="py-20 px-4 md:px-10 bg-slate-900" role="region" aria-labelledby="gallery-heading">
+      <div class="max-w-6xl mx-auto">
+        <div class="text-center mb-16 fade-in">
+          <h2 id="gallery-heading" class="section-title text-4xl md:text-5xl font-bold text-yellow-400 mb-4 uppercase tracking-wider">
+            Festival Glimpses
+          </h2>
+          <div class="w-24 h-1 bg-yellow-400 mx-auto"></div>
+        </div>
+        
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div class="fade-in delay-100 card overflow-hidden transform transition-all duration-500 hover:shadow-xl">
+            <div class="relative overflow-hidden h-64">
+              <img src="https://assets.onecompiler.app/4362nvr75/4377z58ue/WhatsApp%20Image%202025-01-26%20at%2021.25.53_4c2b419b.jpg" 
+                   alt="Jagadhatri idol" 
+                   class="w-full h-full object-cover zoom-effect">
+            </div>
+            <div class="p-4">
+              <h3 class="text-yellow-400 font-bold text-lg">The Divine Idol</h3>
+              <p class="text-gray-300 text-sm">Traditional Jagadhatri idol with intricate decorations</p>
+            </div>
+          </div>
+          
+          <div class="fade-in delay-200 card overflow-hidden transform transition-all duration-500 hover:shadow-xl">
+            <div class="relative overflow-hidden h-64">
+              <img src="https://assets.onecompiler.app/4362nvr75/4377z58ue/lig1.jpg" 
+                   alt="Puja pandal" 
+                   class="w-full h-full object-cover zoom-effect">
+            </div>
+            <div class="p-4">
+              <h3 class="text-yellow-400 font-bold text-lg">Artistic Pandal</h3>
+              <p class="text-gray-300 text-sm">Beautifully decorated temporary shrine for the goddess</p>
+            </div>
+          </div>
+          
+          <div class="fade-in delay-300 card overflow-hidden transform transition-all duration-500 hover:shadow-xl">
+            <div class="relative overflow-hidden h-64">
+              <img src="https://assets.onecompiler.app/4362nvr75/436bvmy94/WhatsApp%20Image%202025-01-17%20at%2020.43.12_e66aa031.jpg" 
+                   alt="Immersion procession" 
+                   class="w-full h-full object-cover zoom-effect">
+            </div>
+            <div class="p-4">
+              <h3 class="text-yellow-400 font-bold text-lg">Grand Procession</h3>
+              <p class="text-gray-300 text-sm">The famous night-long immersion procession</p>
+            </div>
+          </div>
+        </div>
+        
+        <div class="text-center mt-12 fade-in delay-300">
+          <button class="btn-primary inline-flex items-center px-8 py-3 rounded-full font-bold uppercase tracking-wider">
+            View Full Gallery <i class="fas fa-images ml-2"></i>
+          </button>
+        </div>
+      </div>
+    </section>
+    
+    <!-- Celebration Highlights -->
+    <section class="py-20 px-4 md:px-10 bg-gradient-to-b from-slate-800 to-slate-900">
+      <div class="max-w-6xl mx-auto">
+        <div class="text-center mb-16 fade-in">
+          <h2 class="section-title text-4xl md:text-5xl font-bold text-yellow-400 mb-4 uppercase tracking-wider">
+            Celebration Highlights
+          </h2>
+          <div class="w-24 h-1 bg-yellow-400 mx-auto"></div>
+        </div>
+        
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div class="fade-in delay-100 card p-6 text-center">
+            <div class="text-yellow-400 text-4xl mb-4">
+              <i class="fas fa-lightbulb"></i>
+            </div>
+            <h3 class="text-xl font-bold text-yellow-400 mb-2">Spectacular Illuminations</h3>
+            <p class="text-gray-300">The entire town transforms into a magical wonderland with breathtaking light decorations that attract visitors from all over.</p>
+          </div>
+          
+          <div class="fade-in delay-200 card p-6 text-center">
+            <div class="text-yellow-400 text-4xl mb-4">
+              <i class="fas fa-utensils"></i>
+            </div>
+            <h3 class="text-xl font-bold text-yellow-400 mb-2">Traditional Cuisine</h3>
+            <p class="text-gray-300">Food stalls line the streets offering authentic Bengali delicacies and sweets that are an integral part of the celebrations.</p>
+          </div>
+          
+          <div class="fade-in delay-300 card p-6 text-center">
+            <div class="text-yellow-400 text-4xl mb-4">
+              <i class="fas fa-music"></i>
+            </div>
+            <h3 class="text-xl font-bold text-yellow-400 mb-2">Cultural Programs</h3>
+            <p class="text-gray-300">Night-long cultural performances including music, dance, and drama that showcase Bengal's rich artistic heritage.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer role="contentinfo" class="relative py-12 px-4 bg-slate-900 border-t border-yellow-400">
+    <div class="max-w-6xl mx-auto">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div class="fade-in">
+          <h3 class="text-yellow-400 text-xl font-bold mb-4">Jagadhatri Puja</h3>
+          <p class="text-gray-400">
+            Celebrating the divine strength of Goddess Jagadhatri with devotion and grandeur in Chandannagar and beyond.
+          </p>
+        </div>
+        
+        <div class="fade-in delay-100">
+          <h3 class="text-yellow-400 text-xl font-bold mb-4">Quick Links</h3>
+          <ul class="space-y-2">
+            <li><a href="#about" class="text-gray-400 hover:text-yellow-400 transition-colors">About the Festival</a></li>
+            <li><a href="#history" class="text-gray-400 hover:text-yellow-400 transition-colors">History</a></li>
+            <li><a href="#gallery" class="text-gray-400 hover:text-yellow-400 transition-colors">Gallery</a></li>
+          </ul>
+        </div>
+        
+        <div class="fade-in delay-200">
+          <h3 class="text-yellow-400 text-xl font-bold mb-4">Connect With Us</h3>
+          <div class="flex space-x-4">
+            <a href="#" class="text-gray-400 hover:text-yellow-400 text-2xl transition-colors" aria-label="Facebook">
+              <i class="fab fa-facebook"></i>
+            </a>
+            <a href="#" class="text-gray-400 hover:text-yellow-400 text-2xl transition-colors" aria-label="Instagram">
+              <i class="fab fa-instagram"></i>
+            </a>
+            <a href="#" class="text-gray-400 hover:text-yellow-400 text-2xl transition-colors" aria-label="Twitter">
+              <i class="fab fa-twitter"></i>
+            </a>
+            <a href="#" class="text-gray-400 hover:text-yellow-400 text-2xl transition-colors" aria-label="YouTube">
+              <i class="fab fa-youtube"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+      
+      <div class="border-t border-slate-700 mt-8 pt-8 text-center fade-in delay-300">
+        <p class="text-gray-500 text-sm">
+          &copy; 2025 Jagadhatri Puja Celebration Committee. All rights reserved.
+        </p>
+      </div>
+    </div>
+    
+    <!-- Back to top button -->
+    <div class="back-to-top" id="back-to-top">
+      <i class="fas fa-arrow-up"></i>
+    </div>
+  </footer>
+
+  <script>
+    // Store the text in different languages
+    const texts = {
+      en: {
+        about: "Jagadhatri Puja, an esteemed festival in certain regions, extends across five joyous days, commencing from Sasthi and culminating on Dashami. The main observance traditionally takes place on the seventh day of the festivities. Much akin to the grandeur of Kolkata's revered Durga Puja and Barasat's revered Kali Puja, Chandannagar stands out for its opulent celebrations and cultural exuberance during the Jagadhatri Puja. The city comes alive with vibrant decorations, illuminations, and fervent devotional activities, attracting both locals and visitors alike, creating an atmosphere of religious significance and communal harmony.In Chandannagar, Jagadhatri puja is celebrated as the annual festival of its own, surpassing the grandeur of Durga Puja. Acclaimed for its show of lights, during the four days of the Puja the entire town decks up beautifully as food stalls dot its streets and people throng to the pandals. On the last day of Dashami, all the effigies are paraded throughout the town in a night-long procession as the town showcases its skillful craftsmanship of lights and boasts its age-old tradition. The entire town celebrates for five days as monotonous every day routine comes to a halt. As birds turn to their nests when darkness kisses the ground, similarly the town beckons to all who have grown up in its nooks and crannies and migrated to different parts of the country or outside. During these four days as people return to their hometown to celebrate with their loved ones, the entire town state lights up in the warmth and glow of shared joy.",
+        history: "The Jagadhatri Puja dates back to the 18th century when it was first celebrated in Chandannagar under the patronage of the French colonial rulers. The festival gained prominence during the reign of Indranarayan Chowdhury, a wealthy Bengali merchant."
+      },
+      bn: {
+        about: "যগদাত্রী পূজা, একটি মর্যাদাপূর্ণ উত্সব যা নির্দিষ্ট অঞ্চলে উদযাপিত হয়, এটি পাঁচটি আনন্দদায়ক দিনে প্রসারিত হয়...",
+        history: "যগদাত্রী পূজা ১৮শ শতকের প্রথম দিকে শুরু হয় যখন এটি ফরাসি ঔপনিবেশিক শাসকদের পৃষ্ঠপোষকতায় চন্দননগরে প্রথম উদযাপিত হয়েছিল। ধনী বাঙালি বণিক ইন্দ্রনারায়ণ চৌধুরীর শাসনামলে এই উত্সবটি প্রাধান্য পায়।"
+      },
+      hi: {
+        about: "जगदात्री पूजा, एक प्रतिष्ठित उत्सव जो कुछ क्षेत्रों में मनाया जाता है, यह पाँच खुशीपूर्ण दिनों तक फैला होता है...",
+        history: "जगदात्री पूजा 18वीं सदी से जुड़ी हुई है जब इसे पहली बार फ्रांसीसी औपनिवेशिक शासकों के संरक्षण में चंदननगर में मनाया गया था। धनी बंगाली व्यापारी इंद्रनारायण चौधुरी के शासनकाल के दौरान यह त्योहार प्रमुखता से उभरा।"
+      }
+    };
+
+    // Background images cycling
+    const backgrounds = document.querySelectorAll('.hero-background');
+    let currentBgIndex = 0;
+    
+    function cycleBackgrounds() {
+      // Hide current background
+      backgrounds[currentBgIndex].classList.remove('active');
+      backgrounds[currentBgIndex].classList.add('inactive');
+      
+      // Move to next background
+      currentBgIndex = (currentBgIndex + 1) % backgrounds.length;
+      
+      // Show next background
+      backgrounds[currentBgIndex].classList.remove('inactive');
+      backgrounds[currentBgIndex].classList.add('active');
+    }
+    
+    // Start cycling every 8 seconds
+    setInterval(cycleBackgrounds, 8000);
+
+    // Function to change the language
+    function changeLanguage(language) {
+      document.getElementById("about-text").textContent = texts[language].about;
+      document.getElementById("history-text").textContent = texts[language].history;
+      
+      // Update active language indicator in dropdown
+      document.querySelectorAll('.dropdown-content a i').forEach(icon => {
+        icon.classList.remove('fa-check');
+        icon.classList.add('fa-circle');
+      });
+      
+      document.querySelector(`#lang-${language} i`).classList.remove('fa-circle');
+      document.querySelector(`#lang-${language} i`).classList.add('fa-check');
+    }
+
+    // Event listeners for language dropdown
+    document.getElementById("lang-en").addEventListener("click", (e) => {
+      e.preventDefault();
+      changeLanguage("en");
+    });
+    document.getElementById("lang-bn").addEventListener("click", (e) => {
+      e.preventDefault();
+      changeLanguage("bn");
+    });
+    document.getElementById("lang-hi").addEventListener("click", (e) => {
+      e.preventDefault();
+      changeLanguage("hi");
+    });
+
+    // Create floating particles
+    function createParticles() {
+      const particlesContainer = document.getElementById('particles-js');
+      const particleCount = window.innerWidth < 768 ? 20 : 40;
+      
+      for (let i = 0; i < particleCount; i++) {
+        const particle = document.createElement('div');
+        particle.classList.add('particle');
+        
+        // Random properties
+        const size = Math.random() * 5 + 2;
+        const posX = Math.random() * 100;
+        const posY = Math.random() * 100;
+        const delay = Math.random() * 5;
+        const duration = Math.random() * 10 + 10;
+        
+        // Apply styles
+        particle.style.width = `${size}px`;
+        particle.style.height = `${size}px`;
+        particle.style.left = `${posX}%`;
+        particle.style.top = `${posY}%`;
+        particle.style.opacity = Math.random() * 0.5 + 0.1;
+        particle.style.animation = `float ${duration}s ease-in-out ${delay}s infinite`;
+        
+        particlesContainer.appendChild(particle);
+      }
+    }
+
+    // Back to top button
+    const backToTopButton = document.getElementById('back-to-top');
+    
+    window.addEventListener('scroll', () => {
+      if (window.pageYOffset > 300) {
+        backToTopButton.classList.add('active');
+      } else {
+        backToTopButton.classList.remove('active');
+      }
+    });
+    
+    backToTopButton.addEventListener('click', () => {
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
+    });
+
+    // Initialize when DOM is loaded
+    document.addEventListener("DOMContentLoaded", () => {
+      createParticles();
+      
+      // Animate elements that are already in viewport
+      const animateOnLoad = () => {
+        document.querySelectorAll('.fade-in').forEach(el => {
+          const rect = el.getBoundingClientRect();
+          const isVisible = (rect.top <= window.innerHeight * 0.8);
+          
+          if (isVisible) {
+            el.style.animationPlayState = 'running';
+          }
+        });
+      };
+      
+      // Run once on load
+      animateOnLoad();
+      
+      // Then set up intersection observer for elements that enter view later
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.style.animationPlayState = 'running';
+          }
+        });
+      }, {
+        threshold: 0.1
+      });
+      
+      document.querySelectorAll('.fade-in').forEach(el => {
+        observer.observe(el);
+      });
+    });
+
+    // Smooth scrolling for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+        
+        const targetId = this.getAttribute('href');
+        if (targetId === '#') return;
+        
+        const targetElement = document.querySelector(targetId);
+        if (targetElement) {
+          window.scrollTo({
+            top: targetElement.offsetTop - 80,
+            behavior: 'smooth'
+          });
+        }
+      });
+    });
+  </script>
+</body>
+</html>
